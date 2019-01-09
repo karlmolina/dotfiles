@@ -1,5 +1,5 @@
 # git
-
+hi
 # add
 alias ga='git add'
 alias gai='git add -i'
