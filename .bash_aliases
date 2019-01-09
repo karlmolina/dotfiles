@@ -114,7 +114,7 @@ alias rss='rsstail -r -i 1 -u http://lorem-rss.herokuapp.com/feed?unit=second&in
 alias d2u='dos2unix'
 
 # dotfile aliases
-alias df='--git-dir ~/.dotfiles/.git --work-tree=$HOME'
+alias df='git -C ~ --git-dir ~/.dotfiles/.git --work-tree=$HOME'
 alias dfd='df diff'
 alias dfds='df git diff --staged'
 alias dfs='df status'
