@@ -66,6 +66,7 @@ alias gcl='git clone'
 alias gri='git rebase -i'
 alias rmignored='git rm -r --cached .; git add .'
 alias gcf='git clean -f'
+alias glt='git ls-tree HEAD -r --name-only'
 
 # not git
 alias py='python3'
