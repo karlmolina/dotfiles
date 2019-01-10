@@ -8,7 +8,7 @@ alias df='git -C ~ --git-dir ~/.dotfiles/.git --work-tree=$HOME'
 
 This changes the working directory to $home. And allows the .git directory to live inside the .dotfiles directory. You could use `git clone --bare` and have the .dotfiles directory to be the .git directory, but then the [master branch isn't set to track the remote](https://git-scm.com/docs/git-clone#git-clone---bare).
 
-See [How to manage your dotfiles with git](https://medium.hackinrio.com/how-to-manage-your-dotfiles-with-git-f7aeed8adf8b)
+See hHow to manage your dotfiles with git](https://medium.hackinrio.com/how-to-manage-your-dotfiles-with-git-f7aeed8adf8b).
 
 # Steps to initialize
 
