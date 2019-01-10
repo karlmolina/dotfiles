@@ -1,5 +1,11 @@
 # git
 
+# Add git completion to aliases
+__git_complete ga _git_add
+__git_complete gc _git_checkout
+__git_complete gm _git_merge
+__git_complete gp _git_pull
+
 # add
 alias ga='git add'
 alias gai='git add -i'
