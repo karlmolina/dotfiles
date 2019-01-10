@@ -13,8 +13,6 @@ set completion-ignore-case On
 
 export km="/mnt/c/Users/KarlMolina"
 
-cd /mnt/c/Users/KarlMolina
-
 # this makes it so bash no longer looks for the command in a package
 unset command_not_found_handle
 
