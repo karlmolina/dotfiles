@@ -100,6 +100,11 @@ if ! shopt -oq posix; then
     fi
 fi
 
+
+if [ -f ~/.git-completion.bash ]; then
+    . ~/.git-completion.bash
+fi
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -107,10 +112,6 @@ fi
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
-fi
-
-if [ -f ~/.git-completion.bash ]; then
-    . ~/.git-completion.bash
 fi
 
 # add a few paths
