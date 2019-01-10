@@ -5,6 +5,7 @@ __git_complete ga _git_add
 __git_complete go _git_checkout
 __git_complete gm _git_merge
 __git_complete pl _git_pull
+__git_complete gb _git_branch
 
 # add
 alias ga='git add'
