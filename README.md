@@ -17,7 +17,7 @@ See [How to manage your dotfiles with git](https://medium.hackinrio.com/how-to-m
 cd
 ```
 
-2. Clone the repo.
+2. Clone the repo to the .dotfiles directory.
 ```
 git clone git@github.com:karlmolina/dotfiles.git .dotfiles
 ```
