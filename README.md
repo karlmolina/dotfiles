@@ -24,7 +24,7 @@ git clone git@github.com:karlmolina/dotfiles.git .dotfiles
 
 3. Reset your current files to the master branch. (Note: this will remove current changes so don't do this if you don't want that)
 ```
-git --git-dir ~/.dotfiles/.git --work-tree=$HOME reset --hard master
+git --git-dir .dotfiles/.git --work-tree=. reset --hard master
 ```
 
 # Updating dotfiles
