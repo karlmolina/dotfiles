@@ -7,6 +7,9 @@ __git_complete gm _git_merge
 __git_complete pl _git_pull
 __git_complete gb _git_branch
 
+WUSER=$(cmd.exe /c 'echo %USERNAME%' | sed -e 's/\r//g')
+NETBEANS="/mnt/c/Users/$WUSER/Documents/NetBeansProjects/"
+
 # add
 alias ga='git add'
 alias gai='git add -i'
@@ -104,8 +107,8 @@ alias b='cd -'
 alias bt='tj; cd Builder-Tester'
 alias etd='tj; cd ESMS-Tester-Desktop'
 alias et='tj; cd ESMS-Tester'
-alias km='cd /mnt/c/Users/KarlMolina'
-alias tj='cd /mnt/c/Users/KarlMolina/techlink'
+alias km='cd /mnt/c/Users/$WUSER'
+alias tj='km; cd techlink'
 alias db='tj; cd PageElementDocumentationBuilder'
 alias td='tj; cd TestLink.Desktop'
 alias tw='tj; cd TestLink.Web'
@@ -114,8 +117,10 @@ alias ti='tj; cd TestLink.wiki'
 alias ns='tj; cd NumberScenarios'
 alias c.='cd ..'
 alias tl='tj; cd TestLink'
-alias down='km; cd Downloads'
-
+alias dow='km; cd Downloads'
+alias doc='km; cd Documents'
+alias nbs='cd $NETBEANS'
+alias dri='km; cd Google\ Drive'
 
 alias rss='rsstail -r -i 1 -u http://lorem-rss.herokuapp.com/feed?unit=second&interval=1 | while read x ; do play fail.ogg ; done'
 
