@@ -102,6 +102,7 @@ alias vbr='vi ~/.bashrc'
 alias vvr='vi ~/.vimrc'
 alias vggc='git config --global --edit'
 alias vgc='git config --edit'
+alias vcgc='vi ~/.customgitconfig'
 
 # cd aliases
 alias b='cd -'
