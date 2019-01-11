@@ -26,7 +26,12 @@ git clone git@github.com:karlmolina/dotfiles.git .dotfiles
 ```
 git --git-dir .dotfiles/.git --work-tree=. reset --hard master
 ```
+4. Close and reopen bash.
 
+5. Add custom git config file to global git config.
+```
+git config --global include.path .customgitconfig
+```
 # Updating dotfiles
 Use the following alias to commit, pull, source .bash_profile, and push all at once.
 ```
