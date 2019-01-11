@@ -7,7 +7,7 @@ colorscheme desert
 
 set number
 
-set tabstop=8
+set tabstop=4
 set expandtab
 set shiftwidth=4
 set smartindent

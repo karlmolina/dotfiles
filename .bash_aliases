@@ -94,6 +94,8 @@ alias vsr='stepreport; chrome TestResult.html'
 alias rmsr='rm TestResult.html'
 alias firefox='/mnt/c/Program\ Files/Mozilla\ Firefox/firefox.exe'
 alias devenv='/mnt/c/Program\ Files\ \(x86\)/Microsoft\ Visual\ Studio\ 14.0/Common7/IDE/devenv.exe'
+
+# vi and source aliases
 alias vba='vi ~/.bash_aliases'
 alias sba='. ~/.bash_aliases'
 alias vbp='vi ~/.bash_profile'
@@ -103,6 +105,7 @@ alias vvr='vi ~/.vimrc'
 alias vggc='git config --global --edit'
 alias vgc='git config --edit'
 alias vcgc='vi ~/.customgitconfig'
+alias vir='vi ~/.inputrc'
 
 # cd aliases
 alias b='cd -'
