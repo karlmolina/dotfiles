@@ -21,10 +21,10 @@ alias gd='git diff'
 alias gds='git diff --staged'
 
 # remove this alias because I use interactive checkout tool
-#alias go='git checkout '
+alias go='git checkout '
 
 # checkout
-alias go='git_checkout.py'
+#alias go='git_checkout.py'
 alias go.='git checkout -- .'
 alias gof='git checkout --'
 alias gob='git checkout -b'
