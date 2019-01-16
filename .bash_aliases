@@ -7,7 +7,6 @@ __git_complete gm _git_merge
 __git_complete pl _git_pull
 __git_complete gb _git_branch
 
-WUSER=$(cmd.exe /c 'echo %USERNAME%' | sed -e 's/\r//g')
 NETBEANS="/mnt/c/Users/$WUSER/Documents/NetBeansProjects/"
 
 # add
