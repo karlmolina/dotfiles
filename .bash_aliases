@@ -107,6 +107,7 @@ alias vgc='git config --edit'
 alias vcgc='vi ~/.customgitconfig'
 alias vir='vi ~/.inputrc'
 alias vex='vi ~/.extra'
+alias vgi='vi ~/.gitignore'
 
 # cd aliases
 alias b='cd -'
