@@ -1,4 +1,5 @@
 # git
+alias sdlkfj='change'
 
 # Add git completion to aliases
 __git_complete ga _git_add
