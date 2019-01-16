@@ -136,7 +136,7 @@ export LS_COLORS
 set bell-style none
 set completion-ignore-case On
 
-export km="/mnt/c/Users/KarlMolina"
+export km="/mnt/c/Users/$WUSER"
 
 # this makes it so bash no longer looks for the command in a package
 unset command_not_found_handle

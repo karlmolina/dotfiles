@@ -105,6 +105,7 @@ alias vggc='vi ~/.gitconfig'
 alias vgc='git config --edit'
 alias vcgc='vi ~/.customgitconfig'
 alias vir='vi ~/.inputrc'
+alias vex='vi ~/.extra'
 
 # cd aliases
 alias b='cd -'
@@ -133,7 +134,7 @@ alias d2u='dos2unix'
 # dotfile aliases
 alias df='git -C ~ --git-dir ~/.dotfiles/.git --work-tree=$HOME'
 alias dfd='df diff'
-alias dfds='df git diff --staged'
+alias dfds='df diff --staged'
 alias dfs='df status'
 alias dfc='df commit'
 alias dfca='df commit -a'
