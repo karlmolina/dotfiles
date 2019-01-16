@@ -119,6 +119,9 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+# file to put extra commands that will only be used by 
+# the computer that you edit this file on.
+# This file is ignored by git
 if [ -f ~/.extra ]; then
     . ~/.extra
 fi
