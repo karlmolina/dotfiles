@@ -12,27 +12,27 @@ See [how to manage your dotfiles with git](https://medium.hackinrio.com/how-to-m
 
 # Steps to initialize
 
-** 1. Go to the home directory. **
+#### 1. Go to the home directory.
 ```
 cd
 ```
 
-2. Clone the repo to the .dotfiles directory.
+#### 2. Clone the repo to the .dotfiles directory.
 ```
 git clone git@github.com:karlmolina/dotfiles.git .dotfiles
 ```
 
-3. Reset your current files to the master branch. (Note: this will remove current changes so don't do this if you don't want that)
+#### 3. Reset your current files to the master branch. (Note: this will remove current changes so don't do this if you don't want that)
 ```
 git --git-dir .dotfiles/.git --work-tree=. reset --hard master
 ```
 
-4. Add custom git config file to global git config.
+#### 4. Add custom git config file to global git config.
 ```
 git config --global include.path .customgitconfig
 ```
 
-5. Close and reopen bash.
+#### 5. Close and reopen bash.
 
 # Updating dotfiles
 Use the following alias to commit, pull, source .bash_profile, and push all at once.
