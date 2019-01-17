@@ -1,5 +1,4 @@
-# dotfiles
-My dotfiles
+# My dotfiles
 
 Uses a git repository inside of $home with the command.
 ```
@@ -10,7 +9,7 @@ This changes the working directory to $home. And allows the .git directory to li
 
 See [how to manage your dotfiles with git](https://medium.hackinrio.com/how-to-manage-your-dotfiles-with-git-f7aeed8adf8b).
 
-# Steps to initialize
+## Steps to initialize
 
 1. Go to the home directory.
 ```
@@ -34,7 +33,7 @@ git config --global include.path .customgitconfig
 
 5. Close and reopen bash.
 
-# Updating dotfiles
+## Updating dotfiles
 Use the following alias to commit, pull, source .bash_profile, and push all at once.
 ```
 dot
