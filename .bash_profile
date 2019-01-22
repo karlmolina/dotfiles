@@ -195,3 +195,5 @@ export PS1="\[$magenta\]\w\[$cyan\]\$(__git_ps1)\[$reset\] \$? "
 #export PS1="\n\[\e[1;37m\]|-- \[\e[1;32m\]\u\[\e[0;39m\]@\[\e[1;36m\]\h\[\e[0;39m\]:\[\e[1;33m\]\w\[\e[0;39m\]\[\e[1;35m\]$(__git_ps1 " (%s)")\[\e[0;39m\] \[\e[1;37m\]--|\[\e[0;39m\]\n$"
 #export PS1="\\w\$(__git_ps1 '(%s)') \$ "
 #\e[0m
+
+export EDITOR="vim"
