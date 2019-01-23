@@ -55,6 +55,8 @@ alias grp='git reset HEAD^'
 alias gk='gitk --all&'
 alias gll='git log --abbrev-commit --decorate'
 alias gl='git log --oneline --decorate'
+
+# don't use ps because that is already a command
 alias ph='git push'
 alias phu='git push -u origin HEAD'
 alias phdelete='git push origin --delete HEAD'
