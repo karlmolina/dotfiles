@@ -147,3 +147,6 @@ alias dfpl='df pull'
 alias dfps='df push'
 alias dfsh='df show'
 alias dot='dfca -m "Update dotfiles"; df pull; sbp; df push --quiet &'
+
+# ssh aliases
+alias s1='ssh molina@csci351.cs.montana.edu'
