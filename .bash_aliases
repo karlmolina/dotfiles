@@ -1,4 +1,5 @@
 # git
+alias sdlkfj='change'
 
 # Add git completion to aliases
 __git_complete ga _git_add
@@ -7,7 +8,6 @@ __git_complete gm _git_merge
 __git_complete pl _git_pull
 __git_complete gb _git_branch
 
-WUSER=$(cmd.exe /c 'echo %USERNAME%' | sed -e 's/\r//g')
 NETBEANS="/mnt/c/Users/$WUSER/Documents/NetBeansProjects/"
 
 # add
@@ -55,10 +55,11 @@ alias grp='git reset HEAD^'
 alias gk='gitk --all&'
 alias gll='git log --abbrev-commit --decorate'
 alias gl='git log --oneline --decorate'
-alias ps='git push'
-alias psu='git push -u origin HEAD'
-alias psh='git -C ~ push'
-alias psdelete='git push origin --delete HEAD'
+
+# don't use ps because that is already a command
+alias ph='git push'
+alias phu='git push -u origin HEAD'
+alias phdelete='git push origin --delete HEAD'
 alias gx='gitx --all'
 alias gr='git remote'
 alias grao='git remote add origin'
@@ -102,10 +103,12 @@ alias vbp='vi ~/.bash_profile'
 alias sbp='. ~/.bash_profile'
 alias vbr='vi ~/.bashrc'
 alias vvr='vi ~/.vimrc'
-alias vggc='git config --global --edit'
+alias vggc='vi ~/.gitconfig' 
 alias vgc='git config --edit'
 alias vcgc='vi ~/.customgitconfig'
 alias vir='vi ~/.inputrc'
+alias vex='vi ~/.extra'
+alias vgi='vi ~/.gitignore'
 
 # cd aliases
 alias b='cd -'
@@ -134,7 +137,7 @@ alias d2u='dos2unix'
 # dotfile aliases
 alias df='git -C ~ --git-dir ~/.dotfiles/.git --work-tree=$HOME'
 alias dfd='df diff'
-alias dfds='df git diff --staged'
+alias dfds='df diff --staged'
 alias dfs='df status'
 alias dfc='df commit'
 alias dfca='df commit -a'
@@ -142,6 +145,6 @@ alias dfa='df add'
 alias cdf='cd ~/.dotfiles'
 alias dfl='df log'
 alias dfpl='df pull'
-alias dfps='df push'
+alias dfph='df push'
 alias dfsh='df show'
 alias dot='dfca -m "Update dotfiles"; df pull; sbp; df push --quiet &'

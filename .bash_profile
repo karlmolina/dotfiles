@@ -6,6 +6,7 @@ HISTCONTROL=ignoreboth
 
 # append to the history file, don't overwrite it
 shopt -s histappend
+shopt -s cdspell
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
@@ -118,6 +119,13 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+# file to put extra commands that will only be used by 
+# the computer that you edit this file on.
+# This file is ignored by git
+if [ -f ~/.extra ]; then
+    . ~/.extra
+fi
+
 # add a few paths
 export PATH=$PATH":$km"/techlink/scripts
 export PATH=$PATH":$HOME/bin"
@@ -131,7 +139,7 @@ export LS_COLORS
 set bell-style none
 set completion-ignore-case On
 
-export km="/mnt/c/Users/KarlMolina"
+export km="/mnt/c/Users/$WUSER"
 
 # this makes it so bash no longer looks for the command in a package
 unset command_not_found_handle
@@ -187,3 +195,5 @@ export PS1="\[$magenta\]\w\[$cyan\]\$(__git_ps1)\[$reset\] \$? "
 #export PS1="\n\[\e[1;37m\]|-- \[\e[1;32m\]\u\[\e[0;39m\]@\[\e[1;36m\]\h\[\e[0;39m\]:\[\e[1;33m\]\w\[\e[0;39m\]\[\e[1;35m\]$(__git_ps1 " (%s)")\[\e[0;39m\] \[\e[1;37m\]--|\[\e[0;39m\]\n$"
 #export PS1="\\w\$(__git_ps1 '(%s)') \$ "
 #\e[0m
+
+export EDITOR="vim"

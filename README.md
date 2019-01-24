@@ -1,5 +1,4 @@
-# dotfiles
-My dotfiles
+# My dotfiles
 
 Uses a git repository inside of $home with the command.
 ```
@@ -10,7 +9,7 @@ This changes the working directory to $home. And allows the .git directory to li
 
 See [how to manage your dotfiles with git](https://medium.hackinrio.com/how-to-manage-your-dotfiles-with-git-f7aeed8adf8b).
 
-# Steps to initialize
+## Steps to initialize
 
 1. Go to the home directory.
 ```
@@ -26,13 +25,15 @@ git clone git@github.com:karlmolina/dotfiles.git .dotfiles
 ```
 git --git-dir .dotfiles/.git --work-tree=. reset --hard master
 ```
-4. Close and reopen bash.
 
-5. Add custom git config file to global git config.
+4. Add custom git config file to global git config.
 ```
 git config --global include.path .customgitconfig
 ```
-# Updating dotfiles
+
+5. Close and reopen bash.
+
+## Updating dotfiles
 Use the following alias to commit, pull, source .bash_profile, and push all at once.
 ```
 dot
