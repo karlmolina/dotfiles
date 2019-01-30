@@ -188,8 +188,9 @@ bold="\e[1m"
 # which won't work if you have commands inside the ps1
 
 # cannot make __git_ps1 its own variable because then it won't be a command
+# \012 is a new line
 
-export PS1="\n\[$yellow\]\u@\h \[$magenta\]\w\[$cyan\]\$(__git_ps1)\[$reset\] \$?\n\$ "
+export PS1="\n\[$yellow\]\u@\h \[$magenta\]\w\[$cyan\]\$(__git_ps1)\[$reset\] \$?\012\$ "
 
 #export PS1="\w\$(__git_ps1)\n"
 #export PS1="\n\[\e[1;37m\]|-- \[\e[1;32m\]\u\[\e[0;39m\]@\[\e[1;36m\]\h\[\e[0;39m\]:\[\e[1;33m\]\w\[\e[0;39m\]\[\e[1;35m\]$(__git_ps1 " (%s)")\[\e[0;39m\] \[\e[1;37m\]--|\[\e[0;39m\]\n$"
