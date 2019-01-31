@@ -130,7 +130,7 @@ alias doc='km; cd Documents'
 alias nbs='cd $NETBEANS'
 alias dri='km; cd Google\ Drive'
 
-alias 1='repos; cd poodl'
+alias 1='repos'
 alias 2='repos; cd poodl'
 alias 3='repos; cd csci442hw1'
 
