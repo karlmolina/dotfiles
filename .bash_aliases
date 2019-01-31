@@ -129,8 +129,10 @@ alias dow='km; cd Downloads'
 alias doc='km; cd Documents'
 alias nbs='cd $NETBEANS'
 alias dri='km; cd Google\ Drive'
+
 alias 1='repos; cd poodl'
-alias 2='repos; cd csci442hw1'
+alias 2='repos; cd poodl'
+alias 3='repos; cd csci442hw1'
 
 alias rss='rsstail -r -i 1 -u http://lorem-rss.herokuapp.com/feed?unit=second&interval=1 | while read x ; do play fail.ogg ; done'
 
