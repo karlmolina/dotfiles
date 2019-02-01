@@ -158,3 +158,11 @@ alias s1='ssh molina@csci351.cs.montana.edu'
 
 # cat aliases
 alias clh='cat /mnt/c/Users/KarlMolina/Documents/loginhistory/loginhistory.txt'
+
+alias findnm='find ! -path "./directory/*" -name' 
+
+vind () {
+    vi $(findnm "$1")
+}
+
+alias exp='explorer.exe'
