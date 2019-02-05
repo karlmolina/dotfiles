@@ -133,6 +133,7 @@ alias dri='km; cd Google\ Drive'
 alias 1='repos'
 alias 2='repos; cd poodl'
 alias 3='repos; cd csci442hw1'
+alias 4='cd /mnt/c/Users/Karl/PycharmProjects/csci476hw2'
 
 alias rss='rsstail -r -i 1 -u http://lorem-rss.herokuapp.com/feed?unit=second&interval=1 | while read x ; do play fail.ogg ; done'
 
