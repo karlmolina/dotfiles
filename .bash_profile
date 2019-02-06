@@ -1,5 +1,9 @@
 # BASH PROFILE
 
+command_exists () {
+    type "$1" &> /dev/null ;
+}
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -129,7 +133,11 @@ fi
 # add a few paths
 export PATH=$PATH":$km"/techlink/scripts
 export PATH=$PATH":$HOME/bin"
-export PATH=$PATH":$HOME/.local/bin"
+if command_exists yarn ; then
+    export PATH=$PATH":$HOME/.local/bin"
+fi
+
+export PATH="$(yarn global bin):$PATH"
 export scr=$km/techlink/scripts
 
 # sets different colors for different types of files when using the ls command
@@ -198,3 +206,4 @@ export PS1="\n\[$yellow\]\u@\h \[$magenta\]\w\[$cyan\]\$(__git_ps1)\[$reset\] \$
 #\e[0m
 
 export EDITOR="vim"
+
