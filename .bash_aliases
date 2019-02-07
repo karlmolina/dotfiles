@@ -168,3 +168,8 @@ vind () {
 }
 
 alias exp='explorer.exe'
+
+
+# apt
+alias sat='sudo apt update'
+alias sag='sudo apt upgrade'
