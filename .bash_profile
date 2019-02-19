@@ -133,11 +133,12 @@ fi
 # add a few paths
 export PATH=$PATH":$km"/techlink/scripts
 export PATH=$PATH":$HOME/bin"
-#if command_exists yarn ; then
-#    export PATH=$PATH":$HOME/.local/bin"
-#fi
 
-export PATH="$(yarn global bin):$PATH"
+# if command_exists yarn ; then
+#     export PATH=$PATH":$HOME/.local/bin"
+#     export PATH="$(yarn global bin):$PATH"
+# fi
+
 export scr=$km/techlink/scripts
 
 # sets different colors for different types of files when using the ls command
