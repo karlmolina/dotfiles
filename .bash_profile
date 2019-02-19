@@ -133,9 +133,9 @@ fi
 # add a few paths
 export PATH=$PATH":$km"/techlink/scripts
 export PATH=$PATH":$HOME/bin"
-if command_exists yarn ; then
-    export PATH=$PATH":$HOME/.local/bin"
-fi
+#if command_exists yarn ; then
+#    export PATH=$PATH":$HOME/.local/bin"
+#fi
 
 export PATH="$(yarn global bin):$PATH"
 export scr=$km/techlink/scripts
