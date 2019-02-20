@@ -86,7 +86,7 @@ alias glt='git ls-tree HEAD -r --name-only'
 # not git
 alias py='python3'
 alias py2='python'
-alias pip='pip3'
+alias pip='pip3.exe'
 alias cmd='/mnt/c/Windows/System32/cmd.exe'
 alias kc='cmd /mnt/c/Users/KarlMolina/cmd_aliases/kc.bat'
 alias specflow='packages/SpecFlow.2.4.0/tools/specflow.exe'
@@ -134,7 +134,7 @@ alias dri='km; cd Google\ Drive'
 # cd to projects
 alias 1='repos'
 alias 2='repos; cd poodl'
-alias 3='cd /mnt/c/Users/Karl/PycharmProjects/csci442hw2'
+alias 3='cd /mnt/c/Users/Karl/Documents/IntelliJProjects/esof423testing'
 alias 4='cd /mnt/c/Users/Karl/PycharmProjects/csci476hw2'
 alias 5='cd /mnt/c/Users/Karl/Documents/repos/sysAdminNotes'
 
