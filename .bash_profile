@@ -114,6 +114,12 @@ if [ -f /usr/share/bash-completion/completions/git ]; then
     source /usr/share/bash-completion/completions/git
 fi
 
+# If ~./inputrc doesn't exist yet, first include the original /etc/inputrc so we don't override it
+if [ ! -a ~/.inputrc ]; then echo '$include /etc/inputrc' > ~/.inputrc; fi
+
+# Add option to ~/.inputrc to enable case-insensitive tab completion
+echo 'set completion-ignore-case On' >> ~/.inputrc
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -133,11 +139,12 @@ fi
 # add a few paths
 export PATH=$PATH":$km"/techlink/scripts
 export PATH=$PATH":$HOME/bin"
+export PATH=$PATH":/home/karlmolina/.local/bin/"
 
-# if command_exists yarn ; then
-#     export PATH=$PATH":$HOME/.local/bin"
-#     export PATH="$(yarn global bin):$PATH"
-# fi
+if command_exists yarn ; then
+    export PATH=$PATH":$HOME/.local/bin"
+    export PATH="$(yarn global bin):$PATH"
+fi
 
 export scr=$km/techlink/scripts
 

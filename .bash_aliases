@@ -82,11 +82,12 @@ alias gri='git rebase -i'
 alias rmc='git rm -r --cached .; git add .'
 alias gcf='git clean -f'
 alias glt='git ls-tree HEAD -r --name-only'
+alias gt='git tag'
 
 # not git
 alias py='python3'
 alias py2='python'
-alias pip='pip3'
+alias pip='pip3.exe'
 alias cmd='/mnt/c/Windows/System32/cmd.exe'
 alias kc='cmd /mnt/c/Users/KarlMolina/cmd_aliases/kc.bat'
 alias specflow='packages/SpecFlow.2.4.0/tools/specflow.exe'
@@ -136,8 +137,8 @@ alias xml='cd /mnt/c/Users/KarlMolina/Documents/Visual Studio 2015/Projects/Exce
 # cd to projects
 alias 1='repos'
 alias 2='repos; cd poodl'
-alias 3='cd /mnt/c/Users/Karl/PycharmProjects/csci442hw2'
-alias 4='cd /mnt/c/Users/Karl/PycharmProjects/csci476hw2'
+alias 3='cd /mnt/c/Users/Karl/Documents/IntelliJProjects/esof423testing'
+alias 4='cd /mnt/c/Users/Karl/PycharmProjects/csci442hw4'
 alias 5='cd /mnt/c/Users/Karl/Documents/repos/sysAdminNotes'
 alias 6='cd "/mnt/c/Users/KarlMolina/Documents/Visual Studio 2015/Projects/LoginHistoryCalculator"'
 
