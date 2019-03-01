@@ -136,7 +136,7 @@ alias dri='km; cd Google\ Drive'
 alias 1='repos'
 alias 2='repos; cd poodl'
 alias 3='cd /mnt/c/Users/Karl/Documents/IntelliJProjects/esof423testing'
-alias 4='cd /mnt/c/Users/Karl/PycharmProjects/csci442hw3'
+alias 4='cd /mnt/c/Users/Karl/PycharmProjects/csci442hw4'
 alias 5='cd /mnt/c/Users/Karl/Documents/repos/sysAdminNotes'
 alias 6='cd "/mnt/c/Users/KarlMolina/Documents/Visual Studio 2015/Projects/LoginHistoryCalculator"'
 
