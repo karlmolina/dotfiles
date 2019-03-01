@@ -82,6 +82,7 @@ alias gri='git rebase -i'
 alias rmc='git rm -r --cached .; git add .'
 alias gcf='git clean -f'
 alias glt='git ls-tree HEAD -r --name-only'
+alias gt='git tag'
 
 # not git
 alias py='python3'
