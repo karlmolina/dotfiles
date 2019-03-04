@@ -131,8 +131,8 @@ alias dow='km; cd Downloads'
 alias doc='km; cd Documents'
 alias nbs='cd $NETBEANS'
 alias dri='km; cd Google\ Drive'
-alias vp='cd /mnt/c/Users/KarlMolina/Documents/Visual Studio 2015/Projects'
-alias xml='cd /mnt/c/Users/KarlMolina/Documents/Visual Studio 2015/Projects/ExcelToXML'
+alias vp='cd /mnt/c/Users/KarlMolina/Documents/Visual\ Studio\ 2015/Projects'
+alias xml='cd /mnt/c/Users/KarlMolina/Documents/Visual\ Studio\ 2015/Projects/ExcelToXML'
 
 # cd to projects
 alias 1='repos'
