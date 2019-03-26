@@ -114,7 +114,7 @@ alias vgi='vi ~/.gitignore'
 # cd aliases
 alias b='cd -'
 alias bt='tj; cd Builder-Tester'
-alias etd='tj; cd ESMS-Tester-Desktop'
+alias ed='tj; cd ESMS-Tester-Desktop'
 alias et='tj; cd ESMS-Tester'
 alias km='cd /mnt/c/Users/$WUSER'
 alias tj='km; cd techlink'
