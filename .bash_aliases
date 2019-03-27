@@ -1,5 +1,4 @@
 # git
-alias sdlkfj='change'
 
 # Add git completion to aliases
 __git_complete ga _git_add
@@ -115,7 +114,7 @@ alias vgi='vi ~/.gitignore'
 # cd aliases
 alias b='cd -'
 alias bt='tj; cd Builder-Tester'
-alias etd='tj; cd ESMS-Tester-Desktop'
+alias ed='tj; cd ESMS-Tester-Desktop'
 alias et='tj; cd ESMS-Tester'
 alias km='cd /mnt/c/Users/$WUSER'
 alias tj='km; cd techlink'
@@ -131,8 +130,8 @@ alias dow='km; cd Downloads'
 alias doc='km; cd Documents'
 alias nbs='cd $NETBEANS'
 alias dri='km; cd Google\ Drive'
-alias vp='cd /mnt/c/Users/KarlMolina/Documents/Visual Studio 2015/Projects'
-alias xml='cd /mnt/c/Users/KarlMolina/Documents/Visual Studio 2015/Projects/ExcelToXML'
+alias vp='cd /mnt/c/Users/KarlMolina/Documents/Visual\ Studio\ 2015/Projects'
+alias xml='cd /mnt/c/Users/KarlMolina/Documents/Visual\ Studio\ 2015/Projects/ExcelToXML'
 
 # cd to projects
 alias 1='repos'
