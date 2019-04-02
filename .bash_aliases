@@ -133,6 +133,7 @@ alias dri='km; cd Google\ Drive'
 alias vp='cd /mnt/c/Users/KarlMolina/Documents/Visual\ Studio\ 2015/Projects'
 alias xml='cd /mnt/c/Users/KarlMolina/Documents/Visual\ Studio\ 2015/Projects/ExcelToXML'
 alias intellij='cd /mnt/c/Users/Karl/Documents/IntellijProjects/'
+alias pycharm='cd /mnt/c/Users/Karl/PycharmProjects/'
 
 # cd to projects
 alias 1='repos'
