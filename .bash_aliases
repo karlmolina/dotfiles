@@ -138,6 +138,7 @@ alias pycharm='cd /mnt/c/Users/Karl/PycharmProjects/'
 # cd to projects
 alias 1='repos'
 alias 2='repos; cd poodl'
+alias 2w='repos; cd poodl.wiki'
 alias 3='cd /mnt/c/Users/Karl/Documents/IntellijProjects/esof423hw2'
 alias 4='cd /mnt/c/Users/Karl/PycharmProjects/csci442hw4'
 alias 5='cd /mnt/c/Users/Karl/Documents/repos/sysAdminNotes'
