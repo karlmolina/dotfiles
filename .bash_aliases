@@ -184,4 +184,4 @@ alias sat='sudo apt update'
 alias sag='sudo apt upgrade'
 
 # alias mongo='/mnt/c/Program\ Files/MongoDB/Server/4.0/bin/mongo.exe'
-alias mongo='cmd.exe "C:\Program Files\MongoDB\Server\4.0\bin\mongo.exe"'
+# alias mongo='cmd.exe "C:\Program Files\MongoDB\Server\4.0\bin\mongo.exe"'
