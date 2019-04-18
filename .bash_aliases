@@ -147,6 +147,7 @@ alias 2w='repos; cd poodl.wiki'
 alias 3='cd /mnt/c/Users/Karl/Documents/IntellijProjects/esof423hw2'
 alias 4='cd /mnt/c/Users/Karl/PycharmProjects/csci442hw4'
 alias 5='cd /mnt/c/Users/Karl/Documents/repos/sysAdminNotes'
+alias sysadmin='cd /mnt/c/Users/Karl/Documents/repos/sysAdminNotes'
 alias 6='cd "/mnt/c/Users/KarlMolina/Documents/Visual Studio 2015/Projects/LoginHistoryCalculator"'
 
 alias rss='rsstail -r -i 1 -u http://lorem-rss.herokuapp.com/feed?unit=second&interval=1 | while read x ; do play fail.ogg ; done'
