@@ -9,7 +9,7 @@ __git_complete gb _git_branch
 
 NETBEANS="/mnt/c/Users/$WUSER/Documents/NetBeansProjects/"
 
-alias ok='git add .;gc -m "Update files";ph'
+alias ok='git add .;gc -m "Update files";pl;ph'
 
 # add
 alias ga='git add'
