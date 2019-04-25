@@ -183,6 +183,14 @@ vind () {
     vi $(findnm "$1")
 }
 
+seer () {
+    grep -r -i "$1" .
+}
+
+see () {
+    grep -i "$1" .
+}
+
 alias exp='explorer.exe'
 
 
