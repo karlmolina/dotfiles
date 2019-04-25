@@ -187,7 +187,7 @@ seer () {
 }
 
 see () {
-    grep -i "$1" .
+    grep -i "$1" *
 }
 
 alias exp='explorer.exe'
