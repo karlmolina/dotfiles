@@ -184,7 +184,7 @@ vind () {
 }
 
 seer () {
-    grep -r -i "$1" .
+    grep -r -i --exclude-dir={.git} "$1" .
 }
 
 see () {
