@@ -1,4 +1,4 @@
-# git
+ git
 
 # Add git completion to aliases
 __git_complete ga _git_add
@@ -184,7 +184,7 @@ vind () {
 }
 
 seer () {
-    grep -r -i --exclude-dir={.git} "$1" .
+    grep -r -i --exclude-dir=.git "$1" .
 }
 
 see () {
