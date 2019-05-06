@@ -38,3 +38,24 @@ Use the following alias to commit, pull, source .bash_profile, and push all at o
 ```
 dot
 ```
+
+# Multiple ssh keys
+
+Create a ssh config file at `~/.ssh/config`. Fix the permissions if needed.
+
+```
+chmod 600 ~/.ssh/config
+```
+
+Two different ssh keys are created as id_rsa_gitlab and id_rsa_github. I don't actually think you need to start with id_rsa.
+
+```bash
+# ~/.ssh/config
+Host somegitlab
+    Hostname somegitlab
+    IdentityFile ~/.ssh/id_rsa_gitlab
+
+Host github.com
+    Hostname github.com
+    IdentityFile ~/.ssh/id_rsa_github
+```
