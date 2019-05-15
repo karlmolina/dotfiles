@@ -46,6 +46,7 @@ alias grod='git reset origin/dev'
 alias grhod='git reset --hard origin/dev'
 alias gusa='git reset HEAD .'
 alias gus='git reset HEAD'
+alias gusp='git reset HEAD --patch'
 #git reset hard parent
 alias grhp='git reset --hard HEAD^'
 #git reset parent
