@@ -1,4 +1,5 @@
 filetype plugin indent on
+syntax on
 imap jk <Esc>
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
