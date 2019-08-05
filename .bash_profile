@@ -123,8 +123,8 @@ echo 'set completion-ignore-case On' >> ~/.inputrc
 # file to put extra commands that will only be used by 
 # the computer that you edit this file on.
 # This file is ignored by git
-if [ -f ~/.extra ]; then
-    . ~/.extra
+if [ -f ~/.extra.sh ]; then
+    . ~/.extra.sh
 fi
 
 # Alias definitions.
