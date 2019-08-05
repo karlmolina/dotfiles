@@ -1,3 +1,5 @@
+alias vga='~/.git_aliases.sh'
+
 # Add git completion to aliases
 __git_complete ga _git_add
 __git_complete go _git_checkout
