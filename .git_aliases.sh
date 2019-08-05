@@ -1,4 +1,4 @@
-alias vga='~/.git_aliases.sh'
+alias vga='vi ~/.git_aliases.sh'
 
 # Add git completion to aliases
 __git_complete ga _git_add
