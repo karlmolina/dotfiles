@@ -7,3 +7,5 @@ alias listlinks='ls -l node_modules | grep ^l'
 # npm links
 alias lkvl='npm link $REPOS/dm-vigil'
 alias ulvl='npm unlink $REPOS/dm-vigil'
+
+alias v='echo "npm$(npm -v); node -v;"
