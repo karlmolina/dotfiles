@@ -1,4 +1,5 @@
 alias vda='vi ~/.dataminr_aliases.sh'
+alias sda='vi ~/.dataminr_aliases.sh'
 
 alias et='repos; cd enterprise-management-testing'
 alias vl='repos; cd dm-vigil'
