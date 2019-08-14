@@ -215,3 +215,7 @@ export PS1="\n\[$yellow\]\u@\h \[$magenta\]\w\[$cyan\]\$(__git_ps1)\[$reset\] \$
 
 export EDITOR="vim"
 
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/kmolina/.sdkman"
+[[ -s "/Users/kmolina/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/kmolina/.sdkman/bin/sdkman-init.sh"
