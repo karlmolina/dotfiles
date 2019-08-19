@@ -43,7 +43,7 @@ alias dow='km; cd Downloads'
 alias doc='km; cd Documents'
 alias nbs='cd $NETBEANS'
 alias dri='km; cd Google\ Drive'
-alias intellij='cd $USER/IntellijProjects/'
+alias intellij='cd $USER/IdeaProjects/'
 alias pycharm='cd $USER/PycharmProjects/'
 alias webstorm='cd $USER/WebstormProjects'
 

@@ -7,6 +7,7 @@ alias ca='repos; cd ca-testing'
 alias st='repos; cd ghost-testing'
 alias tt='repos; cd test-testing'
 alias js='repos; cd jenkins-workflow-scripts'
+alias js2='intellij; cd jenkins-workflow-scripts'
 
 
 alias listlinks='ls -l node_modules | grep ^l'
