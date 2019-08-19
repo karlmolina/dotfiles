@@ -4,10 +4,14 @@ alias sda='vi ~/.dataminr_aliases.sh'
 alias et='repos; cd enterprise-management-testing'
 alias vl='repos; cd dm-vigil'
 alias ca='repos; cd ca-testing'
-alias st='repos; cd ghost-testing'
+alias ht='repos; cd ghost-testing'
 alias tt='repos; cd test-testing'
 alias js='repos; cd jenkins-workflow-scripts'
 alias js2='intellij; cd jenkins-workflow-scripts'
+alias at='repos; cd admin-testing'
+alias st='repos; cd smoketest'
+alias ut='repos; cd utah-testing'
+
 
 
 alias listlinks='ls -l node_modules | grep ^l'
