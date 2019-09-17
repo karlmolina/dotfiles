@@ -52,6 +52,7 @@ alias 1='repos'
 alias 2='repos; cd poodl'
 alias 2w='repos; cd poodl.wiki'
 alias 3='repos; cd csci447-project1'
+alias 4='repos; cd csci-432-fa19'
 
 alias d2u='dos2unix'
 
