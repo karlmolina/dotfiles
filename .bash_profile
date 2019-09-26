@@ -114,6 +114,9 @@ if [ -f /usr/share/bash-completion/completions/git ]; then
     source /usr/share/bash-completion/completions/git
 fi
 
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
+
 # If ~./inputrc doesn't exist yet, first include the original /etc/inputrc so we don't override it
 if [ ! -a ~/.inputrc ]; then echo '$include /etc/inputrc' > ~/.inputrc; fi
 
