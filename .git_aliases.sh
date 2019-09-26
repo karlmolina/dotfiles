@@ -11,6 +11,7 @@ alias ok='git add .;gc -m "Update files";pl;ph'
 
 # add
 alias ga='git add'
+alias gau='git add -u .'
 alias gai='git add -i'
 alias gap='git add -p'
 alias gaa='git add .'
