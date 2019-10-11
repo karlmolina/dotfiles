@@ -1,6 +1,14 @@
 . ~/.git_aliases.sh
 . ~/.dataminr_aliases.sh
 
+# cd to projects
+alias 1='repos'
+alias 2='repos; cd compare-json'
+alias 2w='repos; cd poodl.wiki'
+alias 3='repos; cd csci447-project2'
+alias 4='repos; cd csci-432-fa19'
+alias 5='repos; cd csci466-rdt'
+
 NETBEANS="/mnt/c/Users/$WUSER/Documents/NetBeansProjects/"
 
 # not git
@@ -47,13 +55,6 @@ alias intellij='cd $USER/IdeaProjects/'
 alias pycharm='cd $USER/PycharmProjects/'
 alias webstorm='cd $USER/WebstormProjects'
 
-# cd to projects
-alias 1='repos'
-alias 2='repos; cd poodl'
-alias 2w='repos; cd poodl.wiki'
-alias 3='repos; cd csci447-project2'
-alias 4='repos; cd csci-432-fa19'
-alias 5='repos; cd csci466-rdt'
 
 alias d2u='dos2unix'
 

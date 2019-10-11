@@ -106,3 +106,6 @@ alias dfpl='df pull'
 alias dfph='df push'
 alias dfsh='df show'
 alias dot='dfca -m "Update dotfiles"; df pull; sbp; df push --quiet &'
+
+# curl aliases
+alias cjgi="curl 'https://raw.githubusercontent.com/github/gitignore/master/Global/JetBrains.gitignore' -o .gitignore"
