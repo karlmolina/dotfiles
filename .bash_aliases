@@ -3,11 +3,10 @@
 
 # cd to projects
 alias 1='repos'
-alias 2='repos; cd compare-json'
-alias 2w='repos; cd poodl.wiki'
-alias 3='repos; cd csci447-project2'
+alias 2='repos; cd csci447-project2'
+alias 3='repos; cd csci447-project3'
 alias 4='repos; cd csci-432-fa19'
-alias 5='repos; cd csci466-rdt'
+alias 5='repos; cd csci466-dataplane'
 
 NETBEANS="/mnt/c/Users/$WUSER/Documents/NetBeansProjects/"
 
