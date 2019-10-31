@@ -1,4 +1,5 @@
 alias vga='vi ~/.git_aliases.sh'
+alias vig='vi .gitignore'
 
 # Add git completion to aliases
 __git_complete ga _git_add
