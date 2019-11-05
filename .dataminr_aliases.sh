@@ -13,6 +13,7 @@ alias js2='intellij; cd jenkins-workflow-scripts'
 alias at='repos; cd admin-testing'
 alias st='repos; cd smoketest'
 alias ut='repos; cd utah-testing'
+alias tp='doc; cd ../PycharmProjects/tag-proxy'
 
 alias jenkins='doc; cd jenkins-test/jenkins'
 
