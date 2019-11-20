@@ -7,6 +7,7 @@ alias 2='repos; cd pokemon-database'
 alias 3='repos; cd csci447-project3'
 alias 4='repos; cd csci447-project4'
 alias 5='repos; cd csci466-controlplane'
+alias 6='repos; cd csci466-dataplane'
 
 NETBEANS="/mnt/c/Users/$WUSER/Documents/NetBeansProjects/"
 
