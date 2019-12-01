@@ -35,6 +35,10 @@ git config --global include.path .customgitconfig
 
 ## .extra
 The `.extra` file holds information that is only used for the computer it is on. It is not tracked in git. Save $USER variable on this.
+```sh
+# ~/.extra.sh
+USER=/Users/karl
+```
 
 ## .bash_aliases
 `.bash_aliases` contains general aliases and other aliases are divided up to different files. Files such as `.git_aliases.sh` holds aliases for git. The extension `.sh` is added so there is syntax highlighting when editing the file.
