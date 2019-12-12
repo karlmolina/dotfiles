@@ -1,5 +1,6 @@
 . ~/.git_aliases.sh
 . ~/.dataminr_aliases.sh
+. ~/.docker_aliases.sh
 
 # cd to projects
 alias 1='repos; cd csci-431-fa19'
