@@ -3,11 +3,11 @@
 . ~/.docker_aliases.sh
 
 # cd to projects
-alias 1='repos; cd csci-431-fa19'
+alias 1='repos; cd csci-432-fa19'
 alias 2='repos; cd pokemon-database'
 alias 3='repos; cd csci447-project3'
 alias 4='repos; cd csci447-project4'
-alias 5='repos; cd csci466-dataplane'
+alias 5='repos; cd csci432-project'
 
 NETBEANS="/mnt/c/Users/$WUSER/Documents/NetBeansProjects/"
 
