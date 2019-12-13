@@ -1,4 +1,4 @@
-alias doa='vi ~/.docker_aliases.sh'
+alias voa='vi ~/.docker_aliases.sh'
 
 alias ds='docker ps'
 alias dt='docker start'
