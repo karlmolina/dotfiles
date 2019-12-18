@@ -39,4 +39,4 @@ alias installvl='npm install ../dm-vigil'
 alias nivl='npm install ../dm-vigil'
 
 
-alias sa='flake8;mypy;pylint **/*.py *.py'
+alias fmp='flake8;mypy;pylint **/*.py *.py'
