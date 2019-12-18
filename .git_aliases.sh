@@ -66,31 +66,45 @@ alias ph='git push'
 alias phu='git push -u origin HEAD'
 alias phf='git push -f'
 alias phdelete='git push origin --delete HEAD'
+
 alias gx='gitx --all'
+
 alias gr='git remote'
 alias grao='git remote add origin'
 alias grro='git remote rm origin'
+
 alias gca='git commit -a'
 alias gcm='git commit --amend'
 alias gcmn='git commit --amend --no-edit'
+
 alias grm='git rm'
+
 alias gst='git stash'
 alias gast='git stash apply'
+
 alias gf='git fetch'
 alias gfp='git fetch -p'
+
 alias pl='git pull; gfp'
 alias pll='git pull'
 alias plo='git pull origin'
 alias pld='git pull origin dev'
 alias plm='git pull origin master'
 alias plh='git -C ~ pull'
+
 alias gm='git merge'
 alias gma='git merge --abort'
+
 alias pdg='go dev; pll; gob'
 alias dog='go dev; pl'
+
 alias mog='go master; pl'
+
 alias gcl='git clone'
+
 alias gri='git rebase -i'
+alais gri='git rebase --continue'
+
 alias rmc='git rm -r --cached .; git add .'
 alias gcf='git clean -f'
 alias glt='git ls-tree HEAD -r --name-only'
