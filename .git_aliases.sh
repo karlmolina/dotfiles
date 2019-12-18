@@ -103,7 +103,7 @@ alias mog='go master; pl'
 alias gcl='git clone'
 
 alias gri='git rebase -i'
-alias gri='git rebase --continue'
+alias grc='git rebase --continue'
 
 alias rmc='git rm -r --cached .; git add .'
 alias gcf='git clean -f'
