@@ -15,6 +15,7 @@ alias st='repos; cd smoketest'
 alias ut='repos; cd utah-testing'
 alias tp='doc; cd ../PycharmProjects/tag-proxy'
 alias ktp='repos; cd karl-test-project'
+alias api='repos; cd api-testing'
 
 alias jenkins='doc; cd jenkins-test/jenkins'
 
