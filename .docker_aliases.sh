@@ -1,6 +1,6 @@
 alias voa='vi ~/.docker_aliases.sh'
 
-alias oo='open -a "Docker 2"
+alias oo='open -a "Docker 2"'
 
 alias ds='docker ps'
 alias dt='docker start'
