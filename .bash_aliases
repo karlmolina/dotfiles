@@ -1,5 +1,10 @@
+# git aliases
 . ~/.git_aliases.sh
+
+# dataminr aliases
 . ~/.dataminr_aliases.sh
+
+# docker aliases
 . ~/.docker_aliases.sh
 
 # cd to projects
@@ -7,10 +12,10 @@ alias 1='repos; cd karlmolina.com'
 alias 2='repos; cd csci127'
 alias 3='repos; cd esof422'
 alias 4='repos; cd csci468'
+alias 5='repos; cd csci347-project1'
 
 NETBEANS="/mnt/c/Users/$WUSER/Documents/NetBeansProjects/"
 
-# not git
 alias py='python3'
 alias py2='python'
 alias pip='pip3.exe'
@@ -86,3 +91,6 @@ alias sag='sudo apt upgrade'
 # antlr
 alias antlr4='java -Xmx500M -cp "/usr/local/lib/antlr-4.7.1-complete.jar:$CLASSPATH" org.antlr.v4.Tool'
 alias grun='java -Xmx500M -cp "/usr/local/lib/antlr-4.7.1-complete.jar:$CLASSPATH" org.antlr.v4.gui.TestRig'
+
+# pycharm
+alias pc='open -a Pycharm'
