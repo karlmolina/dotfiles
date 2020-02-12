@@ -3,7 +3,7 @@ alias 1='repos; cd karlmolina.com'
 alias 2='repos; cd csci127'
 alias 3='repos; cd esof422'
 alias 4='repos; cd csci468'
-alias 5='repos; cd csci347-project1'
+alias 5='repos; cd robotics'
 
 # git aliases
 . ~/.git_aliases.sh
