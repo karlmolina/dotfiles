@@ -3,7 +3,7 @@ alias 1='repos; cd karlmolina.com'
 alias 2='repos; cd csci127'
 alias 3='repos; cd esof422'
 alias 4='repos; cd csci468'
-alias 5='repos; cd csci347-project1'
+alias 5='repos; cd robotics'
 
 # git aliases
 . ~/.git_aliases.sh
@@ -16,9 +16,11 @@ alias 5='repos; cd csci347-project1'
 
 NETBEANS="/mnt/c/Users/$WUSER/Documents/NetBeansProjects/"
 
+alias vp='venv/bin/python'
+alias vpm='venv/bin/python -m'
+alias vpp='venv/bin/pip'
 alias py='python3'
 alias py2='python'
-alias pip='pip3.exe'
 alias cmd='/mnt/c/Windows/System32/cmd.exe'
 alias kc='cmd /mnt/c/Users/KarlMolina/cmd_aliases/kc.bat'
 alias specflow='packages/SpecFlow.2.4.0/tools/specflow.exe'
@@ -63,7 +65,7 @@ alias webstorm='cd $USER/WebstormProjects'
 alias d2u='dos2unix'
 
 # ssh aliases
-alias s1='ssh molina@csci351.cs.montana.edu'
+alias s1='ssh -Y pi@10.200.3.151'
 
 # cat aliases
 alias clh='cat /mnt/c/Users/KarlMolina/Documents/loginhistory/loginhistory.txt'
@@ -89,8 +91,13 @@ alias sat='sudo apt update'
 alias sag='sudo apt upgrade'
 
 # antlr
-alias antlr4='java -Xmx500M -cp "/usr/local/lib/antlr-4.7.1-complete.jar:$CLASSPATH" org.antlr.v4.Tool'
-alias grun='java -Xmx500M -cp "/usr/local/lib/antlr-4.7.1-complete.jar:$CLASSPATH" org.antlr.v4.gui.TestRig'
+alias antlr4='java -Xmx500M -cp "/usr/local/lib/antlr-4.8-complete.jar:$CLASSPATH" org.antlr.v4.Tool'
+alias grun='java -Xmx500M -cp "/usr/local/lib/antlr-4.8-complete.jar:$CLASSPATH" org.antlr.v4.gui.TestRig'
 
 # pycharm
 alias pc='open -a Pycharm'
+
+# webstorm
+alias ws='open -a Webstorm'
+
+# python
