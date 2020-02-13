@@ -16,9 +16,11 @@ alias 5='repos; cd robotics'
 
 NETBEANS="/mnt/c/Users/$WUSER/Documents/NetBeansProjects/"
 
+alias vp='venv/bin/python'
+alias vpm='venv/bin/python -m'
+alias vpp='venv/bin/pip'
 alias py='python3'
 alias py2='python'
-alias pip='pip3.exe'
 alias cmd='/mnt/c/Windows/System32/cmd.exe'
 alias kc='cmd /mnt/c/Users/KarlMolina/cmd_aliases/kc.bat'
 alias specflow='packages/SpecFlow.2.4.0/tools/specflow.exe'
@@ -97,3 +99,5 @@ alias pc='open -a Pycharm'
 
 # webstorm
 alias ws='open -a Webstorm'
+
+# python
