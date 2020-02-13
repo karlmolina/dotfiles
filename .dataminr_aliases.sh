@@ -16,7 +16,7 @@ alias at='repos; cd admin-testing'
 alias st='repos; cd smoketest'
 alias ut='repos; cd utah-testing'
 
-alias tp='repo; cd tag-proxy'
+alias tp='repos; cd tag-proxy'
 
 alias ktp='repos; cd karl-test-project'
 alias api='repos; cd api-testing'
