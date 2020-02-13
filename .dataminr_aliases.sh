@@ -6,14 +6,18 @@ alias vl='repos; cd dm-vigil'
 alias ca='repos; cd ca-testing'
 alias ht='repos; cd ghost-testing'
 alias tt='repos; cd test-testing'
+
 alias jv='repos; cd jenkins-views'
 alias jv2='intellij; cd jenkins-views'
 alias js='repos; cd jenkins-workflow-scripts'
 alias js2='intellij; cd jenkins-workflow-scripts'
+
 alias at='repos; cd admin-testing'
 alias st='repos; cd smoketest'
 alias ut='repos; cd utah-testing'
-alias tp='doc; cd ../PycharmProjects/tag-proxy'
+
+alias tp='repo; cd tag-proxy'
+
 alias ktp='repos; cd karl-test-project'
 alias api='repos; cd api-testing'
 
