@@ -63,7 +63,7 @@ alias webstorm='cd $USER/WebstormProjects'
 alias d2u='dos2unix'
 
 # ssh aliases
-alias s1='ssh molina@csci351.cs.montana.edu'
+alias s1='ssh -Y pi@10.200.3.151/18'
 
 # cat aliases
 alias clh='cat /mnt/c/Users/KarlMolina/Documents/loginhistory/loginhistory.txt'
