@@ -95,9 +95,9 @@ alias antlr4='java -Xmx500M -cp "/usr/local/lib/antlr-4.8-complete.jar:$CLASSPAT
 alias grun='java -Xmx500M -cp "/usr/local/lib/antlr-4.8-complete.jar:$CLASSPATH" org.antlr.v4.gui.TestRig'
 
 # pycharm
-alias pc='open -a Pycharm'
+alias pc='open -a Pycharm .'
 
 # webstorm
-alias ws='open -a Webstorm'
+alias ws='open -a Webstorm .'
 
 # python
