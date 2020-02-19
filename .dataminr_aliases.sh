@@ -44,3 +44,6 @@ alias nivl='npm install ../dm-vigil'
 
 
 alias fmp='flake8;mypy;pylint **/*.py *.py'
+
+# ssh
+alias stp='ssh kmolina@qa-tag-proxy-qa'
