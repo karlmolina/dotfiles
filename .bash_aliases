@@ -65,7 +65,7 @@ alias webstorm='cd $USER/WebstormProjects'
 alias d2u='dos2unix'
 
 # ssh aliases
-alias s1='ssh -Y pi@10.200.3.151'
+alias s1='ssh -Y pi@10.200.9.213'
 
 # cat aliases
 alias clh='cat /mnt/c/Users/KarlMolina/Documents/loginhistory/loginhistory.txt'
@@ -95,9 +95,9 @@ alias antlr4='java -Xmx500M -cp "/usr/local/lib/antlr-4.8-complete.jar:$CLASSPAT
 alias grun='java -Xmx500M -cp "/usr/local/lib/antlr-4.8-complete.jar:$CLASSPATH" org.antlr.v4.gui.TestRig'
 
 # pycharm
-alias pc='open -a Pycharm'
+alias pc='open -a Pycharm .'
 
 # webstorm
-alias ws='open -a Webstorm'
+alias ws='open -a Webstorm .'
 
 # python
