@@ -88,6 +88,7 @@ alias gfp='git fetch -p'
 
 alias pl='git pull; gfp'
 alias pll='git pull'
+alias plr='git pull -r'
 alias plo='git pull origin'
 alias pld='git pull origin dev'
 alias plm='git pull origin master'
