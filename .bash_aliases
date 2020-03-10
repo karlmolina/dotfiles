@@ -101,4 +101,4 @@ alias pc='open -a Pycharm .'
 alias ws='open -a Webstorm .'
 
 # intellij
-alias ij='open -a IntelliJ .'
+alias ij='open -a "IntelliJ IDEA" .'
