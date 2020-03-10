@@ -102,3 +102,6 @@ alias ws='open -a Webstorm .'
 
 # intellij
 alias ij='open -a "IntelliJ IDEA" .'
+
+# vscode
+alias vs='open -a VSCode .'
