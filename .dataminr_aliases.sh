@@ -2,7 +2,7 @@ alias vda='vi ~/.dataminr_aliases.sh'
 alias sda='. ~/.dataminr_aliases.sh'
 
 alias et='repos; cd enterprise-management-testing'
-alias vl='repos; cd dm-vigil'
+alias dm='repos; cd dm-vigil'
 alias ca='repos; cd ca-testing'
 alias ht='repos; cd ghost-testing'
 alias tt='repos; cd test-testing'
@@ -20,8 +20,6 @@ alias ktp='repos; cd karl-test-project'
 alias api='repos; cd api-testing'
 
 alias jenkins='doc; cd jenkins-test/jenkins'
-
-
 
 alias listlinks='ls -l node_modules | grep ^l'
 
