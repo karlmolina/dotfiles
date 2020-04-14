@@ -1,19 +1,19 @@
 alias vda='vi ~/.dataminr_aliases.sh'
 alias sda='. ~/.dataminr_aliases.sh'
 
-alias et='repos; cd enterprise-management-testing'
+alias emd='repos; cd enterprise-management-testing'
 alias dm='repos; cd dm-vigil'
 alias ca='repos; cd ca-testing'
-alias ht='repos; cd ghost-testing'
+alias ghost='repos; cd ghost-testing'
 alias tt='repos; cd test-testing'
 alias hub='repos; cd hub-testing'
 
 alias jv='repos; cd jenkins-views'
 alias jw='repos; cd jenkins-workflow-scripts'
 
-alias at='repos; cd admin-testing'
-alias st='repos; cd smoketest'
-alias ut='repos; cd utah-testing'
+alias admin='repos; cd admin-testing'
+alias smoke='repos; cd smoketest'
+alias utah='repos; cd utah-testing'
 
 alias tp='repos; cd tag-proxy'
 
