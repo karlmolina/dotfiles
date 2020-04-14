@@ -6,6 +6,7 @@ alias dm='repos; cd dm-vigil'
 alias ca='repos; cd ca-testing'
 alias ht='repos; cd ghost-testing'
 alias tt='repos; cd test-testing'
+alias hub='repos; cd hub-testing'
 
 alias jv='repos; cd jenkins-views'
 alias jw='repos; cd jenkins-workflow-scripts'
