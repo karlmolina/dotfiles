@@ -106,6 +106,7 @@ alias gcl='git clone'
 
 alias gri='git rebase -i'
 alias grc='git rebase --continue'
+alias gra='git rebase --abort'
 
 alias rmc='git rm -r --cached .; git add .'
 alias gcf='git clean -f'
