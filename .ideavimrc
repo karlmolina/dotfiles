@@ -1,1 +1,4 @@
 source ~/.vimrc
+
+# enable surround plugin
+set surround
