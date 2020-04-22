@@ -108,3 +108,6 @@ alias vs='open -a "Visual Studio Code" .'
 
 # npm
 alias ni='npm install'
+
+# find local ip address
+alias ip='ifconfig | grep -A 4 en0 | grep "inet " | egrep -oh "([[:digit:]]{1,3}\.){3}[[:digit:]]{1,3}" | grep -m 1 ".*"'
