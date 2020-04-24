@@ -109,7 +109,7 @@ alias grc='git rebase --continue'
 alias gra='git rebase --abort'
 
 alias rmc='git rm -r --cached .; git add .'
-alias gcf='git clean -f'
+alias gcf='git clean -rf'
 alias glt='git ls-tree HEAD -r --name-only'
 alias gt='git tag'
 
