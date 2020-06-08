@@ -22,6 +22,8 @@ alias api='repos; cd api-testing'
 
 alias jenkins='doc; cd jenkins-test/jenkins'
 
+alias badger='repos; cd qa-badger'
+
 alias listlinks='ls -l node_modules | grep ^l'
 
 # npm links

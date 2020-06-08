@@ -1,6 +1,11 @@
 filetype plugin indent on
 syntax on
 imap jk <Esc>
+tnoremap jk <C-\><C-n>
+
+" Backspace is broken
+set bs=2
+
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 
