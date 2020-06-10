@@ -41,7 +41,7 @@ alias runht='grunt test:chrome:stage --files="tests/end-to-end/alert-endorse/gov
 alias installvl='npm install ../dm-vigil'
 alias nivl='npm install ../dm-vigil'
 
-rmvl='rm -r node_modules/dm-vigil; ni'
+alias rmvl='rm -r node_modules/dm-vigil; ni'
 
 
 alias lint='flake8;mypy;pylint **/*.py *.py'
