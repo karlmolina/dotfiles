@@ -37,6 +37,8 @@ alias runet='grunt --files="tests/end-to-end/client-app-first-alert-dark-hardcod
 alias runca='grunt test:chrome:stage --files="tests/corporate/historical/apply-searches/edit-searches/foreign-language.js"'
 alias runht='grunt test:chrome:stage --files="tests/end-to-end/alert-endorse/gov-news-flags.js"'
 
+alias mockdriver='grunt mochaTest:mochaWebdriver'
+
 
 alias installvl='npm install ../dm-vigil'
 alias nivl='npm install ../dm-vigil'
