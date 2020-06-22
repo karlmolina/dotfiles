@@ -37,6 +37,7 @@ alias guwa='git checkout -- .'
 
 # branch
 alias gb='git branch'
+alias gbm='git branch -m'
 alias gba='git branch -a'
 alias gbd='git branch -d'
 alias gbdelete='git branch -D'

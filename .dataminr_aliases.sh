@@ -50,3 +50,5 @@ alias lint='flake8;mypy;pylint **/*.py *.py'
 
 # ssh
 alias stp='ssh kmolina@qa-tag-proxy-qa'
+
+alias streams='r; cd streams'
