@@ -28,15 +28,14 @@ alias go='git checkout '
 
 # checkout
 #alias go='git_checkout.py'
-alias go.='git checkout -- .'
-alias gof='git checkout --'
+alias gof='git branch -a | grep -v remotes | grep $1 | head -n 1 | xargs git checkout'
 alias gob='git checkout -b'
-alias gov='git checkout dev'
 alias guw='git checkout --'
 alias guwa='git checkout -- .'
 
 # branch
 alias gb='git branch'
+# rename current branch
 alias gbm='git branch -m'
 alias gba='git branch -a'
 alias gbd='git branch -d'
