@@ -28,7 +28,12 @@ alias go='git checkout '
 
 # checkout
 #alias go='git_checkout.py'
-alias gof='git branch -a | grep -v remotes | grep $1 | head -n 1 | xargs git checkout'
+
+# find a branch and check it out
+function gof {
+    git branch -a | grep -v remotes | grep $1 | head -n 1 | xargs git checkout
+}
+
 alias gob='git checkout -b'
 alias guw='git checkout --'
 alias guwa='git checkout -- .'
