@@ -241,3 +241,11 @@ export NVM_DIR="$HOME/.nvm"
 
 # remove the zsh default shell warning
 export BASH_SILENCE_DEPRECATION_WARNING=1
+
+# https://gist.github.com/mischah/8149239
+# Load z command
+# Move next only if `homebrew` is installed
+if command -v brew >/dev/null 2>&1; then
+	# Load rupa's z if installed
+	[ -f $(brew --prefix)/etc/profile.d/z.sh ] && source $(brew --prefix)/etc/profile.d/z.sh
+fi
