@@ -106,7 +106,7 @@ alias ws='open -a Webstorm .'
 alias ij='open -a "IntelliJ IDEA" .'
 
 # vscode
-alias vs='open -a "Visual Studio Code" .'
+alias code='open -a "Visual Studio Code" .'
 
 # npm
 alias ni='npm install'
