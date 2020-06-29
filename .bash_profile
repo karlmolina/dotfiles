@@ -216,7 +216,7 @@ export PS1="\n\[$yellow\]\u@\h \[$magenta\]\w\[$cyan\]\$(__git_ps1)\[$reset\] \$
 export EDITOR="vim"
 
 # Set bash editing to vim
-set -o vi
+set editing-mode vi
 
 # Use jk as escape in bash editing
 bind '"jk":vi-movement-mode'
