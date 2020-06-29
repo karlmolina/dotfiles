@@ -218,11 +218,12 @@ export EDITOR="vim"
 
 # Set bash editing to vim
 set editing-mode vi
-set keymap vi-command
-set show-mode-in-prompt on
 
 # Use jk as escape in bash editing
 bind '"jk":vi-movement-mode'
+
+set keymap vi-command
+set show-mode-in-prompt on
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/kmolina/.sdkman"
