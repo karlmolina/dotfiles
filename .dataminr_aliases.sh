@@ -52,3 +52,6 @@ alias lint='flake8;mypy;pylint **/*.py *.py'
 alias stp='ssh kmolina@qa-tag-proxy-qa'
 
 alias streams='r; cd streams'
+
+# eslint
+alias eslint='node node_modules/.bin/eslint'
