@@ -55,3 +55,12 @@ alias streams='r; cd streams'
 
 # eslint
 alias eslint='node node_modules/.bin/eslint'
+
+# docker
+alias startjenkins='docker run --name jenkins \
+           --detach \
+           -p 50000:50000 \
+           -p 49001:8080 \
+           -v /Users/kmolina/Documents/jenkins:/var/jenkins_home \
+           --rm \
+           jenkins/jenkins:lts'
