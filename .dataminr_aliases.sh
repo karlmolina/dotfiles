@@ -62,5 +62,4 @@ alias startjenkins='docker run --name jenkins \
            -p 50000:50000 \
            -p 49001:8080 \
            -v /Users/kmolina/Documents/jenkins:/var/jenkins_home \
-           --rm \
-           jenkins/jenkins:lts'
+           --rm jenkins/jenkins:lts'
