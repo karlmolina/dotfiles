@@ -58,10 +58,5 @@ alias eslint='node node_modules/.bin/eslint'
 
 # docker
 startjenkins () {
-    docker run --name jenkins \
-           --detach \
-           -p 50000:50000 \
-           -p 49001:8080 \
-           -v /Users/kmolina/Documents/jenkins:/var/jenkins_home \
-           --rm jenkins/jenkins:lts
+    docker run --name jenkins --detach -p 50000:50000 -p 49001:8080 -v /Users/kmolina/Documents/jenkins:/var/jenkins_home --rm jenkins/jenkins:lts
 }
