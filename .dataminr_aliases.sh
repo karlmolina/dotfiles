@@ -64,4 +64,4 @@ startjenkins () {
            -p 49001:8080 \
            -v /Users/kmolina/Documents/jenkins:/var/jenkins_home \
            --rm jenkins/jenkins:lts
-       }
+}
