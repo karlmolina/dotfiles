@@ -13,3 +13,4 @@
 !.git_aliases.sh
 !.docker_aliases.sh
 !.ideavimrc
+!.vim/undodir/.gitignore
