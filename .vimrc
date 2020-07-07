@@ -13,8 +13,6 @@ set bs=2
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 
-colorscheme desert
-
 " Add line numbers
 set number
 
