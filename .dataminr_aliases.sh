@@ -46,7 +46,7 @@ alias nivl='npm install ../dm-vigil'
 alias rmvl='rm -r node_modules/dm-vigil; ni'
 
 
-alias lint='flake8;mypy;pylint **/*.py *.py'
+alias lint='flake8;mypy;pylint **/*.py *.py;pydocstyle'
 
 # ssh
 alias stp='ssh kmolina@qa-tag-proxy-qa'
