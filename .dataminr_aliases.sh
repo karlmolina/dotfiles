@@ -63,3 +63,5 @@ startjenkins () {
         -v /Users/kmolina/Documents/jenkins:/var/jenkins_home \
         --rm jenkins/jenkins:lts
 }
+
+alias generateLabels='node node_modules/dm-vigil/utils/generateLabels.js'
