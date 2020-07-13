@@ -64,4 +64,6 @@ startjenkins () {
         --rm jenkins/jenkins:lts
 }
 
+alias startgitlab='docker start gitlab'
+
 alias generateLabels='node node_modules/dm-vigil/utils/generateLabels.js'
