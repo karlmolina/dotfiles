@@ -8,6 +8,8 @@ __git_complete gm _git_merge
 __git_complete pl _git_pull
 __git_complete gb _git_branch
 
+_fzf_setup_completion gm
+
 alias ok='git add .;gc -m "Update files";pl;ph'
 
 # add
