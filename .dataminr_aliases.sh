@@ -67,3 +67,22 @@ startjenkins () {
 alias startgitlab='docker start gitlab'
 
 alias generateLabels='node node_modules/dm-vigil/utils/generateLabels.js'
+
+function hosts() {
+    OUTPUT=''
+    if wget -q --spider https://google.com; then
+        for x in $(curl -s -H "Content-Type:application/json" -H "accept:application/json" -H "X-RunDeck-Auth-Token:${RUNDECK_API_TOKEN}" https://rundeck-ops.dataminr.com/api/21/projects | jq -r '.[].name'); do
+                RAW_HOSTS=$(curl -s -H "accept:application/json" -H "X-RunDeck-Auth-Token:${APIKEY}" https://rundeck-ops.dataminr.com/api/21/project/$x/resources | jq -r '.|keys[]')
+                OUTPUT="$OUTPUT $RAW_HOSTS"
+        done
+        HOSTS=$(echo ${OUTPUT} | tr '[:upper:]' '[:lower:]' | tr ' ' '\n' | sed 's/$/.dm.vpc/g' | grep -v localhost | grep -v ops-rundeck | sort | uniq | xargs)
+        complete -W "${HOSTS}" ssh
+        echo "AWS host list updated - $(echo ${HOSTS} | wc -w | awk '{print $1}') found"
+    else
+        echo "No network detected. Skipping host collection."
+    fi
+}
+
+
+# now call the function to create the complete list in your newly opened shell
+hosts
