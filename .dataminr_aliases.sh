@@ -86,4 +86,6 @@ function hosts() {
 
 
 # now call the function to create the complete list in your newly opened shell
-hosts
+# hosts
+
+alias report='chrome target/cucumber-html-reports/overview-features.html'
