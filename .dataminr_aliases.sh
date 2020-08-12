@@ -80,3 +80,5 @@ function hosts() {
 # hosts
 
 alias report='chrome target/cucumber-html-reports/overview-features.html'
+
+alias jenkins='chrome http://localhost:49001/'

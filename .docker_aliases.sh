@@ -24,5 +24,6 @@ startgitlab () {
       --volume /Users/kmolina/Documents/gitlab/config:/etc/gitlab \
       --volume /Users/kmolina/Documents/gitlab/logs:/var/log/gitlab \
       --volume /Users/kmolina/Documents/gitlab/data:/var/opt/gitlab \
+      --rm \
       gitlab/gitlab-ce:latest
 }
