@@ -80,5 +80,6 @@ function hosts() {
 # hosts
 
 alias report='chrome target/cucumber-html-reports/overview-features.html'
-
 alias jenkins='chrome http://localhost:49001/'
+alias gitlab='chrome http://localhost'
+alias sprint='chrome https://jira.dataminr.com/secure/RapidBoard.jspa?rapidView=34&quickFilter=538&quickFilter=117'
