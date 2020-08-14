@@ -27,3 +27,14 @@ startgitlab () {
       --rm \
       gitlab/gitlab-ce:latest
 }
+
+
+startjenkinsagent () {
+    docker run -d --name jenkins-agent \
+    --rm --init jenkins/inbound-agent \
+    -url http://host.docker.internal:49001 \
+    # -workDir=~/Documents/jenkins \
+    -v /Users/kmolina/Documents/jenkins:/var/jenkins_home \
+    241eca8ab5f337caef8869b261eb7f67c8647cf63af749361dbc2748c4212fff \
+    Labeling
+}
