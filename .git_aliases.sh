@@ -137,11 +137,12 @@ alias dot='dfca -m "Update dotfiles"; df pull; sbp; df push --quiet &'
 alias jetbrainsgitignore="curl 'https://raw.githubusercontent.com/github/gitignore/master/Global/JetBrains.gitignore' -o .gitignore"
 
 # open gitlab repo in chrome
-gitchrome () {
+gitlab () {
     url=$(git config --get remote.origin.url)
     url="${url/://}"
     https="https://"
     url="${url/git@/$https}"
     url="${url//.git/}"
+    if [ -n "$1" ]; then url="${url}/blob/master/$1"; fi
     chrome $url
 }
