@@ -181,7 +181,7 @@ bind '"jk":"\e"'
 
 # Initialize sdkman
 export SDKMAN_DIR="/Users/kmolina/.sdkman"
-[[ -s "/Users/kmolina/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/kmolina/.sdkman/bin/sdkman-init.sh"
+# [[ -s "/Users/kmolina/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/kmolina/.sdkman/bin/sdkman-init.sh"
 
 # Setting PATH for Python 3.7
 # The original version is saved in .bash_profile.pysave
