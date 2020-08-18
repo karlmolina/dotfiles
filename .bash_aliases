@@ -31,6 +31,9 @@ alias rmsr='rm TestResult.html'
 alias firefox='/mnt/c/Program\ Files/Mozilla\ Firefox/firefox.exe'
 alias devenv='/mnt/c/Program\ Files\ \(x86\)/Microsoft\ Visual\ Studio\ 14.0/Common7/IDE/devenv.exe'
 
+# ls
+alias la='ls -A'
+
 # chrome
 alias seecover='chrome client/coverage/lcov-report/index.html'
 
