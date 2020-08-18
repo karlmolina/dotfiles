@@ -75,6 +75,7 @@ plugins=(
     git
     zsh-autosuggestions
     docker
+    fzf-tab
 )
 
 source $ZSH/oh-my-zsh.sh
