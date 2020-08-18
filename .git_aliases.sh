@@ -1,14 +1,7 @@
 alias vga='vi ~/.git_aliases.sh'
 alias vig='vi .gitignore'
 
-# Add git completion to aliases
-# __git_complete ga _git_add
-# __git_complete go _git_checkout
-# __git_complete gm _git_merge
-# __git_complete pl _git_pull
-# __git_complete gb _git_branch
-
-alias ok='git add .;gc -m "Update files";pl;ph'
+# alias ok='git add .;gc -m "Update files";pl;ph'
 
 # add
 alias ga='git add'
@@ -23,11 +16,8 @@ alias gc='git commit'
 alias gd='git diff'
 alias gds='git diff --staged'
 
-# remove this alias because I use interactive checkout tool
 alias go='git checkout '
-
-# checkout
-#alias go='git_checkout.py'
+alias go-='git checkout -'
 
 # find a branch and check it out
 function gof {
