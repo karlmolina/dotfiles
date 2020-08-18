@@ -12,7 +12,7 @@ See [how to manage your dotfiles with git](https://medium.hackinrio.com/how-to-m
 ## Install
 
 ```sh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/karlmolina/dotfiles/master/.install_dot_files.sh)"
 ```
 
 ## .extra
