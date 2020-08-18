@@ -1,0 +1,2 @@
+alias szr='source ~/.zshrc'
+alias vzr='vi ~/.zshrc'
