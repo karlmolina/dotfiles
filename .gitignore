@@ -17,3 +17,4 @@
 !.vim/undodir/.gitignore
 !.zshrc
 !.zsh_aliases
+!.p10k.zsh
