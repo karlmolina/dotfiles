@@ -15,4 +15,6 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 brew install z
 brew install fzf
 
+$(brew --prefix)/opt/fzf/install
+
 source ~/.zshrc
