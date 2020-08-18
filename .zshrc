@@ -116,6 +116,7 @@ source ~/.zsh_aliases
 source ~/.bash_aliases
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+$(brew --prefix)/opt/fzf/install
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 source ~/.p10k.zsh
