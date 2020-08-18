@@ -5,14 +5,6 @@ alias 3='repos; cd esof422'
 alias 4='repos; cd csci468'
 alias 5='repos; cd robotics'
 
-# git aliases
-. ~/.git_aliases.sh
-
-# dataminr aliases
-. ~/.dataminr_aliases.sh
-
-# docker aliases
-. ~/.docker_aliases.sh
 
 NETBEANS="/mnt/c/Users/$WUSER/Documents/NetBeansProjects/"
 
@@ -119,3 +111,11 @@ alias ip='ifconfig | grep -A 4 en0 | grep "inet " | egrep -oh "([[:digit:]]{1,3}
 
 alias venv='. venv/bin/activate'
 
+# git aliases
+. ~/.git_aliases.sh
+
+# dataminr aliases
+. ~/.dataminr_aliases.sh
+
+# docker aliases
+. ~/.docker_aliases.sh
