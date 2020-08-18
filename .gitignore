@@ -15,3 +15,4 @@
 !.ideavimrc
 # This doesn't work for some reason so I force added the file
 !.vim/undodir/.gitignore
+!.zshrc
