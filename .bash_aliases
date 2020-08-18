@@ -51,7 +51,7 @@ alias vgi='vi ~/.gitignore'
 # cd aliases
 alias b='cd -'
 alias km='cd $USER'
-alias repos='km; cd Documents/repos'
+alias repos='cd ~; cd Documents/repos'
 alias r='repos'
 alias c.='cd ..'
 alias dow='km; cd Downloads'

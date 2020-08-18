@@ -2,11 +2,11 @@ alias vga='vi ~/.git_aliases.sh'
 alias vig='vi .gitignore'
 
 # Add git completion to aliases
-__git_complete ga _git_add
-__git_complete go _git_checkout
-__git_complete gm _git_merge
-__git_complete pl _git_pull
-__git_complete gb _git_branch
+# __git_complete ga _git_add
+# __git_complete go _git_checkout
+# __git_complete gm _git_merge
+# __git_complete pl _git_pull
+# __git_complete gb _git_branch
 
 alias ok='git add .;gc -m "Update files";pl;ph'
 
