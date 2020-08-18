@@ -9,29 +9,11 @@ This changes the working directory to $home. And allows the .git directory to li
 
 See [how to manage your dotfiles with git](https://medium.hackinrio.com/how-to-manage-your-dotfiles-with-git-f7aeed8adf8b).
 
-## Steps to initialize
+## Install
 
-1. Go to the home directory.
+```sh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
-cd
-```
-
-2. Clone the repo to the .dotfiles directory.
-```
-git clone git@github.com:karlmolina/dotfiles.git .dotfiles
-```
-
-3. Reset your current files to the master branch. (Note: this will remove current changes so don't do this if you don't want that)
-```
-git --git-dir .dotfiles/.git --work-tree=. reset --hard master
-```
-
-4. Add custom git config file to global git config.
-```
-git config --global include.path .customgitconfig
-```
-
-5. Close and reopen bash.
 
 ## .extra
 The `.extra` file holds information that is only used for the computer it is on. It is not tracked in git. Save $USER variable on this.
