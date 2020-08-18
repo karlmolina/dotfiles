@@ -16,8 +16,7 @@ alias gc='git commit'
 alias gd='git diff'
 alias gds='git diff --staged'
 
-alias go='git checkout '
-alias go-='git checkout -'
+alias go='git checkout'
 
 # find a branch and check it out
 function gof {

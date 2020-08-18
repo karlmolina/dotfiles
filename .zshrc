@@ -127,8 +127,8 @@ source ~/.bash_aliases
 # Less won't be used if it fits in the page
 export LESS="-F -X $LESS"
 
-zmodload zsh/complist
-zstyle ':completion:*' menu select
+# zmodload zsh/complist
+# zstyle ':completion:*' menu select
 
 # use the vi navigation keys in menu completion
 bindkey -M menuselect '^h' vi-backward-char
