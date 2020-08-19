@@ -136,3 +136,5 @@ bindkey -M menuselect '^l' vi-forward-char
 bindkey -M menuselect '^j' vi-down-line-or-history
 
 bindkey -M menuselect '?' history-incremental-search-forward
+
+bindkey '^k' end-of-line
