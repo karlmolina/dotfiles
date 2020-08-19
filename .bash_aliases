@@ -45,7 +45,7 @@ alias vgi='vi ~/.gitignore'
 
 # cd aliases
 alias b='cd -'
-alias km='cd $USER'
+alias km='cd ~'
 alias repos='cd ~; cd Documents/repos'
 alias r='repos'
 alias c.='cd ..'
@@ -53,11 +53,7 @@ alias dow='km; cd Downloads'
 alias doc='km; cd Documents'
 alias des='km; cd Desktop'
 alias nbs='cd $NETBEANS'
-alias dri='km; cd Google\ Drive'
-alias intellij='cd $USER/IdeaProjects/'
-alias pycharm='cd $USER/PycharmProjects/'
-alias webstorm='cd $USER/WebstormProjects'
-
+alias drive='km; cd Google\ Drive'
 
 alias d2u='dos2unix'
 
@@ -91,17 +87,20 @@ alias sag='sudo apt upgrade'
 alias antlr4='java -Xmx500M -cp "/usr/local/lib/antlr-4.8-complete.jar:$CLASSPATH" org.antlr.v4.Tool'
 alias grun='java -Xmx500M -cp "/usr/local/lib/antlr-4.8-complete.jar:$CLASSPATH" org.antlr.v4.gui.TestRig'
 
-# pycharm
-alias pc='open -a Pycharm .'
+openIde () {
+    if ! [[ -n "$2" ]]; then open -a $1 .; return; fi
+    [[ $2 =~ "([^/]+)/blob/master/([^#]*)" ]]
+    repo=${match[1]}
+    cd ~/Documents/repos
+    cd $repo
+    open -a Webstorm $match[2]
 
-# webstorm
-alias ws='open -a Webstorm .'
+}
 
-# intellij
-alias ij='open -a "IntelliJ IDEA" .'
-
-# vscode
-alias code='open -a "Visual Studio Code" .'
+alias pc='openIde Pycharm'
+alias ws='openIde Webstorm'
+alias ij='openIde "IntelliJ IDEA"'
+alias code='openIde "Visual Studio Code"'
 
 # npm
 alias ni='npm install'
