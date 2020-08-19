@@ -90,11 +90,9 @@ alias grun='java -Xmx500M -cp "/usr/local/lib/antlr-4.8-complete.jar:$CLASSPATH"
 openIde () {
     if ! [[ -n "$2" ]]; then open -a $1 .; return; fi
     [[ $2 =~ "([^/]+)/blob/master/([^#]*)" ]]
-    repo=${match[1]}
     cd ~/Documents/repos
-    cd $repo
+    cd $match[1]
     open -a Webstorm $match[2]
-
 }
 
 alias pc='openIde Pycharm'
