@@ -37,8 +37,8 @@ startjenkinsagent () {
     --rm \
     --init jenkins/inbound-agent \
     -url http://host.docker.internal:49001 \
-    241eca8ab5f337caef8869b261eb7f67c8647cf63af749361dbc2748c4212fff \
-    Labeling
+    17293017b5257143dabe8a78710b05d2a4fd1260a4916bd2302269eaa9c5b17e \
+    Labeling-Node
 
     # -workDir=~/Documents/jenkins \
 }
