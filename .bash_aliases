@@ -92,7 +92,8 @@ openIde () {
     [[ $2 =~ "([^/]+)/blob/master/([^#]*)" ]]
     cd ~/Documents/repos
     cd $match[1]
-    open -a Webstorm $match[2]
+    if [[ -n "${match[2]}" ]]; then open -a $1 $match[2]; return; fi
+    open -a $1 $2
 }
 
 alias pc='openIde Pycharm'
