@@ -89,11 +89,14 @@ alias grun='java -Xmx500M -cp "/usr/local/lib/antlr-4.8-complete.jar:$CLASSPATH"
 
 openIde () {
     if ! [[ -n "$2" ]]; then open -a $1 .; return; fi
-    [[ $2 =~ "([^/]+)/blob/master/([^#]*)" ]]
-    cd ~/Documents/repos
-    cd $match[1]
-    if [[ -n "${match[2]}" ]]; then open -a $1 $match[2]; return; fi
-    open -a $1 $2
+    if [[ $2 =~ "([^/]+)/blob/master/([^#]*)" ]]
+    then
+        cd ~/Documents/repos
+        cd $match[1]
+        open -a $1 $match[2]
+    else
+        open -a $1 $2
+    fi
 }
 
 alias pc='openIde Pycharm'
