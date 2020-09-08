@@ -93,7 +93,6 @@ openIde () {
     if [[ $2 =~ "([^/]+)/*-*/blob/master/([^#]*)" ]]
     then
         cd ~/Documents/repos
-        echo $match[1]
         cd $match[1]
         open -a $1 $match[2]
     else
