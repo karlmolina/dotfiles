@@ -36,7 +36,7 @@ alias vbp='vi ~/.bash_profile'
 alias sbp='. ~/.bash_profile'
 alias vbr='vi ~/.bashrc'
 alias vvr='vi ~/.vimrc'
-alias vggc='vi ~/.gitconfig' 
+alias vggc='vi ~/.gitconfig'
 alias vgc='git config --edit'
 alias vcgc='vi ~/.customgitconfig'
 alias vir='vi ~/.inputrc'
@@ -63,7 +63,7 @@ alias s1='ssh -Y pi@10.200.9.213'
 # cat aliases
 alias clh='cat /mnt/c/Users/KarlMolina/Documents/loginhistory/loginhistory.txt'
 
-alias findnm='find ! -path "./directory/*" -name' 
+alias findnm='find ! -path "./directory/*" -name'
 
 vind () {
     vi $(findnm "$1")
@@ -90,9 +90,10 @@ alias grun='java -Xmx500M -cp "/usr/local/lib/antlr-4.8-complete.jar:$CLASSPATH"
 openIde () {
     if ! [[ -n "$2" ]]; then open -a $1 .; return; fi
 
-    if [[ $2 =~ "([^/]+)/blob/master/([^#]*)" ]]
+    if [[ $2 =~ "([^/]+)(?:/-)*/blob/master/([^#]*)" ]]
     then
         cd ~/Documents/repos
+        echo $match[1]
         cd $match[1]
         open -a $1 $match[2]
     else
