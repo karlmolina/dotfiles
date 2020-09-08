@@ -90,7 +90,7 @@ alias grun='java -Xmx500M -cp "/usr/local/lib/antlr-4.8-complete.jar:$CLASSPATH"
 openIde () {
     if ! [[ -n "$2" ]]; then open -a $1 .; return; fi
 
-    if [[ $2 =~ "([^/]+)(?:/-)*/blob/master/([^#]*)" ]]
+    if [[ $2 =~ "([^/]+)/*-*/blob/master/([^#]*)" ]]
     then
         cd ~/Documents/repos
         echo $match[1]
