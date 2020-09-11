@@ -24,6 +24,8 @@ alias jenkins='doc; cd jenkins-test/jenkins'
 
 alias badger='repos; cd qa-badger'
 
+alias rewrite='repos; cd vigil-rewrite'
+
 alias listlinks='ls -l node_modules | grep ^l'
 
 # npm links
