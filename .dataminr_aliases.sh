@@ -3,6 +3,7 @@ alias sda='. ~/.dataminr_aliases.sh'
 
 alias emt='repos; cd enterprise-management-testing'
 alias dm='repos; cd dm-vigil'
+alias patrol='repos; cd dm-patrol'
 alias ca='repos; cd ca-testing'
 alias ghost='repos; cd ghost-testing'
 alias tt='repos; cd test-testing'
