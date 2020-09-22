@@ -144,3 +144,6 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
+
+# stop globing with ? and *
+unsetopt nomatch
