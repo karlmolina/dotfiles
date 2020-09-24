@@ -79,7 +79,8 @@ see () {
 }
 
 google () {
-    chrome "https://google.com/search?q=$1"
+    q="${@}"
+    chrome "https://google.com/search?q=$q"
 }
 
 alias exp='explorer.exe'
