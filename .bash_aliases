@@ -17,6 +17,8 @@ alias cmd='/mnt/c/Windows/System32/cmd.exe'
 alias kc='cmd /mnt/c/Users/KarlMolina/cmd_aliases/kc.bat'
 alias specflow='packages/SpecFlow.2.4.0/tools/specflow.exe'
 alias chrome='open -a "Google Chrome"'
+
+alias google='chrome https://google.com/search?q='
 alias sr='specflow stepdefinitionreport -p ESMS/ESMS.csproj /BinFolder:ESMS/bin/Debug/'
 alias vsr='stepreport; chrome TestResult.html'
 alias rmsr='rm TestResult.html'
