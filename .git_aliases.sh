@@ -13,6 +13,7 @@ alias gad='git rm $(git ls-files --deleted)'
 alias gan='git add -N .'
 alias gs='git status'
 alias gc='git commit'
+alias gcn='git commit --no-verify'
 alias gd='git diff'
 alias gds='git diff --staged'
 

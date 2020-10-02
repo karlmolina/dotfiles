@@ -79,7 +79,7 @@ see () {
 }
 
 google () {
-    q="${@}"
+    q="${@/ /\+}"
     chrome "https://google.com/search?q=$q"
 }
 
@@ -96,7 +96,7 @@ alias grun='java -Xmx500M -cp "/usr/local/lib/antlr-4.8-complete.jar:$CLASSPATH"
 openIde () {
     if ! [[ -n "$2" ]]; then open -a $1 .; return; fi
 
-    if [[ $2 =~ "([^/]+)/*-*/blob/master/([^#]*)" ]]
+    if [[ $2 =~ "([^/]+)/*-*/blob/[^/]+/([^#]*)" ]]
     then
         cd ~/Documents/repos
         cd $match[1]
