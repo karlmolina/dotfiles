@@ -10,7 +10,6 @@ set cmdheight=2
 
 syntax on
 imap jk <Esc>
-imap JK <Esc>
 
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
