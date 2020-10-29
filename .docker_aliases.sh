@@ -28,6 +28,13 @@ startgitlab () {
       gitlab/gitlab-ce:latest
 }
 
+startgitlabrunner () {
+     docker run -d --rm --name gitlab-runner \
+     -v /Users/kmolina/Documents/gitlab/runner:/etc/gitlab-runner \
+     -v /var/run/docker.sock:/var/run/docker.sock \
+     gitlab/gitlab-runner:latest
+}
+
 
 startjenkinsagent () {
     # -d \
