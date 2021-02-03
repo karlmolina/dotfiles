@@ -147,3 +147,5 @@ zle -N self-insert url-quote-magic
 
 # stop globing with ? and *
 unsetopt nomatch
+
+PATH=$(pyenv root)/shims:$PATH

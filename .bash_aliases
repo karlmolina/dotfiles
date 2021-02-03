@@ -119,6 +119,8 @@ alias ip='ifconfig | grep -A 4 en0 | grep "inet " | egrep -oh "([[:digit:]]{1,3}
 
 alias venv='. venv/bin/activate'
 
+alias golang='/usr/local/bin/go'
+
 # git aliases
 . ~/.git_aliases.sh
 
