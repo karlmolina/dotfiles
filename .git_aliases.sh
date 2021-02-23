@@ -70,6 +70,7 @@ alias grao='git remote add origin'
 alias grro='git remote rm origin'
 
 alias gca='git commit -a'
+alias gcan='git commit -a --no-verify'
 alias gcm='git commit --amend'
 alias gcmn='git commit --amend --no-edit'
 
