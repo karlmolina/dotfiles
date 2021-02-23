@@ -5,6 +5,7 @@ alias vig='vi .gitignore'
 
 # add
 alias ga='git add'
+alias ga.='git add'
 alias gau='git add -u .'
 alias gai='git add -i'
 alias gap='git add -p'
