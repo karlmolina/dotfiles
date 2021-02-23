@@ -88,6 +88,7 @@ alias plr='git pull -r'
 alias plo='git pull origin'
 alias pld='git pull origin dev'
 alias plm='git pull origin master'
+alias plmr='git pull origin master --rebase'
 alias plh='git -C ~ pull'
 
 alias gm='git merge'
