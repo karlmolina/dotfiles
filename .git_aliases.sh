@@ -1,11 +1,12 @@
 alias vga='vi ~/.git_aliases.sh'
+alias sga='. ~/.git_aliases.sh'
 alias vig='vi .gitignore'
 
 # alias ok='git add .;gc -m "Update files";pl;ph'
 
 # add
 alias ga='git add'
-alias ga.='git add'
+alias 'ga.'='git add .'
 alias gau='git add -u .'
 alias gai='git add -i'
 alias gap='git add -p'
