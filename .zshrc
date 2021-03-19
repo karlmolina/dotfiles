@@ -74,7 +74,7 @@ plugins=(
     git
     zsh-autosuggestions
     docker
-#    fzf-tab
+    fzf-tab
     fzf
     z
     nvm
@@ -98,7 +98,7 @@ source $ZSH/oh-my-zsh.sh
 # fi
 
 # Set editor as vim
-# export EDITOR='vim'
+export EDITOR='vim'
 
 # Escape with jk in terminal
 bindkey jk vi-cmd-mode

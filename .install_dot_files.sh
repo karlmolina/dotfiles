@@ -12,10 +12,9 @@ git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custo
 
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
-brew install z
 brew install fzf
-brew install pyenv
-
 $(brew --prefix)/opt/fzf/install
+
+brew install pyenv
 
 source ~/.zshrc

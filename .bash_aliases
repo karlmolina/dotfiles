@@ -5,7 +5,6 @@ alias 3='repos; cd esof422'
 alias 4='repos; cd csci468'
 alias 5='repos; cd robotics'
 
-
 NETBEANS="/mnt/c/Users/$WUSER/Documents/NetBeansProjects/"
 
 alias vp='venv/bin/python'
