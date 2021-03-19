@@ -74,7 +74,11 @@ plugins=(
     git
     zsh-autosuggestions
     docker
-    fzf-tab
+#    fzf-tab
+    fzf
+    z
+    nvm
+    pyenv
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -94,7 +98,7 @@ source $ZSH/oh-my-zsh.sh
 # fi
 
 # Set editor as vim
-export EDITOR='vim'
+# export EDITOR='vim'
 
 # Escape with jk in terminal
 bindkey jk vi-cmd-mode
@@ -102,26 +106,12 @@ bindkey jk vi-cmd-mode
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-#
-
+# Source alias files which source other alias files
 source ~/.zsh_aliases
 source ~/.bash_aliases
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 source ~/.p10k.zsh
-
-# Initialize z command
-. /usr/local/etc/profile.d/z.sh
 
 # Less won't be used if it fits in the page
 export LESS="-F -X $LESS"
@@ -139,13 +129,8 @@ bindkey -M menuselect '?' history-incremental-search-forward
 
 bindkey '^k' end-of-line
 
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
 
 # stop globing with ? and *
 unsetopt nomatch
-
-PATH=$(pyenv root)/shims:$PATH
