@@ -41,6 +41,7 @@ alias gbd='git branch -d'
 alias gbdelete='git branch -D'
 alias gdeleteallbranches='git branch | grep -v \* | xargs git branch -D'
 alias gdeletemerged='git branch --merged | grep -v \* | xargs git branch -D'
+# change upstream branch
 alias gbu='git branch -u'
 
 # reset
