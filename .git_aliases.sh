@@ -16,6 +16,7 @@ alias gan='git add -N .'
 alias gs='git status'
 alias gc='git commit'
 alias gcn='git commit --no-verify'
+alias gcf='git commit --fixup'
 alias gd='git diff'
 alias gds='git diff --staged'
 
@@ -108,7 +109,7 @@ alias grc='git rebase --continue'
 alias gra='git rebase --abort'
 
 alias rmc='git rm -r --cached .; git add .'
-alias gcf='git clean -df'
+alias gclf='git clean -df'
 alias glt='git ls-tree HEAD -r --name-only'
 alias gt='git tag'
 
