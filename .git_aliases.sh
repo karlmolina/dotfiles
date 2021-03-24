@@ -17,6 +17,7 @@ alias gs='git status'
 alias gc='git commit'
 alias gcn='git commit --no-verify'
 alias gcf='git commit --fixup'
+alias gcf='git commit --fixup head'
 alias gd='git diff'
 alias gds='git diff --staged'
 
