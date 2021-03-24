@@ -33,7 +33,7 @@ alias guw='git checkout --'
 alias guwa='git checkout -- .'
 
 # branch
-alias gb='git branch'
+alias gb='git branch -vv'
 # rename current branch
 alias gbm='git branch -m'
 alias gba='git branch -a'
