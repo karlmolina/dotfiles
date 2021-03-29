@@ -20,4 +20,6 @@ $(brew --prefix)/opt/fzf/install
 
 brew install pyenv
 
+brew install bat
+
 source ~/.zshrc
