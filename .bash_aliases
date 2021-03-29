@@ -32,6 +32,7 @@ alias seecover='chrome client/coverage/lcov-report/index.html'
 # vi and source aliases
 alias vba='vi ~/.bash_aliases'
 alias sba='. ~/.bash_aliases'
+alias vidf='vi ~/.install_dotfiles.sh'
 alias vbp='vi ~/.bash_profile'
 alias sbp='. ~/.bash_profile'
 alias vbr='vi ~/.bashrc'
