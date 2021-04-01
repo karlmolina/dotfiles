@@ -140,3 +140,12 @@ unsetopt nomatch
 export GOPATH=$(go env GOPATH)
 # add golang bin path to PATH
 export PATH=$PATH:$(go env GOPATH)/bin
+
+command_exists () {
+    type "$1" &> /dev/null ;
+}
+
+# enable go-jira autocompletions
+if command_exists jira ; then
+    eval "$(jira --completion-script-bash)"
+fi
