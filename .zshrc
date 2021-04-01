@@ -136,4 +136,7 @@ zle -N self-insert url-quote-magic
 # stop globing with ? and *
 unsetopt nomatch
 
-export GOPATH=~/go
+# set golang path
+export GOPATH=$(go env GOPATH)
+# add golang path to PATH
+export PATH=$PATH:$(go env GOPATH)/bin
