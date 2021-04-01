@@ -135,3 +135,5 @@ zle -N self-insert url-quote-magic
 
 # stop globing with ? and *
 unsetopt nomatch
+
+export GOPATH=~/go
