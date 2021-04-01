@@ -21,14 +21,8 @@ alias gcfh='git commit --fixup head'
 alias gd='git diff'
 alias gds='git diff --staged'
 
-alias go='git checkout'
-
-# find a branch and check it out
-function gof {
-    git branch -a | grep -v remotes | grep $1 | head -n 1 | xargs git checkout
-}
-
-alias gob='git checkout -b'
+alias gu='git checkout'
+alias gub='git checkout -b'
 alias guw='git checkout --'
 alias guwa='git checkout -- .'
 
@@ -102,7 +96,7 @@ alias gma='git merge --abort'
 alias pdg='go dev; pll; gob'
 alias dog='go dev; pl'
 
-alias mog='go master; pl'
+alias mog='git checkout master; pl'
 
 alias gcl='git clone'
 
