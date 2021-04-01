@@ -79,6 +79,7 @@ plugins=(
     z
     nvm
     pyenv
+    golang
 )
 
 source $ZSH/oh-my-zsh.sh
