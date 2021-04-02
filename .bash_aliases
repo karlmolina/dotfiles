@@ -43,6 +43,7 @@ alias vcgc='vi ~/.customgitconfig'
 alias vir='vi ~/.inputrc'
 alias vex='vi ~/.extra.sh'
 alias vgi='vi ~/.gitignore'
+alias vjc='vi ~/.jira.d/config.yml'
 
 # cd aliases
 alias b='cd -'
