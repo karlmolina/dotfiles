@@ -136,10 +136,10 @@ zle -N self-insert url-quote-magic
 # stop globing with ? and *
 unsetopt nomatch
 
-# # set golang path
-# export GOPATH=$(go env GOPATH)
-# # add golang bin path to PATH
-# export PATH=$PATH:$(go env GOPATH)/bin
+# set golang path
+export GOPATH=$(go env GOPATH)
+# add golang bin path to PATH
+export PATH=$PATH:$(go env GOPATH)/bin
 
 # # command_exists () {
 #     type "$1" &> /dev/null ;
