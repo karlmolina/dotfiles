@@ -26,6 +26,9 @@ alias gub='git checkout -b'
 alias guw='git checkout --'
 alias guwa='git checkout -- .'
 
+# updates staged files
+alias guia='git update-index --again'
+
 # branch
 alias gb='git branch -vv'
 # rename current branch
