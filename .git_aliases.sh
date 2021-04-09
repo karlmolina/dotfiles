@@ -7,18 +7,24 @@ alias vig='vi .gitignore'
 # add
 alias ga='git add'
 alias 'ga.'='git add .'
+alias gaa='git add .'
 alias gau='git add -u .'
 alias gai='git add -i'
 alias gap='git add -p'
-alias gaa='git add .'
 alias gad='git rm $(git ls-files --deleted)'
 alias gan='git add -N .'
 alias gs='git status'
+
 # --verbose shows diff in vim
 alias gc='git commit --verbose'
-alias gcn='git commit --no-verify'
-alias gcf='git commit --fixup'
-alias gcfh='git commit --fixup head'
+alias gcn='gc --no-verify'
+alias gcf='gc --fixup'
+alias gcfh='gc --fixup head'
+alias gca='gc -a'
+alias gcan='gc -a --no-verify'
+alias gcm='gc --amend'
+alias gcmn='gc --amend --no-edit'
+
 alias gd='git diff'
 alias gds='git diff --staged'
 
@@ -74,10 +80,6 @@ alias gr='git remote'
 alias grao='git remote add origin'
 alias grro='git remote rm origin'
 
-alias gca='git commit -a'
-alias gcan='git commit -a --no-verify'
-alias gcm='git commit --amend'
-alias gcmn='git commit --amend --no-edit'
 
 alias grm='git rm'
 
