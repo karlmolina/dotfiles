@@ -13,7 +13,10 @@ alias gai='git add -i'
 alias gap='git add -p'
 alias gad='git rm $(git ls-files --deleted)'
 alias gan='git add -N .'
-alias gs='git status'
+# updates staged files
+alias guia='git update-index --again'
+
+alias gs='git status --short'
 
 # --verbose shows diff in vim
 alias gc='git commit --verbose'
@@ -32,9 +35,6 @@ alias gu='git checkout'
 alias gub='git checkout -b'
 alias guw='git checkout --'
 alias guwa='git checkout -- .'
-
-# updates staged files
-alias guia='git update-index --again'
 
 # branch
 alias gb='git branch -vv'
