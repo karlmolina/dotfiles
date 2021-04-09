@@ -16,7 +16,7 @@ alias gan='git add -N .'
 # updates staged files
 alias guia='git update-index --again'
 
-alias gs='git status --short'
+alias gs='git status'
 
 # --verbose shows diff in vim
 alias gc='git commit --verbose'
