@@ -1,2 +1,4 @@
 [core]
-        editor = vim
+    editor = vim
+[pull]
+	rebase = false
