@@ -104,7 +104,7 @@ alias gma='git merge --abort'
 alias pdg='go dev; pll; gob'
 alias dog='go dev; pl'
 
-alias mog='git checkout master; pl'
+alias mug='git checkout master; pl'
 
 alias gcl='git clone'
 
