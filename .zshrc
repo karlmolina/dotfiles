@@ -149,3 +149,5 @@ export PATH=$PATH:$(go env GOPATH)/bin
 # if command_exists jira ; then
 #     eval "$(jira --completion-script-bash)"
 # fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
