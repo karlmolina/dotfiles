@@ -21,6 +21,7 @@ alias gs='git status'
 # --verbose shows diff in vim
 alias gc='git commit --verbose'
 alias gcn='gc --no-verify'
+alias gcne='gc --no-edit'
 alias gcf='gc --fixup'
 alias gcfh='gc --fixup head'
 alias gca='gc -a'
