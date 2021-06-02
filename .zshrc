@@ -151,3 +151,6 @@ export PATH=$PATH:$(go env GOPATH)/bin
 # fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# init sdkman
+source "$HOME/.sdkman/bin/sdkman-init.sh"

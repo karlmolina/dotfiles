@@ -23,3 +23,5 @@ brew install pyenv
 brew install bat
 
 source ~/.zshrc
+
+curl -s "https://get.sdkman.io" | bash

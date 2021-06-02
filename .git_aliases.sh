@@ -106,6 +106,7 @@ alias pdg='go dev; pll; gob'
 alias dog='go dev; pl'
 
 alias mug='git checkout master; pl'
+alias dug='git checkout develop; pl'
 
 alias gcl='git clone'
 
