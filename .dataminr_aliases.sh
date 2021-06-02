@@ -86,3 +86,5 @@ alias report='chrome target/cucumber-html-reports/overview-features.html'
 alias jenkins='chrome http://localhost:49001/'
 # alias local='chrome http://localhost'
 alias sprint='chrome "https://jira.dataminr.com/secure/RapidBoard.jspa?rapidView=34&quickFilter=538&quickFilter=117"'
+
+alias copyappconf='cp -fv ~/Documents/repos/marinara-vpc-config/Local_applicationConfig/api-server/application.conf ~/Documents/repos/marinara/marinara-server/src/test/resources/'
