@@ -54,9 +54,9 @@ alias grhh='git reset --hard HEAD'
 alias grod='git reset origin/dev'
 alias grhod='git reset --hard origin/dev'
 alias grhom='git reset --hard origin/master'
-alias gusa='git reset .'
-alias gus='git reset'
-alias gusp='git reset --patch'
+alias gus='git restore --staged'
+alias gusa='gus .'
+alias gusp='gus --patch'
 #git reset hard parent
 alias grhp='git reset --hard HEAD^'
 #git reset parent
