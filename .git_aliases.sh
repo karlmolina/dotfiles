@@ -65,7 +65,7 @@ alias grp='git reset HEAD^'
 
 alias gk='gitk --all&'
 alias gll='git log --abbrev-commit --decorate'
-alias gl='git log --oneline --decorate'
+alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 
 alias grl='git reflog'
 
