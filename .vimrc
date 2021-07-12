@@ -27,6 +27,8 @@ set hidden
 set number
 " I don't want to see -- INSERT -- because airline
 set noshowmode
+" Highlight line with cursor
+set cursorline
 " Good indents
 set tabstop=4
 set expandtab
@@ -84,8 +86,10 @@ Plug 'vim-airline/vim-airline'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 " Autosave
 Plug '907th/vim-auto-save'
+" easy motion
+Plug 'easymotion/vim-easymotion'
 call plug#end()
-" Enable autosave
+" Disable autosave
 let g:auto_save = 0
 " Colors!
 colorscheme gruvbox
@@ -101,6 +105,12 @@ nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
+" Use m for easymotion prefix
+map m <Plug>(easymotion-prefix)
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
 " Use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
