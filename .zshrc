@@ -80,6 +80,7 @@ plugins=(
     nvm
     pyenv
     golang
+    zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh

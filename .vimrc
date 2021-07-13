@@ -99,6 +99,7 @@ let mapleader = " "
 " jk to escape
 imap jk <Esc>
 nmap <leader>w :w<CR>
+nmap <leader>W :wq<CR>
 nmap <leader>c :close<CR>
 " Navigate windows with leader and hjkl
 nnoremap <leader>h :wincmd h<CR>
