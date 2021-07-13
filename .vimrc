@@ -127,9 +127,9 @@ nnoremap <leader>u :UndotreeToggle<CR>
 nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 " fzf
 nmap <C-p> :GFiles<CR>
-nmap <silent> <leader>b :Buffers<CR>
+nmap <leader>b :Buffers<CR>
 " Ripgrep search
-nmap <silent> <leader>rg :Rg<CR>
+nmap <leader>F :Rg<CR>
 " z jump around
 nmap <leader>z :Z<Space>
 " testing
@@ -140,7 +140,7 @@ nmap <silent> t<C-l> :TestLast<CR>
 nmap <silent> t<C-g> :TestVisit<CR>
 " Let's make it easy to edit this file (mnemonic for the key sequence is
 " 'e'dit 'v'imrc)
-nmap <silent> <leader>ev :e ~/.vimrc<cr>
+nmap <leader>ev :e ~/.vimrc<cr>
 " And to source this file as well (mnemonic for the key sequence is
 " 's'ource 'v'imrc)
-nmap <silent> <leader>sv :so ~/.vimrc<cr>
+nmap <leader>sv :so ~/.vimrc<cr>
