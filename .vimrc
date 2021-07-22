@@ -61,7 +61,7 @@ filetype indent on
 " with +wildmenu. See :help 'wildmenu'
 set wildmenu
 " spell checker
-set spell spelllang=en_us
+" set spell spelllang=en_us
 " vim-plug plugin manager
 " see mappings below 
 call plug#begin('~/.vim/plugged')
@@ -76,7 +76,7 @@ Plug 'mbbill/undotree'
 " Fuzzy searching
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-" testing
+"gtesting
 Plug 'vim-test/vim-test'
 " z jump around
 Plug 'lingceng/z.vim'
@@ -107,7 +107,7 @@ nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 " Use m for easymotion prefix
-map m <Plug>(easymotion-prefix)
+" map m <Plug>(easymotion-prefix)
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 map  n <Plug>(easymotion-next)

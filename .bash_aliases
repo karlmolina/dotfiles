@@ -63,7 +63,6 @@ alias d2u='dos2unix'
 alias s1='ssh -Y pi@10.200.9.213'
 
 # cat aliases
-alias cat='bat'
 alias clh='cat /mnt/c/Users/KarlMolina/Documents/loginhistory/loginhistory.txt'
 
 alias findnm='find ! -path "./directory/*" -name'
