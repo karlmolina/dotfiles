@@ -66,7 +66,7 @@ set wildmenu
 " see mappings below 
 call plug#begin('~/.vim/plugged')
 " color scheme
-Plug 'morhetz/gruvbox'
+Plug 'NLKNguyen/papercolor-theme'
 " code completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " git plugin
@@ -92,8 +92,8 @@ call plug#end()
 " Disable autosave
 let g:auto_save = 0
 " Colors!
-colorscheme gruvbox
-set background=dark
+set background=light
+colorscheme PaperColor
 " Set <leader> key to space
 let mapleader = " "
 " jk to escape
