@@ -70,7 +70,7 @@ Plug 'NLKNguyen/papercolor-theme'
 " code completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " git plugin
-Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-fugitive'
 " undo tree
 Plug 'mbbill/undotree'
 " Fuzzy searching

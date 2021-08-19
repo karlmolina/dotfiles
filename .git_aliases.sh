@@ -69,6 +69,7 @@ alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %
 
 alias grl='git reflog'
 
+
 # don't use ps because that is already a command
 alias ph='git push'
 alias phu='git push -u origin HEAD'
@@ -97,6 +98,7 @@ alias plo='git pull origin'
 alias plm='git pull origin master'
 alias pld='git pull origin develop'
 alias plmr='git pull origin master --rebase'
+alias pldr='git pull origin develop --rebase'
 alias plh='git -C ~ pull'
 
 alias gm='git merge'
