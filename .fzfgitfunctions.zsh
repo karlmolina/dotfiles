@@ -10,6 +10,7 @@ fzf-down() {
   fzf --height 90% --min-height 20 --border --bind ctrl-/:toggle-preview "$@"
 }
 
+# git diff
 _gf() {
   is_in_git_repo || return
   git -c color.status=always status --short |
@@ -18,6 +19,7 @@ _gf() {
   cut -c4- | sed 's/.* -> //'
 }
 
+# git branch
 _gb() {
   is_in_git_repo || return
   git branch -a --color=always | grep -v '/HEAD\s' | sort |
@@ -27,6 +29,7 @@ _gb() {
   sed 's#^remotes/##'
 }
 
+# git tag
 _gt() {
   is_in_git_repo || return
   git tag --sort -version:refname |
@@ -34,6 +37,7 @@ _gt() {
     --preview 'git show --color=always {}'
 }
 
+# git log
 _gh() {
   is_in_git_repo || return
   git log --date=short --format="%C(green)%C(bold)%cd %C(auto)%h%d %s (%an)" --graph --color=always |
@@ -43,6 +47,7 @@ _gh() {
   grep -o "[a-f0-9]\{7,\}"
 }
 
+# git remote
 _gr() {
   is_in_git_repo || return
   git remote -v | awk '{print $1 "\t" $2}' | uniq |
@@ -51,6 +56,7 @@ _gr() {
   cut -d$'\t' -f1
 }
 
+# git stash list
 _gs() {
   is_in_git_repo || return
   git stash list | fzf-down --reverse -d: --preview 'git show --color=always {1}' |
