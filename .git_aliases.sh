@@ -135,7 +135,7 @@ alias dfl='df log'
 alias dfpl='df pull'
 alias dfph='df push'
 alias dfsh='df show'
-alias dot='dfca -m "Update dotfiles"; df pull; szr; df push --quiet &'
+alias dot='set -x;dfca -m "Update dotfiles"; df pull; szr; df push; set +x'
 alias dotfiles='chrome https://github.com/karlmolina/dotfiles'
 
 # curl aliases
