@@ -7,7 +7,7 @@ is_in_git_repo() {
 }
 
 fzf-down() {
-  fzf --height 90% --min-height 20 --border --bind ctrl-/:toggle-preview "$@"
+  fzf --height 90% --min-height 20 --border --bind "ctrl-/:toggle-preview,ctrl-n:preview-down,ctrl-p:preview-up" "$@"
 }
 
 # git diff
