@@ -113,6 +113,9 @@ source ~/.zsh_aliases
 source ~/.bash_aliases
 source ~/.extra.sh
 
+# Source other function files
+source ~/.fzfgitfunctions.zsh
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 source ~/.p10k.zsh
 
