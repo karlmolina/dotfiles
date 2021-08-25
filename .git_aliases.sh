@@ -36,6 +36,7 @@ alias gu='git checkout'
 alias gub='git checkout -b'
 alias guw='git checkout --'
 alias guwa='git checkout -- .'
+alias guwp='git checkout --patch'
 
 # branch
 alias gb='git branch -vv'
