@@ -69,14 +69,12 @@ HYPHEN_INSENSITIVE="true"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
-#
-#
 
-# Fzf options
-# So we can see files beginning with '.'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+VI_MODE_SET_CURSOR=true
 
 plugins=(
+    vi-mode
     git
     zsh-autosuggestions
     docker
@@ -90,6 +88,10 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+
+# Fzf options
+# So we can see files beginning with '.'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # User configuration
 
