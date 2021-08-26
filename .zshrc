@@ -72,7 +72,8 @@ HYPHEN_INSENSITIVE="true"
 #
 #
 
-export FZF_BASE=/path/to/fzf/install/dir
+export FZF_BASE="/usr/local/bin/fzf"
+
 
 plugins=(
     git
