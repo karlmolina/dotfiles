@@ -141,6 +141,9 @@ zle -N self-insert url-quote-magic
 # stop globing with ? and *
 unsetopt nomatch
 
+# show dotfiles when using tab completion
+setopt globdots
+
 # set golang path
 export GOPATH=$(go env GOPATH)
 # add golang bin path to PATH

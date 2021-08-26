@@ -7,12 +7,10 @@ is_in_git_repo() {
 }
 
 fzf-down() {
-  fzf --height 90% --min-height 20 --border --bind "ctrl-/:toggle-preview,\
-  ctrl-n:preview-down,ctrl-p:preview-up,\
-  ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down" "$@"
+  fzf --height 90% --min-height 20 --border --bind "ctrl-/:toggle-preview,ctrl-n:preview-down,ctrl-p:preview-up,ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down" "$@"
 }
 
-# git diff
+# git status with diff preview
 _gf() {
   is_in_git_repo || return
   git -c color.status=always status --short |
@@ -21,17 +19,17 @@ _gf() {
   cut -c4- | sed 's/.* -> //'
 }
 
-# git branch
+# git branch with log preview
 _gb() {
   is_in_git_repo || return
   git branch -a --color=always | grep -v '/HEAD\s' | sort |
-  fzf-down --ansi --multi --tac --preview-window right:70% \
+  fzf-down --ansi --multi --tac --preview-window down:wrap right:70% \
     --preview 'git log --oneline --graph --date=short --color=always --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1)' |
   sed 's/^..//' | cut -d' ' -f1 |
   sed 's#^remotes/##'
 }
 
-# git tag
+# git tag with show preview
 _gt() {
   is_in_git_repo || return
   git tag --sort -version:refname |
@@ -39,17 +37,17 @@ _gt() {
     --preview 'git show --color=always {}'
 }
 
-# git log
+# git log with show preview
 _gh() {
   is_in_git_repo || return
-  git log --date=short --format="%C(green)%C(bold)%cd %C(auto)%h%d %s (%an)" --graph --color=always |
+  gl --color=always |
   fzf-down --ansi --no-sort --reverse --multi --bind 'ctrl-s:toggle-sort' \
     --header 'Press CTRL-S to toggle sort' \
     --preview 'grep -o "[a-f0-9]\{7,\}" <<< {} | xargs git show --color=always' |
   grep -o "[a-f0-9]\{7,\}"
 }
 
-# git remote
+# git remote with log preview
 _gr() {
   is_in_git_repo || return
   git remote -v | awk '{print $1 "\t" $2}' | uniq |
@@ -58,7 +56,7 @@ _gr() {
   cut -d$'\t' -f1
 }
 
-# git stash list
+# git stash list with show preview
 _gs() {
   is_in_git_repo || return
   git stash list | fzf-down --reverse -d: --preview 'git show --color=always {1}' |
