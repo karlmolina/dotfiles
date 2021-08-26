@@ -72,8 +72,9 @@ HYPHEN_INSENSITIVE="true"
 #
 #
 
-export FZF_BASE="/usr/local/bin/fzf"
-
+# Fzf options
+# So we can see files beginning with '.'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 plugins=(
     git
