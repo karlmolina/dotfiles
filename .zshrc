@@ -69,6 +69,10 @@ HYPHEN_INSENSITIVE="true"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
+#
+#
+
+export FZF_BASE=/path/to/fzf/install/dir
 
 plugins=(
     git
