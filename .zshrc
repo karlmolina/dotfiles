@@ -158,7 +158,5 @@ export PATH=$PATH:$(go env GOPATH)/bin
 #     eval "$(jira --completion-script-bash)"
 # fi
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 # init sdkman
 source "$HOME/.sdkman/bin/sdkman-init.sh"
