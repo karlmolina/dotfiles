@@ -34,9 +34,6 @@ alias gds='git diff --staged'
 
 alias gu='git checkout'
 alias gub='git checkout -b'
-alias guw='git checkout --'
-alias guwa='git checkout -- .'
-alias guwp='git checkout --patch'
 
 # branch
 alias gb='git branch -vv'
@@ -55,13 +52,19 @@ alias grhh='git reset --hard HEAD'
 alias grod='git reset origin/dev'
 alias grhod='git reset --hard origin/dev'
 alias grhom='git reset --hard origin/master'
-alias gus='git restore --staged'
-alias gusa='gus .'
-alias gusp='gus --patch'
 #git reset hard parent
 alias grhp='git reset --hard HEAD^'
 #git reset parent
 alias grp='git reset HEAD^'
+
+# restore
+alias guw='git restore --'
+alias guwa='git restore -- .'
+alias guwp='git restore --patch'
+alias gus='git restore --staged'
+alias gusa='gus .'
+alias gusp='gus --patch'
+
 
 
 alias gk='gitk --all&'

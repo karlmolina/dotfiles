@@ -11,7 +11,7 @@ fzf-down() {
 }
 
 # git status with diff preview
-_gf() {
+_gg() {
   is_in_git_repo || return
   git -c color.status=always status --short |
   fzf-down -m --ansi --nth 2..,.. \
@@ -78,5 +78,5 @@ bind-git-helper() {
     eval "bindkey '^g^$c' fzf-g$c-widget"
   done
 }
-bind-git-helper f b t r h s
+bind-git-helper g b t r h s
 unset -f bind-git-helper
