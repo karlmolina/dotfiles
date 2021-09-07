@@ -13,6 +13,8 @@ alias gai='git add -i'
 alias gap='git add -p'
 alias gad='git rm $(git ls-files --deleted)'
 alias gan='git add -N .'
+alias gae='git add --edit'
+
 # updates staged files
 alias guia='git update-index --again'
 
