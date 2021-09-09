@@ -83,7 +83,7 @@ plugins=(
     fzf-tab
     fzf
     z
-    # nvm
+    nvm
     pyenv
     golang
     zsh-syntax-highlighting
