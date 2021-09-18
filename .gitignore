@@ -19,4 +19,4 @@
 !.zsh_aliases
 !.p10k.zsh
 !.install_dot_files.sh
-
+!.fzfgitfunctions.zsh

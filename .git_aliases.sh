@@ -13,6 +13,8 @@ alias gai='git add -i'
 alias gap='git add -p'
 alias gad='git rm $(git ls-files --deleted)'
 alias gan='git add -N .'
+alias gae='git add --edit'
+
 # updates staged files
 alias guia='git update-index --again'
 
@@ -34,8 +36,6 @@ alias gds='git diff --staged'
 
 alias gu='git checkout'
 alias gub='git checkout -b'
-alias guw='git checkout --'
-alias guwa='git checkout -- .'
 
 # branch
 alias gb='git branch -vv'
@@ -54,13 +54,19 @@ alias grhh='git reset --hard HEAD'
 alias grod='git reset origin/dev'
 alias grhod='git reset --hard origin/dev'
 alias grhom='git reset --hard origin/master'
-alias gus='git restore --staged'
-alias gusa='gus .'
-alias gusp='gus --patch'
 #git reset hard parent
 alias grhp='git reset --hard HEAD^'
 #git reset parent
 alias grp='git reset HEAD^'
+
+# restore
+alias guw='git restore --'
+alias guwa='git restore -- .'
+alias guwp='git restore --patch'
+alias gus='git restore --staged'
+alias gusa='gus .'
+alias gusp='gus --patch'
+
 
 
 alias gk='gitk --all&'
@@ -68,6 +74,7 @@ alias gll='git log --abbrev-commit --decorate'
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 
 alias grl='git reflog'
+
 
 # don't use ps because that is already a command
 alias ph='git push'
@@ -97,6 +104,7 @@ alias plo='git pull origin'
 alias plm='git pull origin master'
 alias pld='git pull origin develop'
 alias plmr='git pull origin master --rebase'
+alias pldr='git pull origin develop --rebase'
 alias plh='git -C ~ pull'
 
 alias gm='git merge'
@@ -111,6 +119,9 @@ alias dug='git checkout develop; pl'
 alias gcl='git clone'
 
 alias gri='git rebase -i'
+alias grim='gri master'
+alias gru='git rebase -i --autosquash'
+alias grum='gru master'
 alias grc='git rebase --continue'
 alias gra='git rebase --abort'
 
@@ -132,7 +143,7 @@ alias dfl='df log'
 alias dfpl='df pull'
 alias dfph='df push'
 alias dfsh='df show'
-alias dot='dfca -m "Update dotfiles"; df pull; szr; df push --quiet &'
+alias dot='dfca -m "Update dotfiles"; df pull; szr; df push'
 alias dotfiles='chrome https://github.com/karlmolina/dotfiles'
 
 # curl aliases

@@ -71,7 +71,13 @@ HYPHEN_INSENSITIVE="true"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+# Use skinny cursor in insert mode
+VI_MODE_SET_CURSOR=true
+
+VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+
 plugins=(
+    vi-mode
     git
     zsh-autosuggestions
     docker
@@ -85,6 +91,10 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+
+# Fzf options
+# So we can see files beginning with '.'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # User configuration
 
@@ -112,6 +122,10 @@ bindkey jk vi-cmd-mode
 # Source alias files which source other alias files
 source ~/.zsh_aliases
 source ~/.bash_aliases
+source ~/.extra.sh
+
+# Source other function files
+source ~/.fzfgitfunctions.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 source ~/.p10k.zsh
@@ -138,6 +152,9 @@ zle -N self-insert url-quote-magic
 # stop globing with ? and *
 unsetopt nomatch
 
+# show dotfiles when using tab completion
+setopt globdots
+
 # set golang path
 export GOPATH=$(go env GOPATH)
 # add golang bin path to PATH
@@ -152,7 +169,8 @@ export PATH=$PATH:$(go env GOPATH)/bin
 #     eval "$(jira --completion-script-bash)"
 # fi
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 # init sdkman
 source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm

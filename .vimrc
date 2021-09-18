@@ -70,7 +70,7 @@ Plug 'NLKNguyen/papercolor-theme'
 " code completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " git plugin
-Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-fugitive'
 " undo tree
 Plug 'mbbill/undotree'
 " Fuzzy searching
@@ -87,7 +87,7 @@ Plug 'jeffkreeftmeijer/vim-numbertoggle'
 " Autosave
 Plug '907th/vim-auto-save'
 " easy motion
-Plug 'easymotion/vim-easymotion'
+" Plug 'easymotion/vim-easymotion'
 call plug#end()
 " Disable autosave
 let g:auto_save = 0
@@ -108,10 +108,10 @@ nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 " Use m for easymotion prefix
 " map m <Plug>(easymotion-prefix)
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
-map  n <Plug>(easymotion-next)
-map  N <Plug>(easymotion-prev)
+" map  / <Plug>(easymotion-sn)
+" omap / <Plug>(easymotion-tn)
+" map  n <Plug>(easymotion-next)
+" map  N <Plug>(easymotion-prev)
 " Use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
