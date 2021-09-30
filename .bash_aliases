@@ -61,6 +61,7 @@ alias d2u='dos2unix'
 
 # ssh aliases
 alias s1='ssh -Y pi@10.200.9.213'
+alias skr='ssh-keygen -R'
 
 # cat aliases
 alias clh='cat /mnt/c/Users/KarlMolina/Documents/loginhistory/loginhistory.txt'
