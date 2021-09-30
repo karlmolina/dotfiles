@@ -57,6 +57,8 @@ alias des='km; cd Desktop'
 alias nbs='cd $NETBEANS'
 alias drive='km; cd Google\ Drive'
 
+alias mkdir='mkdir -p'
+
 alias d2u='dos2unix'
 
 # ssh aliases
