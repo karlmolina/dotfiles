@@ -88,5 +88,5 @@ bind-git-helper() {
     eval "bindkey '^g^$c' fzf-g$c-widget"
   done
 }
-bind-git-helper g b t r h s
+bind-git-helper g b t r h j s
 unset -f bind-git-helper
