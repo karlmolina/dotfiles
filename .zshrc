@@ -87,8 +87,21 @@ plugins=(
     nvm
     pyenv
     golang
-    zsh-syntax-highlighting
+#     zsh-syntax-highlighting
 )
+
+### Fix slowness of pastes with zsh-syntax-highlighting.zsh
+# pasteinit() {
+#   OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
+#   zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
+# }
+# 
+# pastefinish() {
+#   zle -N self-insert $OLD_SELF_INSERT
+# }
+# zstyle :bracketed-paste-magic paste-init pasteinit
+# zstyle :bracketed-paste-magic paste-finish pastefinish
+### Fix slowness of pastes
 
 source $ZSH/oh-my-zsh.sh
 
@@ -114,7 +127,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export EDITOR='vim'
 
 # Escape with jk in terminal
-bindkey jk vi-cmd-mode
+# bindkey jk vi-cmd-mode
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -176,4 +189,5 @@ source "$HOME/.sdkman/bin/sdkman-init.sh"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 #
 
-eval "$(pyenv init -)"
+# eval "$(pyenv init -)"
+#

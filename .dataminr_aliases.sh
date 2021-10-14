@@ -63,19 +63,11 @@ alias eslint='node node_modules/.bin/eslint'
 alias generateLabels='node node_modules/dm-vigil/utils/generateLabels.js'
 
 function hosts() {
-    OUTPUT=''
-    if wget -q --spider https://google.com; then
-        for x in $(curl -s -H "Content-Type:application/json" -H "accept:application/json" -H "X-RunDeck-Auth-Token:${RUNDECK_API_TOKEN}" https://rundeck-ops.dataminr.com/api/21/projects | jq -r '.[].name'); do
-            RAW_HOSTS=$(curl -s -H "accept:application/json" -H "X-RunDeck-Auth-Token:${APIKEY}" https://rundeck-ops.dataminr.com/api/21/project/$x/resources | jq -r '.|keys[]')
-            OUTPUT="$OUTPUT $RAW_HOSTS"
-        done
-        HOSTS=$(echo ${OUTPUT} | tr '[:upper:]' '[:lower:]' | tr ' ' '\n' | sed 's/$/.dm.vpc/g' | grep -v localhost | grep -v ops-rundeck | sort | uniq | xargs)
-        complete -W "${HOSTS}" ssh
-        echo "${HOSTS}"
-        echo "AWS host list updated - $(echo ${HOSTS} | wc -w | awk '{print $1}') found"
-    else
-        echo "No network detected. Skipping host collection."
-    fi
+    OUTPUT=$(curl -s -H "Content-Type:application/json" -H "accept:application/json" -H "X-RunDeck-Auth-Token:${RUNDECK_API_TOKEN}" https://rundeck-ops.dataminr.com/api/21/projects | jq -r '.[].name' | xargs -P 0 -n 1 ~/gethosts.sh)
+    HOSTS=$(echo ${OUTPUT} | tr "\n" " ")
+    zstyle ':completion:*:ssh:*' hosts $(echo $HOSTS)
+    # echo
+    echo "AWS host list updated - $(echo ${HOSTS} | wc -w | awk '{print $1}') found"
 }
 
 
@@ -88,3 +80,6 @@ alias jenkins='chrome http://localhost:49001/'
 alias sprint='chrome "https://jira.dataminr.com/secure/RapidBoard.jspa?rapidView=34&quickFilter=538&quickFilter=117"'
 
 alias copyappconf='cp -fv ~/Documents/repos/marinara-vpc-config/Local_applicationConfig/api-server/application.conf ~/Documents/repos/marinara/marinara-server/src/test/resources/'
+
+function copyalert { for i in "$@"; do echo "> $i"; curl -sk https://alerting-marinara-elasticsearch-v2-test:9200/alerts-index-v1/_doc/$i  | jq -r ._source.alertDetail | pbcopy ;  done; }
+function catalert { for i in "$@"; do curl -sk https://alerting-marinara-elasticsearch-v2-test:9200/alerts-index-v1/_doc/$i  | jq -r ._source.alertDetail | jq; done; }

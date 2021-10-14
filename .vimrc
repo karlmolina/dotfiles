@@ -97,7 +97,7 @@ colorscheme PaperColor
 " Set <leader> key to space
 let mapleader = " "
 " jk to escape
-imap jk <Esc>
+" imap jk <Esc>
 nmap <leader>w :w<CR>
 nmap <leader>W :wq<CR>
 nmap <leader>c :close<CR>
@@ -127,7 +127,8 @@ nnoremap <leader>u :UndotreeToggle<CR>
 " Open directory in vertical window to the left
 nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 " fzf
-nmap <C-p> :GFiles<CR>
+nmap <leader>f :GFiles<CR>
+nmap <C-p> ZZ<CR>
 nmap <leader>b :Buffers<CR>
 " Ripgrep search
 nmap <leader>F :Rg<CR>

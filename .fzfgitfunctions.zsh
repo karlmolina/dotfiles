@@ -47,6 +47,16 @@ _gh() {
   grep -o "[a-f0-9]\{7,\}"
 }
 
+# git reflog with show preview
+_gj() {
+  is_in_git_repo || return
+  grl --color=always |
+  fzf-down --ansi --no-sort --reverse --multi --bind 'ctrl-s:toggle-sort' \
+    --header 'Press CTRL-S to toggle sort' \
+    --preview 'grep -o "[a-f0-9]\{7,\}" <<< {} | xargs git show --color=always' |
+  grep -o "[a-f0-9]\{7,\}"
+}
+
 # git remote with log preview
 _gr() {
   is_in_git_repo || return
