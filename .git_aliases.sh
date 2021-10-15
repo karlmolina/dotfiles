@@ -79,7 +79,7 @@ alias grl='git reflog'
 # don't use ps because that is already a command
 alias ph='git push'
 alias phu='git push -u origin HEAD'
-alias phf='git push -f'
+alias phf='git push --force-with-lease'
 alias phdelete='git push origin --delete HEAD'
 
 alias gx='gitx --all'
