@@ -1,12 +1,12 @@
 alias vda='vi ~/.dataminr_aliases.sh'
 alias sda='. ~/.dataminr_aliases.sh'
 
+
 # cd aliases
 alias c='z customization'
 alias m='z mariara'
 alias d='z deliverable-alerts'
 alias w='z watchlist-matching'
-alias t='z topicspaces'
 alias v='z vpc-config'
 
 alias listlinks='ls -l node_modules | grep ^l'
