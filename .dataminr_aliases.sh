@@ -1,6 +1,7 @@
 alias vda='vi ~/.dataminr_aliases.sh'
 alias sda='. ~/.dataminr_aliases.sh'
 
+alias t='vi ~/Documents/today/today.txt'
 
 # cd aliases
 alias c='z customization'

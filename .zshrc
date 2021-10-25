@@ -166,6 +166,7 @@ zle -N self-insert url-quote-magic
 unsetopt nomatch
 
 # show dotfiles when using tab completion
+# vi aliases
 setopt globdots
 
 # set golang path
