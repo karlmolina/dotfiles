@@ -5,7 +5,7 @@ alias t='vi ~/Documents/today/today.txt'
 
 # cd aliases
 alias c='z customization'
-alias m='z mariara'
+alias m='z marinara'
 alias d='z deliverable-alerts'
 alias w='z watchlist-matching'
 alias v='z vpc-config'
