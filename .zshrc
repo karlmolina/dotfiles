@@ -87,6 +87,7 @@ plugins=(
     nvm
     pyenv
     golang
+    sdk
 #     zsh-syntax-highlighting
 )
 
