@@ -158,7 +158,11 @@ bindkey -M menuselect '^j' vi-down-line-or-history
 
 bindkey -M menuselect '?' history-incremental-search-forward
 
-bindkey '^k' end-of-line
+# Easier bindings than going to cmd mode then pressing j or k
+bindkey -M main '^K' up-line-or-history
+bindkey -M main '^J' down-line-or-history
+bindkey -M vicmd '^K' up-line-or-history
+bindkey -M vicmd '^J' down-line-or-history
 
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
@@ -166,8 +170,7 @@ zle -N self-insert url-quote-magic
 # stop globing with ? and *
 unsetopt nomatch
 
-# show dotfiles when using tab completion
-# vi aliases
+# show hidden dotfiles when using tab completion
 setopt globdots
 
 # set golang path
