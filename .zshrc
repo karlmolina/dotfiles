@@ -164,6 +164,10 @@ bindkey -M main '^J' down-line-or-history
 bindkey -M vicmd '^K' up-line-or-history
 bindkey -M vicmd '^J' down-line-or-history
 
+# make ctrl [ faster by removing all
+bindkey -rpM viins '^['
+bindkey -rpM vicmd '^['
+
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
 
