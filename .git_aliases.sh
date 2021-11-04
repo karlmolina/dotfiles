@@ -119,6 +119,7 @@ alias dug='git checkout develop; pl'
 alias gcl='git clone'
 
 alias gri='git rebase -i'
+alias grio='gri --onto'
 alias grim='gri master'
 alias gru='git rebase -i --autosquash'
 alias grum='gru master'
