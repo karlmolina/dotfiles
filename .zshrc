@@ -85,9 +85,9 @@ plugins=(
     fzf
     z
     nvm
-    pyenv
     golang
     sdk
+    # pyenv
 #     zsh-syntax-highlighting
 )
 
@@ -159,14 +159,14 @@ bindkey -M menuselect '^j' vi-down-line-or-history
 bindkey -M menuselect '?' history-incremental-search-forward
 
 # Easier bindings than going to cmd mode then pressing j or k
-bindkey -M main '^K' up-history
-bindkey -M main '^J' down-history
-bindkey -M vicmd '^K' up-history
-bindkey -M vicmd '^J' down-history
+bindkey -M main '^k' up-history
+bindkey -M main '^j' down-history
+bindkey -M vicmd '^k' up-history
+bindkey -M vicmd '^j' down-history
 
 # make ctrl [ faster by removing all multikey bindings starting with ctrl [
-bindkey -rpM viins '^['
-bindkey -rpM vicmd '^['
+# bindkey -rpm viins '^['
+# bindkey -rpM vicmd '^['
 
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
@@ -196,7 +196,5 @@ source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-#
 
-# eval "$(pyenv init -)"
-#
+eval "$(pyenv init -)"

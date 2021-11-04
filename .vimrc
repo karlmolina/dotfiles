@@ -145,4 +145,9 @@ nmap <leader>z :Z<Space>
 nmap <leader>ev :e ~/.vimrc<cr>
 " And to source this file as well (mnemonic for the key sequence is
 " 's'ource 'v'imrc)
-nmap <leader>sv :so ~/.vimrc<cr>
+nmap <leader>sv :w<cr>:so ~/.vimrc<cr>
+" Run a vim command in each lines in your specified range, use V selection
+" first
+vmap <leader>n :norm 
+" Comment the lines with a #
+vmap <leader>3 :norm i# <cr>
