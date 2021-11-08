@@ -161,8 +161,10 @@ bindkey -M menuselect '?' history-incremental-search-forward
 # Easier bindings than going to cmd mode then pressing j or k
 bindkey -M main '^k' up-history
 bindkey -M main '^j' down-history
+bindkey -M main '^l' end-of-line
 bindkey -M vicmd '^k' up-history
 bindkey -M vicmd '^j' down-history
+bindkey -M vicmd '^l' end-of-line
 
 # make ctrl [ faster by removing all multikey bindings starting with ctrl [
 # bindkey -rpm viins '^['
