@@ -128,10 +128,11 @@ nnoremap <leader>u :UndotreeToggle<CR>
 nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 " fzf
 nmap <leader>f :GFiles<CR>
-nmap <C-p> ZZ<CR>
-nmap <leader>b :Buffers<CR>
 " Ripgrep search
 nmap <leader>F :Rg<CR>
+" Quick close with ctrl [ ctrl p
+nmap <C-p> ZZ<CR>
+nmap <leader>b :Buffers<CR>
 " z jump around
 nmap <leader>z :Z<Space>
 " testing

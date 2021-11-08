@@ -44,6 +44,7 @@ alias vir='vi ~/.inputrc'
 alias vex='vi ~/.extra.sh'
 alias vgi='vi ~/.gitignore'
 alias vjc='vi ~/.jira.d/config.yml'
+alias vsc='vi ~/.ssh/config'
 
 # cd aliases
 alias b='cd -'
@@ -133,3 +134,5 @@ alias golang='/usr/local/bin/go'
 
 # docker aliases
 . ~/.docker_aliases.sh
+
+
