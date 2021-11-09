@@ -40,7 +40,7 @@ _gt() {
 # git log with show preview
 _gh() {
   is_in_git_repo || return
-  gl --color=always |
+  glfancy --color=always |
   fzf-down --ansi --no-sort --reverse --multi --bind 'ctrl-s:toggle-sort' \
     --header 'Press CTRL-S to toggle sort' \
     --preview 'grep -o "[a-f0-9]\{7,\}" <<< {} | xargs git show --color=always' |

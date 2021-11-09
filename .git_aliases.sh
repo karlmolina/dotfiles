@@ -40,7 +40,7 @@ alias gub='git checkout -b'
 # branch
 alias gb='git branch -vv'
 # rename current branch
-alias gbm='git branch -m'
+alias gbr='git branch -m'
 alias gba='git branch -a'
 alias gbd='git branch -d'
 alias gbdelete='git branch -D'
@@ -51,9 +51,12 @@ alias gbu='git branch -u'
 
 # reset
 alias grhh='git reset --hard HEAD'
-alias grod='git reset origin/dev'
-alias grhod='git reset --hard origin/dev'
-alias grhom='git reset --hard origin/master'
+# reset to upstream branch
+alias grhu='git reset --hard @{upstream}'
+alias grd='git reset origin/develop'
+alias grd='git reset origin/master'
+alias grhd='git reset --hard origin/develop'
+alias grhm='git reset --hard origin/master'
 #git reset hard parent
 alias grhp='git reset --hard HEAD^'
 #git reset parent
@@ -67,14 +70,12 @@ alias gus='git restore --staged'
 alias gusa='gus .'
 alias gusp='gus --patch'
 
-
-
-alias gk='gitk --all&'
 alias gll='git log --abbrev-commit --decorate'
-alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+alias glfancy="git log -10 --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+# Only log last 10
+alias gl='glfancy -10'
 
 alias grl='git reflog'
-
 
 # don't use ps because that is already a command
 alias ph='git push'
@@ -82,12 +83,9 @@ alias phu='git push -u origin HEAD'
 alias phf='git push --force-with-lease'
 alias phdelete='git push origin --delete HEAD'
 
-alias gx='gitx --all'
-
 alias gr='git remote'
 alias grao='git remote add origin'
 alias grro='git remote rm origin'
-
 
 alias grm='git rm'
 
@@ -120,9 +118,10 @@ alias gcl='git clone'
 
 alias gri='git rebase -i'
 alias grio='gri --onto'
-alias grim='gri master'
+alias griom='gri --onto origin/master'
+alias grim='gri origin/master'
 alias gru='git rebase -i --autosquash'
-alias grum='gru master'
+alias grum='gru origin/master'
 alias grc='git rebase --continue'
 alias gra='git rebase --abort'
 
