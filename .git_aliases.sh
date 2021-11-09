@@ -71,7 +71,7 @@ alias gusa='gus .'
 alias gusp='gus --patch'
 
 alias gll='git log --abbrev-commit --decorate'
-alias glfancy="git log -10 --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+alias glfancy="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 # Only log last 10
 alias gl='glfancy -10'
 
