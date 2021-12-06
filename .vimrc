@@ -70,6 +70,8 @@ set wildmenu
 " vim-plug plugin manager
 " see mappings below 
 call plug#begin('~/.vim/plugged')
+" :PlugInstall to install new plugins
+" :PlugUpdate to update plugins
 " color scheme
 Plug 'NLKNguyen/papercolor-theme'
 " code completion
@@ -87,6 +89,8 @@ Plug 'vim-test/vim-test'
 Plug 'lingceng/z.vim'
 " Status line
 Plug 'vim-airline/vim-airline'
+" Git blame in status line
+Plug 'zivyangll/git-blame.vim'
 " Toggle hybrid relative line numbers
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 " Autosave
@@ -125,6 +129,13 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gr <Plug>(coc-references)
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
+" coc-git https://github.com/neoclide/coc-git
+nmap <leader>tb :CocCommand git.browserOpen<CR>
+nmap <leader>tl :CocCommand git.copyUrl<CR>
+nmap <leader>ts :CocCommand git.chunkStage<CR>
+nmap <leader>tu :CocCommand git.chunkUndo<CR>
+" Git blame https://github.com/zivyangll/git-blame.vim
+nnoremap <Leader>ts :<C-u>call gitblame#echo()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
