@@ -11,6 +11,8 @@ if $TERM_PROGRAM =~ "iTerm"
 endif
 " Give more space for displaying messages.
 set cmdheight=2
+" Start scrolling before cursor hits bottom of page
+set scrolloff=5
 " Syntax highlighting
 syntax on
 " I don't want to hear anything
@@ -112,7 +114,7 @@ nmap <leader>c :close<CR>
 " COC
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
-set signcolumn=number
+set signcolumn=yes
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -143,6 +145,7 @@ let g:coc_global_extensions = [
       \'coc-python',
       \'coc-json',
       \'coc-git',
+      \'coc-sh',
       \'coc-rust-analyzer'
       \]
 " enable highlight current symbol on CursorHold
@@ -163,6 +166,8 @@ nnoremap <leader>u :UndotreeToggle<CR>
 nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 " fzf
 nmap <leader>f :GFiles<CR>
+" Lines in current file
+nmap <leader>l :Lines<CR>
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
