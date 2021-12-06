@@ -33,7 +33,8 @@ set noshowmode
 set cursorline
 " Good indents
 set tabstop=4
-set expandtab
+" Backspace deletes 4 spaces.
+set softtabstop=4
 set shiftwidth=4
 set smartindent
 set fileformat=unix
@@ -135,7 +136,7 @@ nmap <leader>tl :CocCommand git.copyUrl<CR>
 nmap <leader>ts :CocCommand git.chunkStage<CR>
 nmap <leader>tu :CocCommand git.chunkUndo<CR>
 " Git blame https://github.com/zivyangll/git-blame.vim
-nnoremap <Leader>ts :<C-u>call gitblame#echo()<CR>
+nnoremap <Leader>tm :<C-u>call gitblame#echo()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -150,13 +151,13 @@ endfunction
 nmap <leader>rn <Plug>(coc-rename)
 " COC Extenstions
 let g:coc_global_extensions = [
-      \'coc-markdownlint',
       \'coc-highlight',
       \'coc-go',
       \'coc-python',
       \'coc-json',
       \'coc-git',
       \'coc-sh',
+      \'coc-java',
       \'coc-rust-analyzer'
       \]
 " enable highlight current symbol on CursorHold
@@ -167,6 +168,10 @@ inoremap <silent><expr> <TAB>
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
