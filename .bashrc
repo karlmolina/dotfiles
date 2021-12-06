@@ -13,3 +13,4 @@ if [ -f ~/.bash_profile ]; then
 fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+. "$HOME/.cargo/env"

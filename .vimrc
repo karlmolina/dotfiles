@@ -53,6 +53,9 @@ set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 " Don't update the display while executing macros
 set lazyredraw
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=100
 " Get that filetype stuff happening
 filetype on
 filetype plugin on
@@ -99,19 +102,51 @@ let mapleader = " "
 " jk to escape
 " imap jk <Esc>
 nmap <leader>w :w<CR>
-nmap <leader>W :wq<CR>
 nmap <leader>c :close<CR>
-" Navigate windows with leader and hjkl
-nnoremap <leader>h :wincmd h<CR>
-nnoremap <leader>j :wincmd j<CR>
-nnoremap <leader>k :wincmd k<CR>
-nnoremap <leader>l :wincmd l<CR>
 " Use m for easymotion prefix
 " map m <Plug>(easymotion-prefix)
 " map  / <Plug>(easymotion-sn)
 " omap / <Plug>(easymotion-tn)
 " map  n <Plug>(easymotion-next)
 " map  N <Plug>(easymotion-prev)
+" COC
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+set signcolumn=number
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gr <Plug>(coc-references)
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+" COC Extenstions
+let g:coc_global_extensions = [
+      \'coc-markdownlint',
+      \'coc-highlight',
+      \'coc-go',
+      \'coc-python',
+      \'coc-json',
+      \'coc-git',
+      \'coc-rust-analyzer'
+      \]
+" enable highlight current symbol on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
 " Use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
@@ -128,6 +163,14 @@ nnoremap <leader>u :UndotreeToggle<CR>
 nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 " fzf
 nmap <leader>f :GFiles<CR>
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-l> <plug>(fzf-complete-line)
 " Ripgrep search
 nmap <leader>F :Rg<CR>
 " Quick close with ctrl [ ctrl p
@@ -152,3 +195,9 @@ nmap <leader>sv :w<cr>:so ~/.vimrc<cr>
 vmap <leader>n :norm 
 " Comment the lines with a #
 vmap <leader>3 :norm i# <cr>
+" Select the whole file
+nmap <leader>a ggVG
+" Java commands
+" 
+nmap <leader>gil i{@link }<esc>i
+nmap <leader>gcl ciw{@link <c-r>"}<esc>

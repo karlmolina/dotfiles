@@ -210,3 +210,4 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # fzf key bindings
 # [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+. "$HOME/.cargo/env"

@@ -117,18 +117,11 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+# Bat theme
+export BAT_THEME="Coldark-Cold"
 
 # Set editor as vim
 export EDITOR='vim'
-
-# Escape with jk in terminal
-# bindkey jk vi-cmd-mode
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -166,10 +159,6 @@ bindkey -M vicmd '^k' up-history
 bindkey -M vicmd '^j' down-history
 bindkey -M vicmd '^l' end-of-line
 
-# make ctrl [ faster by removing all multikey bindings starting with ctrl [
-# bindkey -rpm viins '^['
-# bindkey -rpM vicmd '^['
-
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
 
@@ -183,15 +172,6 @@ setopt globdots
 export GOPATH=$(go env GOPATH)
 # add golang bin path to PATH
 export PATH=$PATH:$(go env GOPATH)/bin
-
-# # command_exists () {
-#     type "$1" &> /dev/null ;
-# }
-# 
-# # enable go-jira autocompletions
-# if command_exists jira ; then
-#     eval "$(jira --completion-script-bash)"
-# fi
 
 # init sdkman
 source "$HOME/.sdkman/bin/sdkman-init.sh"
