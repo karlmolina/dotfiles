@@ -50,6 +50,7 @@ alias gdeletemerged='git branch --merged | grep -v \* | xargs git branch -D'
 alias gbu='git branch -u'
 
 # reset
+alias grh='git reset --hard'
 alias grhh='git reset --hard HEAD'
 # reset to upstream branch
 alias grhu='git reset --hard @{upstream}'

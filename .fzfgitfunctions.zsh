@@ -7,7 +7,9 @@ is_in_git_repo() {
 }
 
 fzf-down() {
-  fzf --height 90% --min-height 20 --border --bind "ctrl-/:toggle-preview,ctrl-n:preview-down,ctrl-p:preview-up,ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down" "$@"
+  fzf --height 90% --min-height 20 --preview-window border-left \
+      --preview-window wrap \
+      --bind "ctrl-/:toggle-preview,ctrl-n:preview-down,ctrl-p:preview-up,ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down" "$@"
 }
 
 # git status with diff preview
@@ -69,7 +71,8 @@ _gr() {
 # git stash list with show preview
 _gs() {
   is_in_git_repo || return
-  git stash list | fzf-down --reverse -d: --preview 'git show --color=always {1}' |
+  git stash list | fzf-down \
+      --reverse -d: --preview 'git show --color=always {1}' |
   cut -d: -f1
 }
 
@@ -80,6 +83,36 @@ join-lines() {
   done
 }
 
+# git checkout
+_gu() {
+  is_in_git_repo || return
+  git branch --color=always --sort=committerdate | grep -v '/HEAD\s' |
+  fzf-down --ansi --no-sort --multi --tac --reverse --preview-window right:70% \
+    --expect 'ctrl-u' \
+    --preview 'git log --oneline --graph --date=short --color=always --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1)'
+}
+
+fzf-gu-widget() {
+    local lines=$(_gu)
+    key="$(head -1 <<< "$lines")"
+    rest="$(sed 1d <<< "$lines" | sed 's/^..//' | cut -d' ' -f1 | sed 's#^remotes/##')"
+    zle reset-prompt
+    [[ -z "$rest" ]] && return
+
+    case "$key" in
+      ctrl-u)
+          BUFFER="git checkout $rest"
+          zle accept-line
+        ;;
+      *)
+          local result=$(echo $rest | join-lines)
+          LBUFFER+=$result
+        ;;
+    esac
+}
+zle -N fzf-gu-widget
+bindkey '^g^u' fzf-gu-widget
+
 bind-git-helper() {
   local c
   for c in $@; do
@@ -88,5 +121,5 @@ bind-git-helper() {
     eval "bindkey '^g^$c' fzf-g$c-widget"
   done
 }
-bind-git-helper g b t r h j s
+# bind-git-helper g b t r h j s
 unset -f bind-git-helper

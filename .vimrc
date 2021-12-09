@@ -13,8 +13,12 @@ endif
 set cmdheight=2
 " Start scrolling before cursor hits bottom of page
 set scrolloff=5
+" Set keycode delays to 0 so CTRL-[ updates immediately
+set timeoutlen=1000 ttimeoutlen=0
 " Syntax highlighting
 syntax on
+" Make syntax highlighting faster by using vim 8 regex
+set re=0
 " I don't want to hear anything
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
@@ -22,9 +26,12 @@ autocmd GUIEnter * set visualbell t_vb=
 set backspace=indent,eol,start  
 " Hide modified files into buffers
 set hidden
-" Do I want these?
-" set autoread
-" set autowrite
+" Automatically read file changes from outside of vim
+set autoread
+" Automatically saves file if you move to a different file or exit
+set autowriteall
+" Save when you leave focus of vim
+:au FocusLost * silent! wa
 " Line numbers
 set number
 " I don't want to see -- INSERT -- because airline
@@ -33,6 +40,7 @@ set noshowmode
 set cursorline
 " Good indents
 set tabstop=4
+set expandtab
 " Backspace deletes 4 spaces.
 set softtabstop=4
 set shiftwidth=4
@@ -78,7 +86,7 @@ Plug 'NLKNguyen/papercolor-theme'
 " code completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " git plugin
-" Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 " undo tree
 Plug 'mbbill/undotree'
 " Fuzzy searching
@@ -96,6 +104,7 @@ Plug 'zivyangll/git-blame.vim'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 " Autosave
 Plug '907th/vim-auto-save'
+Plug 'sheerun/vim-polyglot'
 " easy motion
 " Plug 'easymotion/vim-easymotion'
 call plug#end()
@@ -135,6 +144,9 @@ nmap <leader>tb :CocCommand git.browserOpen<CR>
 nmap <leader>tl :CocCommand git.copyUrl<CR>
 nmap <leader>ts :CocCommand git.chunkStage<CR>
 nmap <leader>tu :CocCommand git.chunkUndo<CR>
+" navigate conflicts of current buffer
+nmap [c <Plug>(coc-git-prevconflict)
+nmap ]c <Plug>(coc-git-nextconflict)
 " Git blame https://github.com/zivyangll/git-blame.vim
 nnoremap <Leader>tm :<C-u>call gitblame#echo()<CR>
 
@@ -180,10 +192,23 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 nnoremap <leader>u :UndotreeToggle<CR>
 " Open directory in vertical window to the left
 nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
-" fzf
+" fzf config
 nmap <leader>f :GFiles<CR>
+" Ripgrep search
+nmap <leader>F :Rg<CR>
 " Lines in current file
 nmap <leader>l :Lines<CR>
+" Full screen window without border
+let g:fzf_layout = { 'window': { 'width': 1, 'height': 1, 'border': 'none' }}
+" Only left border on preview window, the option border-none doesn't work
+let g:fzf_preview_window = ['right']
+" Popup window
+" let g:fzf_layout = { 'window': {}}
+" Enable per-command history
+" - History files will be stored in the specified directory
+" - When set, CTRL-N and CTRL-P will be bound to 'next-history' and
+"   'previous-history' instead of 'down' and 'up'.
+let g:fzf_history_dir = '~/.local/share/fzf-history'
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
@@ -192,8 +217,6 @@ omap <leader><tab> <plug>(fzf-maps-o)
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-l> <plug>(fzf-complete-line)
-" Ripgrep search
-nmap <leader>F :Rg<CR>
 " Quick close with ctrl [ ctrl p
 nmap <C-p> ZZ<CR>
 nmap <leader>b :Buffers<CR>
