@@ -202,7 +202,7 @@ nmap <leader>g :Rg<space>
 " Lines in current file
 nmap <leader>l :Lines<CR>
 " Full screen window without border
-let g:fzf_layout = { 'window': { 'width': 1, 'height': 1, 'border': 'none' }}
+" let g:fzf_layout = { 'window': { 'width': 1, 'height': 1, 'border': 'none' }}
 " Only left border on preview window, the option border-none doesn't work
 let g:fzf_preview_window = ['right']
 " Popup window
