@@ -25,7 +25,7 @@ _gg() {
 _gb() {
   is_in_git_repo || return
   git branch -a --color=always | grep -v '/HEAD\s' | sort |
-  fzf-down --ansi --multi --tac --preview-window right:70% \
+  fzf-down --ansi --multi --tac --reverse --preview-window right:70% \
     --preview 'git log --oneline --graph --date=short --color=always --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1)' |
   sed 's/^..//' | cut -d' ' -f1 |
   sed 's#^remotes/##'
@@ -42,7 +42,7 @@ _gt() {
 # git log with show preview
 _gh() {
   is_in_git_repo || return
-  glfancy --color=always |
+  glfancy $1 --color=always |
   fzf-down --ansi --no-sort --reverse --multi --bind 'ctrl-s:toggle-sort' \
     --header 'Press CTRL-S to toggle sort' \
     --preview 'grep -o "[a-f0-9]\{7,\}" <<< {} | xargs git show --color=always' |
@@ -88,7 +88,7 @@ _gu() {
   is_in_git_repo || return
   git branch --color=always --sort=committerdate | grep -v '/HEAD\s' |
   fzf-down --ansi --no-sort --multi --tac --reverse --preview-window right:70% \
-    --expect 'ctrl-u' \
+    --expect 'ctrl-u,ctrl-h' \
     --preview 'git log --oneline --graph --date=short --color=always --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1)'
 }
 
@@ -104,12 +104,18 @@ fzf-gu-widget() {
           BUFFER="git checkout $rest"
           zle accept-line
         ;;
+      ctrl-h)
+        local result=$(_gh $rest)
+        zle reset-prompt
+        LBUFFER+=$result
+        ;;
       *)
           local result=$(echo $rest | join-lines)
           LBUFFER+=$result
         ;;
     esac
 }
+
 zle -N fzf-gu-widget
 bindkey '^g^u' fzf-gu-widget
 
@@ -121,5 +127,6 @@ bind-git-helper() {
     eval "bindkey '^g^$c' fzf-g$c-widget"
   done
 }
-# bind-git-helper g b t r h j s
+
+bind-git-helper g b t r h j s
 unset -f bind-git-helper

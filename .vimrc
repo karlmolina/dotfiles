@@ -193,9 +193,12 @@ nnoremap <leader>u :UndotreeToggle<CR>
 " Open directory in vertical window to the left
 nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 " fzf config
+" fuzzy file search
 nmap <leader>f :GFiles<CR>
-" Ripgrep search
-nmap <leader>F :Rg<CR>
+" fuzzy Ripgrep search
+nmap <leader>h :Rg<CR>
+" Not fuzzy search
+nmap <leader>g :Rg<space>
 " Lines in current file
 nmap <leader>l :Lines<CR>
 " Full screen window without border
