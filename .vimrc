@@ -34,7 +34,7 @@ set autowriteall
 :au FocusLost * silent! wa
 " Line numbers
 set number
-" I don't want to see -- INSERT -- because airline
+" I don't want to see -- INSERT -- because airline will already tell me
 set noshowmode
 " Highlight line with cursor
 set cursorline
@@ -104,42 +104,52 @@ Plug 'zivyangll/git-blame.vim'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 " Autosave
 Plug '907th/vim-auto-save'
+" File settings for more files
 Plug 'sheerun/vim-polyglot'
+Plug 'cormacrelf/vim-colors-github'
+Plug 'tpope/vim-vinegar'
 " easy motion
 " Plug 'easymotion/vim-easymotion'
 call plug#end()
 " Disable autosave
 let g:auto_save = 0
 " Colors!
+set termguicolors
 set background=light
-colorscheme PaperColor
+colorscheme github
+let g:airline_theme = "github"
 " Set <leader> key to space
 let mapleader = " "
-" jk to escape
-" imap jk <Esc>
-nmap <leader>w :w<CR>
-nmap <leader>c :close<CR>
 " Use m for easymotion prefix
 " map m <Plug>(easymotion-prefix)
 " map  / <Plug>(easymotion-sn)
 " omap / <Plug>(easymotion-tn)
 " map  n <Plug>(easymotion-next)
 " map  N <Plug>(easymotion-prev)
-" COC
+" COC config
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
 set signcolumn=yes
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap [e <Plug>(coc-diagnostic-prev)
+nmap ]e <Plug>(coc-diagnostic-next)
 " GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gr <Plug>(coc-references)
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-" coc-git https://github.com/neoclide/coc-git
+nmap gd <Plug>(coc-definition)
+nmap gy <Plug>(coc-type-definition)
+nmap gr <Plug>(coc-references)
+" Use K to show do(K)umentation in preview window.
+nnoremap K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+" coc-gi(t) https://github.com/neoclide/coc-git
 nmap <leader>tb :CocCommand git.browserOpen<CR>
 nmap <leader>tl :CocCommand git.copyUrl<CR>
 nmap <leader>ts :CocCommand git.chunkStage<CR>
@@ -150,17 +160,8 @@ nmap ]c <Plug>(coc-git-nextconflict)
 " Git blame https://github.com/zivyangll/git-blame.vim
 nnoremap <Leader>tm :<C-u>call gitblame#echo()<CR>
 
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
 " Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>re <Plug>(coc-rename)
 " COC Extenstions
 let g:coc_global_extensions = [
       \'coc-highlight',
@@ -190,17 +191,16 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 " Undo tree
 nnoremap <leader>u :UndotreeToggle<CR>
-" Open directory in vertical window to the left
-nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 " fzf config
 " fuzzy file search
-nmap <leader>f :GFiles<CR>
-" fuzzy Ripgrep search
-nmap <leader>h :Rg<CR>
-" Not fuzzy search
-nmap <leader>g :Rg<space>
+nmap <leader>fi :GFiles<CR>
+nmap <leader>fI :Files<CR>
+" fuzzy Ripgrep search, find fu(s)y
+nmap <leader>fs :Rg<CR>
+" Not fuzzy search, find all
+nmap <leader>fa :Rg<space>
 " Lines in current file
-nmap <leader>l :Lines<CR>
+nmap <leader>fl :Lines<CR>
 " Full screen window without border
 " let g:fzf_layout = { 'window': { 'width': 1, 'height': 1, 'border': 'none' }}
 " Only left border on preview window, the option border-none doesn't work
@@ -225,14 +225,26 @@ nmap <C-p> ZZ<CR>
 nmap <leader>b :Buffers<CR>
 " z jump around
 nmap <leader>z :Z<Space>
+" netrw config
+" let g:netrw_keepdir = 0
+" Tree list style
+let g:netrw_liststyle = 3
+" Open current working directory
+" Wipeout netrw buffers when they are hidden.
+augroup AutoDeleteNetrwHiddenBuffers
+  au!
+  au FileType netrw setlocal bufhidden=wipe
+augroup end
+nmap _ :Explore .<CR>
+
 " testing
 " nmap <leader>tn :TestNearest<CR>
 " nmap <silent> t<C-f> :TestFile<CR>
 " nmap <silent> t<C-s> :TestSuite<CR>
 " nmap <silent> t<C-l> :TestLast<CR>
 " nmap <silent> t<C-g> :TestVisit<CR>
-" Let's make it easy to edit this file (mnemonic for the key sequence is
-" 'e'dit 'v'imrc)
+" Let's make it easy to edit this file (mnemonic for the key sequence is 'v'im
+" 'v'imrc)
 nmap <leader>ev :e ~/.vimrc<cr>
 " And to source this file as well (mnemonic for the key sequence is
 " 's'ource 'v'imrc)
@@ -244,7 +256,9 @@ vmap <leader>n :norm
 vmap <leader>3 :norm i# <cr>
 " Select the whole file
 nmap <leader>a ggVG
+" Go to last file
+nmap <leader>o <c-6>
 " Java commands
 " 
-nmap <leader>gil i{@link }<esc>i
-nmap <leader>gcl ciw{@link <c-r>"}<esc>
+nmap <leader>jil i{@link }<esc>i
+nmap <leader>jcl ciw{@link <c-r>"}<esc>
