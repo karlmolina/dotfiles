@@ -16,9 +16,9 @@ fzf-down() {
 }
 
 # git status with diff preview
-_gg() {
+_gk() {
   is_in_git_repo || return
-  git -c color.status=always status --short |
+  git -c color.status=always status -uno --short |
   fzf-down -m --ansi --nth 2..,.. \
     --preview '(git diff --color=always -- {-1} | sed 1,4d; cat {-1})' |
   cut -c4- | sed 's/.* -> //'
@@ -131,5 +131,5 @@ bind-git-helper() {
   done
 }
 
-bind-git-helper g b t r h j s
+bind-git-helper k b t r h j s
 unset -f bind-git-helper
