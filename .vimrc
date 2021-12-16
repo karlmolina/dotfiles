@@ -57,6 +57,9 @@ set ignorecase
 set smartcase
 " Of course I want to be able to use a mouse!
 set mouse=a
+" Smoother scrolling
+map <ScrollWheelUp> <C-Y>
+map <ScrollWheelDown> <C-E>
 " Copy to system clipboard with yank
 set clipboard=unnamed
 " Color the 80 column light grey
@@ -102,17 +105,21 @@ Plug 'vim-airline/vim-airline'
 Plug 'zivyangll/git-blame.vim'
 " Toggle hybrid relative line numbers
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
-" Autosave
-Plug '907th/vim-auto-save'
 " File settings for more files
 Plug 'sheerun/vim-polyglot'
+" Github colorscheme
 Plug 'cormacrelf/vim-colors-github'
+" Config and bindings for netrw
 Plug 'tpope/vim-vinegar'
+" Surround sound
+Plug 'tpope/vim-surround'
+" Enable . to repeat commands
+Plug 'tpope/vim-repeat'
+" Pairs of handy bracket mappings e.g. [
+Plug 'tpope/vim-unimpaired'
 " easy motion
 " Plug 'easymotion/vim-easymotion'
 call plug#end()
-" Disable autosave
-let g:auto_save = 0
 " Colors!
 set termguicolors
 set background=light
@@ -126,10 +133,17 @@ let mapleader = " "
 " omap / <Plug>(easymotion-tn)
 " map  n <Plug>(easymotion-next)
 " map  N <Plug>(easymotion-prev)
+" Rust config
+nmap <leader>mf :RustFmt<cr>
+" Run test under cursor
+nmap <leader>ms :RustTest<cr>
+" Run all tests
+nmap <leader>ma :RustTest!<cr>
 " COC config
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
 set signcolumn=yes
+nmap <leader>af :CocAction<cr>
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap [e <Plug>(coc-diagnostic-prev)
@@ -192,6 +206,22 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 " Undo tree
 nnoremap <leader>u :UndotreeToggle<CR>
 " fzf config
+" Search in fzf with ripgrep instead of fzf with :RG
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>1)
+
+" Redefine Rg command
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --hidden --glob "!**/.git/**" --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
 " fuzzy file search
 nmap <leader>fi :GFiles<CR>
 nmap <leader>fI :Files<CR>
@@ -243,6 +273,7 @@ nmap _ :Explore .<CR>
 " nmap <silent> t<C-s> :TestSuite<CR>
 " nmap <silent> t<C-l> :TestLast<CR>
 " nmap <silent> t<C-g> :TestVisit<CR>
+nmap <leader>w :w<cr>
 " Let's make it easy to edit this file (mnemonic for the key sequence is 'v'im
 " 'v'imrc)
 nmap <leader>ev :e ~/.vimrc<cr>
@@ -251,13 +282,16 @@ nmap <leader>ev :e ~/.vimrc<cr>
 nmap <leader>sv :w<cr>:so ~/.vimrc<cr>
 " Run a vim command in each lines in your specified range, use V selection
 " first
-vmap <leader>n :norm 
+vmap <leader>no :norm 
 " Comment the lines with a #
 vmap <leader>3 :norm i# <cr>
 " Select the whole file
-nmap <leader>a ggVG
+nmap <leader>ag ggVG
 " Go to last file
 nmap <leader>o <c-6>
+" Up and down for autocomplete window
+imap <c-j> <down>
+imap <c-k> <up>
 " Java commands
 " 
 nmap <leader>jil i{@link }<esc>i

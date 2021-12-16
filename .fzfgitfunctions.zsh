@@ -12,7 +12,7 @@ is_in_git_repo() {
 fzf-down() {
   fzf --height 90% --min-height 20 --preview-window border-left \
       --preview-window wrap \
-      --bind "ctrl-/:toggle-preview,ctrl-n:preview-down,ctrl-p:preview-up,ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down" "$@"
+      --bind "ctrl-a:toggle-all,ctrl-/:toggle-preview,ctrl-n:preview-down,ctrl-p:preview-up,ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down" "$@"
 }
 
 # git status with diff preview

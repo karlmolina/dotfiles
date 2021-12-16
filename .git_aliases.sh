@@ -54,14 +54,12 @@ alias gbu='git branch -u'
 alias grh='git reset --hard'
 alias grhh='git reset --hard HEAD'
 # reset to upstream branch
-alias grhu='git reset --hard @{upstream}'
-alias grd='git reset origin/develop'
-alias grd='git reset origin/master'
-alias grhd='git reset --hard origin/develop'
-alias grhm='git reset --hard origin/master'
-#git reset hard parent
+alias grhoh='git reset --hard @{upstream}'
+alias grom='git reset origin/master'
+alias grhom='git reset --hard origin/master'
+# git reset hard parent
 alias grhp='git reset --hard HEAD^'
-#git reset parent
+# git reset parent
 alias grp='git reset HEAD^'
 
 # restore
@@ -110,11 +108,7 @@ alias plh='git -C ~ pull'
 alias gm='git merge'
 alias gma='git merge --abort'
 
-alias pdg='go dev; pll; gob'
-alias dog='go dev; pl'
-
-alias mug='git checkout master; pl'
-alias dug='git checkout develop; pl'
+alias mug='git checkout master || git checkout main; pl'
 
 alias gcl='git clone'
 
