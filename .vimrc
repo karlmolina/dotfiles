@@ -163,11 +163,19 @@ function! s:show_documentation()
     execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
-" coc-gi(t) https://github.com/neoclide/coc-git
-nmap <leader>tb :CocCommand git.browserOpen<CR>
-nmap <leader>tl :CocCommand git.copyUrl<CR>
-nmap <leader>ts :CocCommand git.chunkStage<CR>
-nmap <leader>tu :CocCommand git.chunkUndo<CR>
+" vim fugitive
+nmap <leader>gj :Git
+nmap <leader>gc :Git commit --verbose<cr>
+" coc-git https://github.com/neoclide/coc-git 
+nmap <leader>gb :CocCommand git.browserOpen<CR>
+nmap <leader>gl :CocCommand git.copyUrl<CR>
+nmap <leader>ga :CocCommand git.chunkStage<CR>
+nmap <leader>gu :CocCommand git.chunkUndo<CR>
+" show chunk diff at current position
+nmap <leader>gd <Plug>(coc-git-chunkinfo)
+" navigate chunks of current buffer
+nmap [g <Plug>(coc-git-prevchunk)
+nmap ]g <Plug>(coc-git-nextchunk)
 " navigate conflicts of current buffer
 nmap [c <Plug>(coc-git-prevconflict)
 nmap ]c <Plug>(coc-git-nextconflict)
@@ -206,6 +214,7 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 " Undo tree
 nnoremap <leader>u :UndotreeToggle<CR>
 " fzf config
+let $FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS . ' --bind "ctrl-a:toggle-all"'
 " Search in fzf with ripgrep instead of fzf with :RG
 function! RipgrepFzf(query, fullscreen)
   let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
@@ -231,6 +240,8 @@ nmap <leader>fs :Rg<CR>
 nmap <leader>fa :Rg<space>
 " Lines in current file
 nmap <leader>fl :Lines<CR>
+" git status
+nmap <c-g><c-k> :GFiles?<CR>
 " Full screen window without border
 " let g:fzf_layout = { 'window': { 'width': 1, 'height': 1, 'border': 'none' }}
 " Only left border on preview window, the option border-none doesn't work
