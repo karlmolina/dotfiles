@@ -28,3 +28,5 @@ curl -s "https://get.sdkman.io" | zsh
 brew install the_silver_searcher
 
 brew install ripgrep
+
+brew install diff-so-fancy
