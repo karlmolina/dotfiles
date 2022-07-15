@@ -1,5 +1,5 @@
 # cd to projects
-alias 1='repos; cd karlmolina.com'
+alias 1='repos; cd rumor'
 alias 2='repos; cd csci127'
 alias 3='repos; cd esof422'
 alias 4='repos; cd csci468'

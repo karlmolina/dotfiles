@@ -117,6 +117,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 " Pairs of handy bracket mappings e.g. [
 Plug 'tpope/vim-unimpaired'
+" Coffeescript
+Plug 'kchmck/vim-coffee-script'
 " easy motion
 " Plug 'easymotion/vim-easymotion'
 call plug#end()
@@ -151,95 +153,13 @@ nmap ]e <Plug>(coc-diagnostic-next)
 " GoTo code navigation.
 nmap gd <Plug>(coc-definition)
 nmap gy <Plug>(coc-type-definition)
-nmap gr <Plug>(coc-references)
-" Use K to show do(K)umentation in preview window.
-nnoremap K :call <SID>show_documentation()<CR>
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
-" vim fugitive
-nmap <leader>gj :Git
-nmap <leader>gc :Git commit --verbose<cr>
-" coc-git https://github.com/neoclide/coc-git 
-nmap <leader>gb :CocCommand git.browserOpen<CR>
-nmap <leader>gl :CocCommand git.copyUrl<CR>
-nmap <leader>ga :CocCommand git.chunkStage<CR>
-nmap <leader>gu :CocCommand git.chunkUndo<CR>
-" show chunk diff at current position
-nmap <leader>gd <Plug>(coc-git-chunkinfo)
-" navigate chunks of current buffer
-nmap [g <Plug>(coc-git-prevchunk)
-nmap ]g <Plug>(coc-git-nextchunk)
-" navigate conflicts of current buffer
-nmap [c <Plug>(coc-git-prevconflict)
-nmap ]c <Plug>(coc-git-nextconflict)
-" Git blame https://github.com/zivyangll/git-blame.vim
-nnoremap <Leader>tm :<C-u>call gitblame#echo()<CR>
-
-" Symbol renaming.
-nmap <leader>re <Plug>(coc-rename)
-" COC Extenstions
-let g:coc_global_extensions = [
-      \'coc-highlight',
-      \'coc-go',
-      \'coc-python',
-      \'coc-json',
-      \'coc-git',
-      \'coc-sh',
-      \'coc-java',
-      \'coc-rust-analyzer'
-      \]
-" enable highlight current symbol on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
-" Use tab for trigger completion with characters ahead and navigate.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-" Undo tree
-nnoremap <leader>u :UndotreeToggle<CR>
-" fzf config
-let $FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS . ' --bind "ctrl-a:toggle-all"'
-" Search in fzf with ripgrep instead of fzf with :RG
-function! RipgrepFzf(query, fullscreen)
-  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
-  let initial_command = printf(command_fmt, shellescape(a:query))
-  let reload_command = printf(command_fmt, '{q}')
-  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
-  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
-endfunction
-
-command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>1)
-
-" Redefine Rg command
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --hidden --glob "!**/.git/**" --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview(), <bang>0)
-" fuzzy file search
-nmap <leader>fi :GFiles<CR>
-nmap <leader>fI :Files<CR>
-" fuzzy Ripgrep search, find fu(s)y
+" find fu(s)y
 nmap <leader>fs :Rg<CR>
 " Not fuzzy search, find all
 nmap <leader>fa :Rg<space>
 " Lines in current file
 nmap <leader>fl :Lines<CR>
+nmap <leader>fi :GFiles<CR>
 " git status
 nmap <c-g><c-k> :GFiles?<CR>
 " Full screen window without border
