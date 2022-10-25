@@ -1,6 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH="$PATH:$HOME/Downloads/flutter/bin"
+export PATH="$PATH:$HOME/flutter/bin"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -80,7 +80,7 @@ plugins=(
     nvm
     golang
     sdk
-    # pyenv
+    pyenv
 #     zsh-syntax-highlighting
 )
 
@@ -174,4 +174,6 @@ source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 eval "$(pyenv init -)"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+source /usr/local/opt/chruby/share/chruby/auto.sh
+chruby ruby-3.1.2
