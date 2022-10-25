@@ -19,7 +19,8 @@ alias gae='git add --edit'
 alias guia='git update-index --again'
 
 # git status without untracked files
-alias gs='git status -uno'
+# alias gs='git status -uno'
+alias gs='git status'
 
 # --verbose shows diff in vim
 alias gc='git commit --verbose'

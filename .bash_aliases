@@ -1,9 +1,9 @@
 # cd to projects
-alias 1='repos; cd rumor'
-alias 2='repos; cd csci127'
-alias 3='repos; cd esof422'
-alias 4='repos; cd csci468'
-alias 5='repos; cd robotics'
+alias 1='repos; cd karlmolina.com'
+alias 2='repos; cd blog'
+alias 3='repos; cd automate-d2l'
+alias 4='repos; cd csci-440-fall2022'
+alias 5='repos; cd ipal-mobile'
 
 NETBEANS="/mnt/c/Users/$WUSER/Documents/NetBeansProjects/"
 
@@ -115,6 +115,7 @@ alias pc='openIde Pycharm'
 alias ws='openIde Webstorm'
 alias ij='openIde "IntelliJ IDEA"'
 alias code='openIde "Visual Studio Code"'
+alias android='openIde "Android Studio"'
 
 # npm
 alias ni='npm install'
