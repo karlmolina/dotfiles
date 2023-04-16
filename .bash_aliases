@@ -1,11 +1,9 @@
-# cd to projects
+# cd  to projects
 alias 1='repos; cd karlmolina.com'
 alias 2='repos; cd blog'
-alias 3='repos; cd automate-d2l'
-alias 4='repos; cd csci-440-fall2022'
+alias 3='repos; cd lumincenter'
+alias 4='repos; cd ipal-backend'
 alias 5='repos; cd ipal-mobile'
-
-NETBEANS="/mnt/c/Users/$WUSER/Documents/NetBeansProjects/"
 
 alias vp='venv/bin/python'
 alias vpm='venv/bin/python -m'
@@ -15,19 +13,9 @@ alias py2='python'
 alias cmd='/mnt/c/Windows/System32/cmd.exe'
 alias kc='cmd /mnt/c/Users/KarlMolina/cmd_aliases/kc.bat'
 alias specflow='packages/SpecFlow.2.4.0/tools/specflow.exe'
-alias chrome='open -a "Google Chrome"'
-
-alias sr='specflow stepdefinitionreport -p ESMS/ESMS.csproj /BinFolder:ESMS/bin/Debug/'
-alias vsr='stepreport; chrome TestResult.html'
-alias rmsr='rm TestResult.html'
-alias firefox='/mnt/c/Program\ Files/Mozilla\ Firefox/firefox.exe'
-alias devenv='/mnt/c/Program\ Files\ \(x86\)/Microsoft\ Visual\ Studio\ 14.0/Common7/IDE/devenv.exe'
 
 # ls
 alias la='ls -A'
-
-# chrome
-alias seecover='chrome client/coverage/lcov-report/index.html'
 
 # vi and source aliases
 alias vba='vi ~/.bash_aliases'

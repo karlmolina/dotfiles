@@ -87,6 +87,9 @@ call plug#begin('~/.vim/plugged')
 " color scheme
 Plug 'NLKNguyen/papercolor-theme'
 " code completion
+if $NVM_BIN != ""
+  let g:coc_node_path = '$NVM_BIN/node'
+endif
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " git plugin
 Plug 'tpope/vim-fugitive'

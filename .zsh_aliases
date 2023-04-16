@@ -1,2 +1,3 @@
-alias szr='source ~/.zshrc'
+alias szr='exec zsh'
 alias vzr='vi ~/.zshrc'
+alias vza='vi ~/.zsh_aliases'
