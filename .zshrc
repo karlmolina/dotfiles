@@ -3,29 +3,17 @@ source ~/zsh-defer/zsh-defer.plugin.zsh
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH="$PATH:$HOME/flutter/bin"
 
-# Use skinny cursor in insert mode
-VI_MODE_SET_CURSOR=true
-
-VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
-
-export NVM_LAZY_LOAD=true
-export NVM_COMPLETION=true
-
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 source "${ZINIT_HOME}/zinit.zsh"
 
-zinit ice wait lucid
-zi load zsh-users/zsh-autosuggestions
-zinit ice wait lucid
-zi load Aloxaf/fzf-tab
-zinit ice wait lucid
+# Autocompletions and sources nvm
+zinit ice wait'2' lucid
 zi snippet OMZP::nvm
-zinit ice wait lucid
-zi snippet OMZP::vi-mode
-zinit ice wait lucid
-zi snippet OMZP::git
+# zinit ice wait lucid
+# zi snippet OMZP::git
+# auto-completion for docker
 zinit ice wait lucid
 zi snippet OMZP::docker
 zinit ice wait lucid
@@ -34,14 +22,24 @@ zinit ice wait lucid
 zi snippet OMZP::z
 zinit ice wait lucid
 zi snippet OMZP::golang
-zinit ice wait lucid
+# Autocomplete for sdkman
 zi snippet OMZP::sdk
+# Load pyenv if it's found
 zinit ice wait lucid
 zi snippet OMZP::pyenv
+# completion support for awscli
 zinit ice wait lucid
 zi snippet OMZP::aws
 
+zi snippet OMZP::vi-mode
+VI_MODE_SET_CURSOR=true
+VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+VI_MODE_CURSOR_INSERT=5
 
+zicompinit
+zicdreplay
+zi load Aloxaf/fzf-tab
+zi load zsh-users/zsh-autosuggestions
 
 ### Fix slowness of pastes with zsh-syntax-highlighting.zsh
 # pasteinit() {
@@ -116,14 +114,11 @@ export GOPATH=$(go env GOPATH)
 # add golang bin path to PATH
 export PATH=$PATH:$(go env GOPATH)/bin
 
-# export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
 zsh-defer eval "$(pyenv init -)"
 
 zsh-defer source /usr/local/opt/chruby/share/chruby/chruby.sh
 zsh-defer source /usr/local/opt/chruby/share/chruby/auto.sh
 # chruby ruby-3.1.2
+zsh-defer source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 eval "$(starship init zsh)"
-
