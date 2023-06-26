@@ -122,3 +122,5 @@ zsh-defer source /usr/local/opt/chruby/share/chruby/auto.sh
 zsh-defer source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 eval "$(starship init zsh)"
+
+[ -f "/Users/karl/.ghcup/env" ] && source "/Users/karl/.ghcup/env" # ghcup-env
