@@ -4,6 +4,7 @@ alias 2='repos; cd blog'
 alias 3='repos; cd lumincenter'
 alias 4='repos; cd ipal-backend'
 alias 5='repos; cd ipal-mobile'
+alias 6='repos; cd ipal-unityProject'
 
 alias vp='venv/bin/python'
 alias vpm='venv/bin/python -m'
