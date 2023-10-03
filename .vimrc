@@ -93,6 +93,7 @@ endif
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " git plugin
 Plug 'tpope/vim-fugitive'
+Plug 'shumphrey/fugitive-gitlab.vim'
 " undo tree
 Plug 'mbbill/undotree'
 " Fuzzy searching
@@ -196,8 +197,8 @@ let g:netrw_liststyle = 3
 " Open current working directory
 " Wipeout netrw buffers when they are hidden.
 augroup AutoDeleteNetrwHiddenBuffers
-  au!
-  au FileType netrw setlocal bufhidden=wipe
+au!
+au FileType netrw setlocal bufhidden=wipe
 augroup end
 nmap _ :Explore .<CR>
 
@@ -226,7 +227,3 @@ nmap <leader>o <c-6>
 " Up and down for autocomplete window
 imap <c-j> <down>
 imap <c-k> <up>
-" Java commands
-" 
-nmap <leader>jil i{@link }<esc>i
-nmap <leader>jcl ciw{@link <c-r>"}<esc>

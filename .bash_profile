@@ -1,3 +1,4 @@
+source ~/.profile
 # BASH PROFILE
 
 command_exists () {
@@ -211,3 +212,6 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 # fzf key bindings
 # [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 . "$HOME/.cargo/env"
+
+# Created by `pipx` on 2023-07-21 21:25:45
+export PATH="$PATH:/Users/karl/.local/bin"

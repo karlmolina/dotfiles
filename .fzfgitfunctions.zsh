@@ -18,7 +18,7 @@ fzf-down() {
 # git status with diff preview
 _gk() {
   is_in_git_repo || return
-  git -c color.status=always status -uno --short |
+  git -c color.status=always status --short |
   fzf-down -m --ansi --nth 2..,.. \
     --preview '(git diff --color=always -- {-1} | sed 1,4d; cat {-1})' |
   cut -c4- | sed 's/.* -> //'
@@ -71,8 +71,8 @@ _gr() {
   cut -d$'\t' -f1
 }
 
-# git stash list with show preview
-_gs() {
+# git sta(i)sh list with show preview
+_gi() {
   is_in_git_repo || return
   git stash list | fzf-down \
       --reverse -d: --preview 'git show --color=always {1}' |
@@ -131,5 +131,5 @@ bind-git-helper() {
   done
 }
 
-bind-git-helper k b t r h j s
+bind-git-helper k b t r h j i
 unset -f bind-git-helper

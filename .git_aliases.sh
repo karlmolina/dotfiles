@@ -8,11 +8,11 @@ alias vig='vi .gitignore'
 alias ga='git add'
 alias 'ga.'='git add .'
 alias gaa='git add .'
-alias gau='git add -u .'
-alias gai='git add -i'
+alias gau='git add --update'
+alias gai='git add --interactive'
 alias gap='git add --patch'
 alias gad='git rm $(git ls-files --deleted)'
-alias gan='git add -N .'
+alias gan='git add --intent-to-add .'
 alias gae='git add --edit'
 
 # updates staged files
@@ -56,12 +56,13 @@ alias grh='git reset --hard'
 alias grhh='git reset --hard HEAD'
 # reset to upstream branch
 alias grhoh='git reset --hard @{upstream}'
-alias grom='git reset origin/master'
-alias grhom='git reset --hard origin/master'
+alias grom='git reset origin/main'
+alias grhom='git reset --hard origin/main'
 # git reset hard parent
 alias grhp='git reset --hard HEAD^'
 # git reset parent
 alias grp='git reset HEAD^'
+alias grpp='grp --patch'
 
 # restore
 alias guw='git restore --'
@@ -78,7 +79,6 @@ alias gl='glfancy -10'
 
 alias grl='git reflog'
 
-# don't use ps because that is already a command
 alias ph='git push'
 alias phu='git push -u origin HEAD'
 alias phf='git push --force-with-lease'
@@ -109,15 +109,16 @@ alias plh='git -C ~ pull'
 alias gm='git merge'
 alias gma='git merge --abort'
 
-alias mug='git checkout master || git checkout main; pl'
+alias mug='git checkout main; pl'
 
 alias gcl='git clone'
 
-alias gri='git rebase -i'
+alias gcp='git cherry-pick'
+
+alias gri='git rebase --interactive --autosquash'
 alias grio='gri --onto'
 alias griom='gri --onto origin/master'
 alias grim='gri origin/master'
-alias gru='git rebase -i --autosquash'
 alias grum='gru origin/master'
 alias grc='git rebase --continue'
 alias gra='git rebase --abort'

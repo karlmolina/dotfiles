@@ -124,3 +124,37 @@ zsh-defer source "$HOME/.sdkman/bin/sdkman-init.sh"
 eval "$(starship init zsh)"
 
 [ -f "/Users/karl/.ghcup/env" ] && source "/Users/karl/.ghcup/env" # ghcup-env
+# pnpm
+export PNPM_HOME="/Users/karl/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end# Go paths
+[ -d ~/go ] && export GOPATH=$HOME/go
+[ "$GOPATH" ] && [ -d "$GOPATH/bin" ] && PATH="$PATH:$GOPATH/bin"
+
+if [ -d /usr/local/opt/go/libexec ]
+then
+  export GOROOT=/usr/local/opt/go/libexec
+else
+  if [ -d /usr/local/opt/go ]
+  then
+    export GOROOT=/usr/local/opt/go
+  else
+    [ -d /usr/local/go ] && export GOROOT=/usr/local/go
+  fi
+fi
+[ -d ${GOROOT}/bin ] && {
+  if [ $(echo $PATH | grep -c ${GOROOT}/bin) -ne "1" ]; then
+    PATH="$PATH:${GOROOT}/bin"
+  fi
+}
+[ -d $HOME/go/bin ] && {
+  if [ $(echo $PATH | grep -c $HOME/go/bin) -ne "1" ]; then
+    PATH="$PATH:$HOME/go/bin"
+  fi
+}
+export PATH
+eval "$(/usr/local/bin/brew shellenv)"
+export PATH=/opt/homebrew/bin:$PATH
