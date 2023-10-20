@@ -80,13 +80,6 @@ if [ ! -a ~/.inputrc ]; then echo '$include /etc/inputrc' > ~/.inputrc; fi
 # Add option to ~/.inputrc to enable case-insensitive tab completion
 echo 'set completion-ignore-case On' >> ~/.inputrc
 
-# file to put extra commands that will only be used by 
-# the computer that you edit this file on.
-# This file is ignored by git
-if [ -f ~/.extra.sh ]; then
-    . ~/.extra.sh
-fi
-
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -95,6 +88,14 @@ fi
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
+
+# file to put extra commands that will only be used by 
+# the computer that you edit this file on.
+# This file is ignored by git
+if [ -f ~/.extra.sh ]; then
+    . ~/.extra.sh
+fi
+
 
 # add a few paths
 export PATH=$PATH":$HOME/bin"
