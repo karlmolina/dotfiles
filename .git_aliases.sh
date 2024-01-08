@@ -102,7 +102,7 @@ alias plr='git pull -r'
 alias plo='git pull origin'
 alias plm='git pull origin main'
 alias pld='git pull origin develop'
-alias plmr='git pull origin master --rebase'
+alias plmr='git pull origin main --rebase'
 alias pldr='git pull origin develop --rebase'
 alias plh='git -C ~ pull'
 

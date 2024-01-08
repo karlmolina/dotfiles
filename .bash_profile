@@ -215,3 +215,5 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # Created by `pipx` on 2023-07-21 21:25:45
 export PATH="$PATH:/Users/karl/.local/bin"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

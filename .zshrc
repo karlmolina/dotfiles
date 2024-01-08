@@ -109,6 +109,9 @@ unsetopt nomatch
 # show hidden dotfiles when using tab completion
 setopt globdots
 
+# share history between all zsh terminal windows
+setopt share_history
+
 # set golang path
 export GOPATH=$(go env GOPATH)
 # add golang bin path to PATH
@@ -158,3 +161,15 @@ fi
 export PATH
 eval "$(/usr/local/bin/brew shellenv)"
 export PATH=/opt/homebrew/bin:$PATH
+
+# bun completions
+[ -s "/Users/karl/.bun/_bun" ] && source "/Users/karl/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="$HOME/.phpenv/bin:$PATH"
+eval "$(phpenv init -)"

@@ -102,7 +102,7 @@ openIde () {
 
 alias pc='openIde Pycharm'
 alias ws='openIde Webstorm'
-alias ij='openIde "IntelliJ IDEA"'
+alias ij='openIde "IntelliJ IDEA Ultimate"'
 alias code='openIde "Visual Studio Code"'
 alias android='openIde "Android Studio"'
 
@@ -116,6 +116,10 @@ alias venv='. venv/bin/activate'
 
 alias golang='/usr/local/bin/go'
 
+'??'() {
+    gh copilot suggest -t shell "$@"
+}
+
 # git aliases
 . ~/.git_aliases.sh
 
@@ -124,5 +128,3 @@ alias golang='/usr/local/bin/go'
 
 # docker aliases
 . ~/.docker_aliases.sh
-
-

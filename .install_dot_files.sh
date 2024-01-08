@@ -41,3 +41,5 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 brew install go
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+
+brew install dura
