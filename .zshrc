@@ -67,8 +67,16 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export BAT_THEME="Coldark-Cold"
 
 # Set editor as vim
-export EDITOR='vim'
+if [ -n "$NVIM" ]; then
+    # alias nvim="nvr -cc split --remote-wait +'set bufhidden=wipe'"
+    # export VISUAL="nvr -cc split --remote-wait +'set bufhidden=wipe'"
+    # export EDITOR="nvr -cc split --remote-wait +'set bufhidden=wipe'"
+else
+    export VISUAL="nvim"
+    export EDITOR="nvim"
+fi
 
+alias vi='nvim --listen /tmp/nvimsocket'
 
 # Source alias files which source other alias files
 source ~/.zsh_aliases
@@ -172,4 +180,7 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$HOME/.phpenv/bin:$PATH"
+export PATH=$HOME/.local/bin:$PATH
 eval "$(phpenv init -)"
+
+export XDG_CONFIG_HOME="$HOME/.config"

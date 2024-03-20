@@ -116,7 +116,7 @@ alias venv='. venv/bin/activate'
 
 alias golang='/usr/local/bin/go'
 
-'??'() {
+cop() {
     gh copilot suggest -t shell "$@"
 }
 

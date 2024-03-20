@@ -16,7 +16,7 @@ set scrolloff=5
 " Set keycode delays to 0 so CTRL-[ updates immediately
 set timeoutlen=1000 ttimeoutlen=0
 " Syntax highlighting
-syntax on
+" syntax on
 " Make syntax highlighting faster by using vim 8 regex
 set re=0
 " I don't want to hear anything

@@ -2,3 +2,5 @@ source ~/.vimrc
 
 # enable surround plugin
 set surround
+set visualbell
+set noerrorbells

@@ -21,9 +21,9 @@ alias guia='git update-index --again'
 # git status without untracked files
 # alias gs='git status -uno'
 alias gs='git status'
+alias gsh='git show'
 
-# --verbose shows diff in vim
-alias gc='git commit --verbose'
+alias gc='git commit'
 alias gcn='gc --no-verify'
 alias gcne='gc --no-edit'
 alias gcf='gc --fixup'
@@ -114,6 +114,7 @@ alias mug='git checkout main; pl'
 alias gcl='git clone'
 
 alias gcp='git cherry-pick'
+alias gcpa='git cherry-pick --abort'
 
 alias gri='git rebase --interactive --autosquash'
 alias grio='gri --onto'

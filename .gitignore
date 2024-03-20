@@ -20,3 +20,5 @@
 !.p10k.zsh
 !.install_dot_files.sh
 !.fzfgitfunctions.zsh
+!.config/nvim
+!.config/lazygit
