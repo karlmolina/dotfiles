@@ -130,6 +130,7 @@ alias glt='git ls-tree HEAD -r --name-only'
 alias gt='git tag'
 
 # dotfile aliases
+alias dflazy='lazygit --git-dir ~/.dotfiles/.git --work-tree=$HOME'
 alias df='git -C ~ --git-dir ~/.dotfiles/.git --work-tree=$HOME'
 alias dfd='df diff'
 alias dfds='df diff --staged'
