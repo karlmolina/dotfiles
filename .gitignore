@@ -23,6 +23,7 @@
 !.install_dot_files.sh
 !.fzfgitfunctions.zsh
 !.config/
-.config/*
-!.config/nvim
-!.config/lazygit
+!.config/nvim/
+!.config/nvim/**/*
+!.config/lazygit/
+!.config/lazygit/**/*
