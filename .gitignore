@@ -14,11 +14,15 @@
 !.docker_aliases.sh
 !.ideavimrc
 # This doesn't work for some reason so I force added the file
+!.vim
+.vim/*
 !.vim/undodir/.gitignore
 !.zshrc
 !.zsh_aliases
 !.p10k.zsh
 !.install_dot_files.sh
 !.fzfgitfunctions.zsh
+!.config/
+.config/*
 !.config/nvim
 !.config/lazygit
