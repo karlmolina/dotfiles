@@ -18,6 +18,9 @@ alias specflow='packages/SpecFlow.2.4.0/tools/specflow.exe'
 # ls
 alias la='ls -A'
 
+# tmux
+alias vtc='vi ~/.tmux.conf'
+
 # vi and source aliases
 alias vba='vi ~/.bash_aliases'
 alias sba='. ~/.bash_aliases'

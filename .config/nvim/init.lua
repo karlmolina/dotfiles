@@ -10,6 +10,11 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 -- Set to true if you have a Nerd Font installed
 vim.g.have_nerd_font = true
+-- Wrap text with linebreak
+vim.opt.wrap = true
+vim.opt.linebreak = true
+-- Make a line at the textwidth
+vim.opt.colorcolumn = '80'
 -- Make line numbers default
 vim.opt.number = true
 -- Enable mouse mode, can be useful for resizing splits for example!
@@ -49,13 +54,13 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous Diagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next Diagnostic message' })
 vim.keymap.set('n', '<leader>j', vim.diagnostic.open_float, { desc = 'Show diagnostic Error messages' })
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic Quickfix list' })
+vim.keymap.set('n', '<leader>k', vim.diagnostic.setloclist, { desc = 'Open diagnostic Quickfix list' })
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
--- vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+vim.keymap.set('t', '<C-q>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
@@ -84,14 +89,26 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   -- [[ Configure and install plugins ]]
+  -- fzf file explorer
+  {
+    'nvim-telescope/telescope-file-browser.nvim',
+    dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' },
+    init = function()
+      vim.keymap.set('n', '<leader>e', '<cmd>Telescope file_browser<CR>', { desc = 'Open file browser' })
+    end,
+  },
+  -- use nvimtree instead of neotree, that one is giving me errors for some reason
+  -- refactor rename with nvimtree
+  -- fix tabout
+  -- install tmux navigation
   {
     'abecodes/tabout.nvim',
     lazy = false,
     config = function()
       require('tabout').setup {
-        tabkey = '<C-l>', -- key to trigger tabout, set to an empty string to disable
-        backwards_tabkey = '<C-h>', -- key to trigger backwards tabout, set to an empty string to disable
-        act_as_tab = false, -- shift content if tab out is not possible
+        tabkey = '<Tab>', -- key to trigger tabout, set to an empty string to disable
+        backwards_tabkey = '<S-Tab>', -- key to trigger backwards tabout, set to an empty string to disable
+        act_as_tab = true, -- shift content if tab out is not possible
         act_as_shift_tab = false, -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
         default_tab = '<C-t>', -- shift default action (only at the beginning of a line, otherwise <TAB> is used)
         default_shift_tab = '<C-d>', -- reverse shift default action,
@@ -114,6 +131,7 @@ require('lazy').setup({
       'L3MON4D3/LuaSnip',
       'hrsh7th/nvim-cmp',
     },
+    opt = true, -- Set this to true if the plugin is optional
     event = 'InsertCharPre', -- Set the event to 'InsertCharPre' for better compatibility
     priority = 1000,
   },
@@ -150,7 +168,7 @@ require('lazy').setup({
     },
     cmd = { 'Neotree' },
     init = function()
-      vim.keymap.set('n', '<leader>e', '<cmd>Neotree toggle left reveal<CR>', { desc = 'Toggle file tree' })
+      vim.keymap.set('n', '<leader>E', '<cmd>Neotree toggle left reveal<CR>', { desc = 'Toggle file tree' })
     end,
     config = function()
       -- If you want icons for diagnostic errors, you'll need to define them somewhere:
@@ -228,7 +246,9 @@ require('lazy').setup({
   },
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
   -- "gc" to comment visual regions/lines
-  { 'numtostr/comment.nvim', opts = {} },
+  { 'numtostr/comment.nvim', opts = {
+    toggler = { line = '<leader>/' },
+  } },
   { -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     config = function()
@@ -387,6 +407,9 @@ require('lazy').setup({
               },
             },
           },
+          find_files = {
+            hidden = true,
+          },
         },
         extensions = {
           ['ui-select'] = {
@@ -397,6 +420,7 @@ require('lazy').setup({
       -- enable telescope extensions, if they are installed
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
+      pcall(require('telescope').load_extension, 'file_browser')
       -- see `:help telescope.builtin`
       local telescope_builtin = require 'telescope.builtin'
       vim.keymap.set('n', '<leader>fh', telescope_builtin.help_tags, { desc = 'search help' })
@@ -431,7 +455,7 @@ require('lazy').setup({
 
       -- Also possible to pass additional configuration options.
       --  See `:help telescope.builtin.live_grep()` for information about particular keys
-      vim.keymap.set('n', '<leader>fo', function()
+      vim.keymap.set('n', '<leader>fi', function()
         telescope_builtin.live_grep {
           grep_open_files = true,
           prompt_title = 'Live Grep in Open Files',
@@ -549,6 +573,7 @@ require('lazy').setup({
         -- gopls = {},
         pyright = {},
         phpactor = {},
+        groovyls = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -585,6 +610,8 @@ require('lazy').setup({
           },
         },
       }
+
+      require('lspconfig').dartls.setup {}
 
       -- Ensure the servers and tools above are installed
       --  To check the current status of installed tools and/or manually install
@@ -731,13 +758,13 @@ require('lazy').setup({
           -- Accept ([y]es) the completion.
           --  This will auto-import if your LSP supports it.
           --  This will expand snippets if the LSP sent a snippet.
-          ['<Tab>'] = cmp.mapping.confirm { select = true },
+          ['<CR>'] = cmp.mapping.confirm { select = true },
 
           -- Manually trigger a completion from nvim-cmp.
           --  Generally you don't need this, because nvim-cmp will display
           --  completions whenever it has completion options available.
-          ['<C-Space>'] = cmp.mapping.complete {},
-
+          --  C-s because C-Space is tmux prefix
+          ['<C-s>'] = cmp.mapping.complete {},
           -- Think of <c-l> as moving to the right of your snippet expansion.
           --  So if you have a snippet that's like:
           --  function $name($args)
@@ -901,7 +928,7 @@ vim.keymap.set('n', '<leader>ne', [[:e ~/.config/nvim/init.lua<CR>]], { desc = '
 vim.keymap.set('n', '<leader>w', [[:wall<CR>]], { desc = 'Write all buffers' })
 vim.keymap.set('n', '<leader>q', [[:bdelete<CR>]], { desc = 'Close buffer' })
 -- set control p to write and closest
-vim.keymap.set('n', '<C-p>', [[:w<CR>:qall<CR>]], { desc = 'Write and close' })
+vim.keymap.set('n', '<C-p>', [[:x<CR>]], { desc = 'Write and close' })
 vim.keymap.set('n', '<leader>o', [[:Telescope find_files<CR>]], { desc = 'Find files' })
 -- or just do *?
 -- vim.keymap.set('v', '/', [[y/\V<C-R>=escape(@",'/\')<CR><CR>]], { desc = 'Search selected text' })
@@ -912,7 +939,7 @@ vim.keymap.set('n', '<leader>nL', ':Lazy<CR>', { desc = 'Lazy plugin manager' })
 -- leader tab to switch to last buffer
 -- can't do <tab> because it conflicts with <c-i>
 vim.keymap.set('n', '<leader><tab>', '<C-^>', { desc = 'Switch to last buffer' })
-vim.api.nvim_create_autocmd({ 'FocusLost', 'WinLeave' }, {
+vim.api.nvim_create_autocmd({ 'FocusLost', 'BufLeave' }, {
   desc = 'Save when focus is lost',
   group = vim.api.nvim_create_augroup('kickstart-autosave', { clear = true }),
   callback = function()
@@ -922,6 +949,23 @@ vim.api.nvim_create_autocmd({ 'FocusLost', 'WinLeave' }, {
     -- vim.cmd [[echo "Buffers saved"]]
   end,
 })
+vim.api.nvim_create_autocmd('BufLeave', {
+  desc = 'Close nvim config when leaving so I can edit it in multiple nvims',
+  group = vim.api.nvim_create_augroup('kickstart-close-config', { clear = true }),
+  -- Define a pattern to match the buffer name
+  pattern = { '*/.config/nvim/init.lua' },
+  -- Callback function to execute
+  callback = function()
+    print 'Leaving nvim config'
+    -- Save the buffer
+    -- vim.api.nvim_buf_write(0)
+    -- Close the buffer
+    -- vim.cmd 'bclose!'
+    vim.cmd [[w]]
+    vim.cmd [[bdelete]]
+  end,
+})
+
 vim.keymap.set('c', '<C-j>', '<C-n>', { desc = 'Move to next' })
 vim.keymap.set('c', '<C-k>', '<C-p>', { desc = 'Move to previous' })
 

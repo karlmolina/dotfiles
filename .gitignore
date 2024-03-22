@@ -27,3 +27,4 @@
 !.config/nvim/**/*
 !.config/lazygit/
 !.config/lazygit/**/*
+!.tmux.conf
