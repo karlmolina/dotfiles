@@ -1,3 +1,5 @@
+# Uncomment to use the profiling module
+# zmodload zsh/zprof
 source ~/zsh-defer/zsh-defer.plugin.zsh
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -11,8 +13,8 @@ source "${ZINIT_HOME}/zinit.zsh"
 # Autocompletions and sources nvm
 zinit ice wait'2' lucid
 zi snippet OMZP::nvm
-# zinit ice wait lucid
-# zi snippet OMZP::git
+zinit ice wait lucid
+zi snippet OMZP::git
 # auto-completion for docker
 zinit ice wait lucid
 zi snippet OMZP::docker
@@ -89,16 +91,16 @@ source ~/.fzfgitfunctions.zsh
 # Less won't be used if it fits in the page
 export LESS="-F -X $LESS"
 
-# zmodload zsh/complist
-# zstyle ':completion:*' menu select
+zmodload zsh/complist
+zstyle ':completion:*' menu select
 
 # use the vi navigation keys in menu completion
-# bindkey -M menuselect '^h' vi-backward-char
-# bindkey -M menuselect '^k' vi-up-line-or-history
-# bindkey -M menuselect '^l' vi-forward-char
-# bindkey -M menuselect '^j' vi-down-line-or-history
+bindkey -M menuselect '^h' vi-backward-char
+bindkey -M menuselect '^k' vi-up-line-or-history
+bindkey -M menuselect '^l' vi-forward-char
+bindkey -M menuselect '^j' vi-down-line-or-history
 
-# bindkey -M menuselect '?' history-incremental-search-forward
+bindkey -M menuselect '?' history-incremental-search-forward
 
 # Easier bindings than going to cmd mode then pressing j or k
 bindkey -M main '^k' up-history
@@ -181,6 +183,11 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$HOME/.phpenv/bin:$PATH"
 export PATH=$HOME/.local/bin:$PATH
-eval "$(phpenv init -)"
+zsh-defer eval "$(phpenv init -)"
+
+# Add adb to path
+export PATH="$PATH:$HOME/Library/Android/sdk/platform-tools"
+# Add emulator to path
+export PATH="$PATH:$HOME/Library/Android/sdk/emulator"
 
 export XDG_CONFIG_HOME="$HOME/.config"

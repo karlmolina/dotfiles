@@ -8,6 +8,8 @@ vim.opt.termguicolors = true
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+-- No swap files >:)
+vim.opt.swapfile = false
 -- Set to true if you have a Nerd Font installed
 vim.g.have_nerd_font = true
 -- Wrap text with linebreak
@@ -99,8 +101,6 @@ require('lazy').setup({
   },
   -- use nvimtree instead of neotree, that one is giving me errors for some reason
   -- refactor rename with nvimtree
-  -- fix tabout
-  -- install tmux navigation
   {
     'abecodes/tabout.nvim',
     lazy = false,
@@ -949,22 +949,22 @@ vim.api.nvim_create_autocmd({ 'FocusLost', 'BufLeave' }, {
     -- vim.cmd [[echo "Buffers saved"]]
   end,
 })
-vim.api.nvim_create_autocmd('BufLeave', {
-  desc = 'Close nvim config when leaving so I can edit it in multiple nvims',
-  group = vim.api.nvim_create_augroup('kickstart-close-config', { clear = true }),
-  -- Define a pattern to match the buffer name
-  pattern = { '*/.config/nvim/init.lua' },
-  -- Callback function to execute
-  callback = function()
-    print 'Leaving nvim config'
-    -- Save the buffer
-    -- vim.api.nvim_buf_write(0)
-    -- Close the buffer
-    -- vim.cmd 'bclose!'
-    vim.cmd [[w]]
-    vim.cmd [[bdelete]]
-  end,
-})
+-- vim.api.nvim_create_autocmd('BufLeave', {
+--   desc = 'Close nvim config when leaving so I can edit it in multiple nvims',
+--   group = vim.api.nvim_create_augroup('kickstart-close-config', { clear = true }),
+--   -- Define a pattern to match the buffer name
+--   pattern = { '*/.config/nvim/init.lua' },
+--   -- Callback function to execute
+--   callback = function()
+--     print 'Leaving nvim config'
+--     -- Save the buffer
+--     -- vim.api.nvim_buf_write(0)
+--     -- Close the buffer
+--     -- vim.cmd 'bclose!'
+--     vim.cmd [[w]]
+--     vim.cmd [[bdelete]]
+--   end,
+-- })
 
 vim.keymap.set('c', '<C-j>', '<C-n>', { desc = 'Move to next' })
 vim.keymap.set('c', '<C-k>', '<C-p>', { desc = 'Move to previous' })
