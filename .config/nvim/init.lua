@@ -65,10 +65,11 @@ vim.keymap.set('n', '<leader>k', vim.diagnostic.setloclist, { desc = 'Open diagn
 vim.keymap.set('t', '<C-q>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
-vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+-- Actually use tmux navigation with ctrl-space ctrl-hjkl
+-- vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
+-- vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
+-- vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
+-- vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
 --  See `:help vim.highlight.on_yank()`
@@ -79,6 +80,57 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
+
+vim.keymap.set('n', '<leader>ne', [[:e $MYVIMRC<CR>]], { desc = 'Edit neovim config' })
+vim.keymap.set('n', '<leader>nt', [[:e ~/.tmux.conf<CR>]], { desc = 'Edit tmux config' })
+vim.keymap.set('n', '<leader>nz', [[:e ~/.zshrc<CR>]], { desc = 'Edit zshrc' })
+vim.keymap.set('n', '<leader>ns', [[:silent! w<CR>:source $MYVIMRC<CR>]], { desc = 'Source neovim config' })
+vim.keymap.set('n', '<leader>w', [[:wall<CR>]], { desc = 'Write all buffers' })
+vim.keymap.set('n', '<leader>q', [[:bdelete<CR>]], { desc = 'Close buffer' })
+-- set control p to write and closest
+vim.keymap.set('n', '<C-p>', [[:wall<CR>:qall<CR>]], { desc = 'Write and close' })
+-- or just do *?
+-- vim.keymap.set('v', '/', [[y/\V<C-R>=escape(@",'/\')<CR><CR>]], { desc = 'Search selected text' })
+-- mouse wheel scroll speed
+vim.keymap.set('n', '<ScrollWheelUp>', '<C-y>', { desc = 'Scroll up' })
+vim.keymap.set('n', '<ScrollWheelDown>', '<C-e>', { desc = 'Scroll down' })
+vim.keymap.set('n', '<leader>nL', ':Lazy<CR>', { desc = 'Lazy plugin manager' })
+-- leader tab to switch to last buffer
+-- can't do <tab> because it conflicts with <c-i>
+vim.keymap.set('n', '<leader><tab>', '<C-^>', { desc = 'Switch to last buffer' })
+vim.api.nvim_create_autocmd({ 'FocusLost', 'BufLeave' }, {
+  desc = 'Save when focus is lost',
+  group = vim.api.nvim_create_augroup('kickstart-autosave', { clear = true }),
+  callback = function(ev)
+    -- if file has no name don't save
+    if vim.api.nvim_buf_get_name(ev.buf) == '' then
+      return
+    end
+    -- save buffer
+    vim.cmd [[silent! wall]]
+    -- write that we saved the buffers
+    -- vim.cmd [[echo "Buffers saved"]]
+  end,
+})
+-- vim.api.nvim_create_autocmd('BufLeave', {
+--   desc = 'Close nvim config when leaving so I can edit it in multiple nvims',
+--   group = vim.api.nvim_create_augroup('kickstart-close-config', { clear = true }),
+--   -- Define a pattern to match the buffer name
+--   pattern = { '*/.config/nvim/init.lua' },
+--   -- Callback function to execute
+--   callback = function()
+--     print 'Leaving nvim config'
+--     -- Save the buffer
+--     -- vim.api.nvim_buf_write(0)
+--     -- Close the buffer
+--     -- vim.cmd 'bclose!'
+--     vim.cmd [[w]]
+--     vim.cmd [[bdelete]]
+--   endj,
+-- })
+
+vim.keymap.set('c', '<C-j>', '<C-n>', { desc = 'Move to next' })
+vim.keymap.set('c', '<C-k>', '<C-p>', { desc = 'Move to previous' })
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
@@ -91,16 +143,43 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   -- [[ Configure and install plugins ]]
+  -- markdown
+  {
+    'iamcco/markdown-preview.nvim',
+    cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
+    ft = { 'markdown' },
+    build = function()
+      vim.fn['mkdp#util#install']()
+    end,
+  },
+  -- tmux vim navigation
+  {
+    'christoomey/vim-tmux-navigator',
+    cmd = {
+      'TmuxNavigateLeft',
+      'TmuxNavigateDown',
+      'TmuxNavigateUp',
+      'TmuxNavigateRight',
+      'TmuxNavigatePrevious',
+    },
+    keys = {
+      { '<c-w><c-h>', '<cmd>TmuxNavigateLeft<cr>' },
+      { '<c-w><c-j>', '<cmd>TmuxNavigateDown<cr>' },
+      { '<c-w><c-k>', '<cmd>TmuxNavigateUp<cr>' },
+      { '<c-w><c-l>', '<cmd>TmuxNavigateRight<cr>' },
+      -- { '<c-\\>', '<cmd>TmuxNavigatePrevious<cr>' },
+    },
+  },
   -- fzf file explorer
   {
     'nvim-telescope/telescope-file-browser.nvim',
     dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' },
     init = function()
-      vim.keymap.set('n', '<leader>e', '<cmd>Telescope file_browser<CR>', { desc = 'Open file browser' })
+      vim.keymap.set('n', '<leader>fb', '<cmd>Telescope file_browser<CR>', { desc = 'Open file browser' })
+      vim.keymap.set('n', '<leader>e', ':Telescope file_browser path=%:p:h select_buffer=true<CR>', { desc = 'Open file in file browser' })
     end,
   },
-  -- use nvimtree instead of neotree, that one is giving me errors for some reason
-  -- refactor rename with nvimtree
+  -- tab out of parentheses, brackets, etc
   {
     'abecodes/tabout.nvim',
     lazy = false,
@@ -145,57 +224,80 @@ require('lazy').setup({
   { 'tpope/vim-repeat' },
   -- auto close parentheses and brackets
   { 'cohama/lexima.vim' },
-  -- file explorer
-  -- {
-  --   'nvim-tree/nvim-tree.lua',
-  --   version = '*',
-  --   lazy = false,
-  --   dependencies = {
-  --     'nvim-tree/nvim-web-devicons',
-  --   },
-  --   config = function()
-  --     require('nvim-tree').setup {}
-  --   end,
-  -- },
+  -- rename files with nvim tree will update imports
   {
-    'nvim-neo-tree/neo-tree.nvim',
-    branch = 'v3.x',
+    'antosha417/nvim-lsp-file-operations',
     dependencies = {
       'nvim-lua/plenary.nvim',
-      'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
-      'MunifTanjim/nui.nvim',
-      '3rd/image.nvim', -- Optional image support in preview window: See `# Preview Mode` for more information
+      'nvim-tree/nvim-tree.lua',
     },
-    cmd = { 'Neotree' },
-    init = function()
-      vim.keymap.set('n', '<leader>E', '<cmd>Neotree toggle left reveal<CR>', { desc = 'Toggle file tree' })
-    end,
     config = function()
-      -- If you want icons for diagnostic errors, you'll need to define them somewhere:
-      vim.fn.sign_define('DiagnosticSignError', { text = ' ', texthl = 'DiagnosticSignError' })
-      vim.fn.sign_define('DiagnosticSignWarn', { text = ' ', texthl = 'DiagnosticSignWarn' })
-      vim.fn.sign_define('DiagnosticSignInfo', { text = ' ', texthl = 'DiagnosticSignInfo' })
-      vim.fn.sign_define('DiagnosticSignHint', { text = '󰌵', texthl = 'DiagnosticSignHint' })
-      require('neo-tree').setup {
-        auto_close = true,
-        update_focused_file = {
-          enable = true,
+      require('lsp-file-operations').setup()
+    end,
+  },
+  -- file explorer
+  {
+    'nvim-tree/nvim-tree.lua',
+    version = '*',
+    lazy = false,
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
+    },
+    config = function()
+      require('nvim-tree').setup {
+        view = {
+          width = 60,
         },
-        window = {
-          width = 100,
-        },
-        event_handlers = {
-          {
-            event = 'file_opened',
-            handler = function()
-              -- auto close
-              require('neo-tree.command').execute { action = 'close' }
-            end,
+        actions = {
+          open_file = {
+            quit_on_open = true,
           },
         },
       }
     end,
+    init = function()
+      vim.keymap.set('n', '<leader>E', '<cmd>NvimTreeFindFileToggle<CR>', { desc = 'Toggle file tree' })
+    end,
   },
+  -- {
+  --   'nvim-neo-tree/neo-tree.nvim',
+  --   branch = 'v3.x',
+  --   dependencies = {
+  --     'nvim-lua/plenary.nvim',
+  --     'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
+  --     'MunifTanjim/nui.nvim',
+  --     '3rd/image.nvim', -- Optional image support in preview window: See `# Preview Mode` for more information
+  --   },
+  --   cmd = { 'Neotree' },
+  --   init = function()
+  --     vim.keymap.set('n', '<leader>E', '<cmd>Neotree toggle left reveal<CR>', { desc = 'Toggle file tree' })
+  --   end,
+  --   config = function()
+  --     -- If you want icons for diagnostic errors, you'll need to define them somewhere:
+  --     vim.fn.sign_define('DiagnosticSignError', { text = ' ', texthl = 'DiagnosticSignError' })
+  --     vim.fn.sign_define('DiagnosticSignWarn', { text = ' ', texthl = 'DiagnosticSignWarn' })
+  --     vim.fn.sign_define('DiagnosticSignInfo', { text = ' ', texthl = 'DiagnosticSignInfo' })
+  --     vim.fn.sign_define('DiagnosticSignHint', { text = '󰌵', texthl = 'DiagnosticSignHint' })
+  --     require('neo-tree').setup {
+  --       auto_close = true,
+  --       update_focused_file = {
+  --         enable = true,
+  --       },
+  --       window = {
+  --         width = 100,
+  --       },
+  --       event_handlers = {
+  --         {
+  --           event = 'file_opened',
+  --           handler = function()
+  --             -- auto close
+  --             require('neo-tree.command').execute { action = 'close' }
+  --           end,
+  --         },
+  --       },
+  --     }
+  --   end,
+  -- },
   -- abolish
   --   - Provides a few commands for working with words like change case of phrase
   {
@@ -373,7 +475,8 @@ require('lazy').setup({
         defaults = {
           mappings = {
             i = {
-              ['<c-enter>'] = 'to_fuzzy_refine',
+              -- this doesn't work anymore :(
+              ['<c-y>'] = 'to_fuzzy_refine',
               -- ctrl-j to move down
               ['<c-p>'] = require('telescope.actions').cycle_history_prev,
               ['<c-n>'] = require('telescope.actions').cycle_history_next,
@@ -439,6 +542,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>fd', telescope_builtin.diagnostics, { desc = 'search diagnostics' })
       vim.keymap.set('n', '<leader>fr', telescope_builtin.resume, { desc = 'search resume' })
       vim.keymap.set('n', '<leader>fo', telescope_builtin.oldfiles, { desc = 'search recent files' })
+      vim.keymap.set('n', '<leader>o', telescope_builtin.git_files, { desc = 'search git files' })
       vim.keymap.set('n', '<leader>d', telescope_builtin.buffers, { desc = 'find existing buffers' })
 
       -- Slightly advanced example of overriding default behavior and theme
@@ -582,6 +686,7 @@ require('lazy').setup({
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
         tsserver = {},
+        tailwindcss = {},
 
         lua_ls = {
           -- cmd = {...},
@@ -870,6 +975,15 @@ require('lazy').setup({
         highlight = { enable = true },
         indent = { enable = true },
         autotag = { enable = true },
+        incremental_selection = {
+          enable = true,
+          keymaps = {
+            init_selection = 'gnn', -- set to `false` to disable one of the mappings
+            node_incremental = 'grn',
+            scope_incremental = 'grc',
+            node_decremental = 'grm',
+          },
+        },
       }
 
       -- There are additional nvim-treesitter modules that you can use to interact
@@ -923,58 +1037,11 @@ require('lazy').setup({
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
-
-vim.keymap.set('n', '<leader>ne', [[:e ~/.config/nvim/init.lua<CR>]], { desc = 'Edit neovim config' })
-vim.keymap.set('n', '<leader>w', [[:wall<CR>]], { desc = 'Write all buffers' })
-vim.keymap.set('n', '<leader>q', [[:bdelete<CR>]], { desc = 'Close buffer' })
--- set control p to write and closest
-vim.keymap.set('n', '<C-p>', [[:x<CR>]], { desc = 'Write and close' })
-vim.keymap.set('n', '<leader>o', [[:Telescope find_files<CR>]], { desc = 'Find files' })
--- or just do *?
--- vim.keymap.set('v', '/', [[y/\V<C-R>=escape(@",'/\')<CR><CR>]], { desc = 'Search selected text' })
--- mouse wheel scroll speed
-vim.keymap.set('n', '<ScrollWheelUp>', '<C-y>', { desc = 'Scroll up' })
-vim.keymap.set('n', '<ScrollWheelDown>', '<C-e>', { desc = 'Scroll down' })
-vim.keymap.set('n', '<leader>nL', ':Lazy<CR>', { desc = 'Lazy plugin manager' })
--- leader tab to switch to last buffer
--- can't do <tab> because it conflicts with <c-i>
-vim.keymap.set('n', '<leader><tab>', '<C-^>', { desc = 'Switch to last buffer' })
-vim.api.nvim_create_autocmd({ 'FocusLost', 'BufLeave' }, {
-  desc = 'Save when focus is lost',
-  group = vim.api.nvim_create_augroup('kickstart-autosave', { clear = true }),
-  callback = function()
-    -- update all buffers
-    vim.cmd [[wa]]
-    -- write that we saved the buffers
-    -- vim.cmd [[echo "Buffers saved"]]
-  end,
-})
--- vim.api.nvim_create_autocmd('BufLeave', {
---   desc = 'Close nvim config when leaving so I can edit it in multiple nvims',
---   group = vim.api.nvim_create_augroup('kickstart-close-config', { clear = true }),
---   -- Define a pattern to match the buffer name
---   pattern = { '*/.config/nvim/init.lua' },
---   -- Callback function to execute
---   callback = function()
---     print 'Leaving nvim config'
---     -- Save the buffer
---     -- vim.api.nvim_buf_write(0)
---     -- Close the buffer
---     -- vim.cmd 'bclose!'
---     vim.cmd [[w]]
---     vim.cmd [[bdelete]]
---   end,
--- })
-
-vim.keymap.set('c', '<C-j>', '<C-n>', { desc = 'Move to next' })
-vim.keymap.set('c', '<C-k>', '<C-p>', { desc = 'Move to previous' })
-
 local Terminal = require('toggleterm.terminal').Terminal
 local lazygit = Terminal:new { cmd = 'lazygit', hidden = true, direction = 'float' }
 
 function Lazygit_toggle()
   lazygit:toggle()
 end
-
 -- vim.keymap.set('n', '<leader>hG', '<cmd>lua Lazygit_toggle()<CR>', { desc = 'Open lazygit', silent = true })
 -- vim.keymap.set('n', '<leader>hC', '<cmd>e ~/.config/lazygit/config.yml<CR>', { desc = 'Open lazygit config' })
