@@ -142,6 +142,12 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
+  -- This doesn't work for some reason
+  -- {
+  --   'pmizio/typescript-tools.nvim',
+  --   dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
+  --   opts = {},
+  -- },
   -- [[ Configure and install plugins ]]
   -- markdown
   {
@@ -544,6 +550,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>fo', telescope_builtin.oldfiles, { desc = 'search recent files' })
       vim.keymap.set('n', '<leader>o', telescope_builtin.git_files, { desc = 'search git files' })
       vim.keymap.set('n', '<leader>d', telescope_builtin.buffers, { desc = 'find existing buffers' })
+      vim.keymap.set('n', '<leader>hf', telescope_builtin.git_bcommits, { desc = 'search commits for current buffer' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>fl', function()
@@ -754,7 +761,7 @@ require('lazy').setup({
     opts = {
       notify_on_error = true,
       format_on_save = {
-        timeout_ms = 500,
+        timeout_ms = 2000,
         lsp_fallback = true,
       },
       formatters_by_ft = {
