@@ -245,5 +245,5 @@ notARepository: prompt
 promptToReturnFromSubprocess: true
 
 os:
-  edit: nvim --server /tmp/nvimsocket --remote-send "<cmd>lua require('custom.plugins.lazygit-open-file')('{{filename}}', '{{line}}')<CR>"
-  open: nvim --server /tmp/nvimsocket --remote-send "<cmd>lua require('custom.plugins.lazygit-open-file')('{{filename}}', '{{line}}')<CR>"
+  edit: nvim --server /tmp/nvim-server-$(tmux display-message -p '#S').pipe --remote-send "<cmd>lua require('custom.plugins.lazygit-open-file')('{{filename}}', '{{line}}')<CR>"
+  open: nvim --server /tmp/nvim-server-$(tmux display-message -p '#S').pipe --remote-send "<cmd>lua require('custom.plugins.lazygit-open-file')('{{filename}}', '{{line}}')<CR>"

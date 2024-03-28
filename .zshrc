@@ -78,7 +78,7 @@ else
     export EDITOR="nvim"
 fi
 
-alias vi='nvim --listen /tmp/nvimsocket'
+alias vi="nvim --listen /tmp/nvim-server-$(tmux display-message -p '#S').pipe"
 
 # Source alias files which source other alias files
 source ~/.zsh_aliases
