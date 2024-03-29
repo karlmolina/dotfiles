@@ -94,7 +94,7 @@ vim.keymap.set('n', '<C-p>', [[:wall<CR>:qall<CR>]], { desc = 'Write and close' 
 -- mouse wheel scroll speed
 vim.keymap.set('n', '<ScrollWheelUp>', '<C-y>', { desc = 'Scroll up' })
 vim.keymap.set('n', '<ScrollWheelDown>', '<C-e>', { desc = 'Scroll down' })
-vim.keymap.set('n', '<leader>nL', ':Lazy<CR>', { desc = 'Lazy plugin manager' })
+vim.keymap.set('n', '<leader>nl', ':Lazy<CR>', { desc = 'Lazy plugin manager' })
 -- leader tab to switch to last buffer
 -- can't do <tab> because it conflicts with <c-i>
 vim.keymap.set('n', '<leader><tab>', '<C-^>', { desc = 'Switch to last buffer' })
@@ -112,22 +112,6 @@ vim.api.nvim_create_autocmd({ 'FocusLost', 'BufLeave' }, {
     -- vim.cmd [[echo "Buffers saved"]]
   end,
 })
--- vim.api.nvim_create_autocmd('BufLeave', {
---   desc = 'Close nvim config when leaving so I can edit it in multiple nvims',
---   group = vim.api.nvim_create_augroup('kickstart-close-config', { clear = true }),
---   -- Define a pattern to match the buffer name
---   pattern = { '*/.config/nvim/init.lua' },
---   -- Callback function to execute
---   callback = function()
---     print 'Leaving nvim config'
---     -- Save the buffer
---     -- vim.api.nvim_buf_write(0)
---     -- Close the buffer
---     -- vim.cmd 'bclose!'
---     vim.cmd [[w]]
---     vim.cmd [[bdelete]]
---   endj,
--- })
 
 vim.keymap.set('c', '<C-j>', '<C-n>', { desc = 'Move to next' })
 vim.keymap.set('c', '<C-k>', '<C-p>', { desc = 'Move to previous' })
@@ -153,10 +137,11 @@ require('lazy').setup({
   {
     'iamcco/markdown-preview.nvim',
     cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
-    ft = { 'markdown' },
-    build = function()
-      vim.fn['mkdp#util#install']()
+    build = 'cd app && yarn install',
+    init = function()
+      vim.g.mkdp_filetypes = { 'markdown' }
     end,
+    ft = { 'markdown' },
   },
   -- tmux vim navigation
   {
@@ -361,6 +346,12 @@ require('lazy').setup({
     'lewis6991/gitsigns.nvim',
     config = function()
       require('gitsigns').setup {
+        worktrees = {
+          {
+            toplevel = vim.env.HOME,
+            gitdir = vim.env.HOME .. '/.dotfiles/.git',
+          },
+        },
         on_attach = function(bufnr)
           local gs = package.loaded.gitsigns
 
@@ -706,12 +697,12 @@ require('lazy').setup({
                 checkThirdParty = false,
                 -- Tells lua_ls where to find all the Lua files that you have loaded
                 -- for your neovim configuration.
-                library = {
-                  '${3rd}/luv/library',
-                  unpack(vim.api.nvim_get_runtime_file('', true)),
-                },
+                -- library = {
+                --   '${3rd}/luv/library',
+                --   unpack(vim.api.nvim_get_runtime_file('', true)),
+                -- },
                 -- If lua_ls is really slow on your computer, you can try this instead:
-                -- library = { vim.env.VIMRUNTIME },
+                library = { vim.env.VIMRUNTIME },
               },
               completion = {
                 callSnippet = 'Replace',
@@ -925,10 +916,6 @@ require('lazy').setup({
       -- vim.cmd.hi 'Comment gui=none'
     end,
   },
-
-  -- Highlight todo, notes, etc in comments
-  { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
-
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
     config = function()
@@ -966,7 +953,6 @@ require('lazy').setup({
       --  Check out: https://github.com/echasnovski/mini.nvim
     end,
   },
-
   { 'windwp/nvim-ts-autotag' },
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
