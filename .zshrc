@@ -119,8 +119,16 @@ unsetopt nomatch
 # show hidden dotfiles when using tab completion
 setopt globdots
 
-# share history between all zsh terminal windows
-setopt share_history
+# dont share history between terminals, add to history right when command is run
+setopt inc_append_history
+
+# all the history
+export HISTFILESIZE=1000000000
+export HISTSIZE=1000000000
+
+# Load history from other shells
+alias gethistory='fc -RI'
+
 
 # set golang path
 export GOPATH=$(go env GOPATH)

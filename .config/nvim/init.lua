@@ -485,6 +485,7 @@ require('lazy').setup({
               ['<c-n>'] = require('telescope.actions').cycle_history_next,
               ['<c-j>'] = require('telescope.actions').move_selection_next,
               ['<c-k>'] = require('telescope.actions').move_selection_previous,
+              ['<c-c>'] = require('telescope.actions').close,
             },
           },
           layout_config = {
