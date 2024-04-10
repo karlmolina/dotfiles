@@ -107,7 +107,7 @@ vim.api.nvim_create_autocmd({ 'FocusLost', 'BufLeave' }, {
       return
     end
     -- save buffer
-    vim.cmd [[silent! wall]]
+    vim.cmd [[wall]]
     -- write that we saved the buffers
     -- vim.cmd [[echo "Buffers saved"]]
   end,
@@ -133,6 +133,21 @@ require('lazy').setup({
   --   opts = {},
   -- },
   -- [[ Configure and install plugins ]]
+  -- Flutter
+  {
+    'akinsho/flutter-tools.nvim',
+    lazy = false,
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'stevearc/dressing.nvim', -- optional for vim.ui.select
+    },
+    config = true,
+  },
+  -- Better rename window?
+  {
+    'stevearc/dressing.nvim',
+    opts = {},
+  },
   -- markdown
   {
     'iamcco/markdown-preview.nvim',
@@ -370,7 +385,7 @@ require('lazy').setup({
               gs.next_hunk()
             end)
             return '<Ignore>'
-          end, { expr = true })
+          end, { expr = true, desc = 'Go to next hunk' })
 
           map('n', '[c', function()
             if vim.wo.diff then
@@ -380,7 +395,7 @@ require('lazy').setup({
               gs.prev_hunk()
             end)
             return '<Ignore>'
-          end, { expr = true })
+          end, { expr = true, desc = 'Go to previous hunk' })
 
           -- Actions
           map('n', '<leader>hs', gs.stage_hunk, { desc = 'Stage hunk' })
@@ -715,8 +730,8 @@ require('lazy').setup({
         },
       }
 
-      require('lspconfig').dartls.setup {}
-
+      -- require('lspconfig').dartls.setup {}
+      --
       -- Ensure the servers and tools above are installed
       --  To check the current status of installed tools and/or manually install
       --  other tools, you can run
@@ -768,6 +783,7 @@ require('lazy').setup({
         php = { 'prettier' },
         typescript = { 'prettier' },
         typescriptreact = { 'prettier' },
+        yaml = { 'prettier' },
       },
       formatters = {
         prettier = {
@@ -787,7 +803,7 @@ require('lazy').setup({
               --     html = "html",
               --     json = "json",
               --     jsonc = "json",
-              --     yaml = "yaml",
+              yaml = 'yaml',
               --     markdown = "markdown",
               --     ["markdown.mdx"] = "mdx",
               --     graphql = "graphql",

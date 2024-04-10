@@ -38,10 +38,14 @@ VI_MODE_SET_CURSOR=true
 VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 VI_MODE_CURSOR_INSERT=5
 
-zicompinit
-zicdreplay
 zi load Aloxaf/fzf-tab
-zi load zsh-users/zsh-autosuggestions
+zinit wait lucid for \
+ atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+    zdharma-continuum/fast-syntax-highlighting \
+ blockf \
+    zsh-users/zsh-completions \
+ atload"!_zsh_autosuggest_start" \
+    zsh-users/zsh-autosuggestions
 
 ### Fix slowness of pastes with zsh-syntax-highlighting.zsh
 # pasteinit() {
@@ -199,3 +203,6 @@ export PATH="$PATH:$HOME/Library/Android/sdk/platform-tools"
 export PATH="$PATH:$HOME/Library/Android/sdk/emulator"
 
 export XDG_CONFIG_HOME="$HOME/.config"
+
+fpath=(/opt/homebrew/opt/go-task/share/zsh/site-functions $fpath)
+autoload -U compinit && compinit
