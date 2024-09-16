@@ -19,7 +19,8 @@ brew install diff-so-fancy
 brew install starship
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-brew install go
+# Install go from website
+# brew install go
 # Node version manager
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 # You shouldn't ever lose your work if you're using Git 

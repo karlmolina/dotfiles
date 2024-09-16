@@ -95,6 +95,8 @@ vim.keymap.set('n', '<C-p>', [[:wall<CR>:qall<CR>]], { desc = 'Write and close' 
 vim.keymap.set('n', '<ScrollWheelUp>', '<C-y>', { desc = 'Scroll up' })
 vim.keymap.set('n', '<ScrollWheelDown>', '<C-e>', { desc = 'Scroll down' })
 vim.keymap.set('n', '<leader>nl', ':Lazy<CR>', { desc = 'Lazy plugin manager' })
+vim.keymap.set('n', '<leader>a', 'ggVG', { desc = 'Select file' })
+vim.keymap.set('n', '<leader>ya', ':%y+<CR>', { desc = 'Copy file' })
 -- leader tab to switch to last buffer
 -- can't do <tab> because it conflicts with <c-i>
 vim.keymap.set('n', '<leader><tab>', '<C-^>', { desc = 'Switch to last buffer' })
@@ -133,6 +135,71 @@ require('lazy').setup({
   --   opts = {},
   -- },
   -- [[ Configure and install plugins ]]
+  {
+    'phpactor/phpactor',
+    ft = 'php', -- Load the plugin only when editing PHP files
+    build = 'composer install --no-dev --optimize-autoloader', -- Install PHP dependencies
+    config = function() end,
+  },
+  {
+    'ray-x/lsp_signature.nvim',
+    event = 'VeryLazy',
+    opts = {},
+    config = function(_, opts)
+      require('lsp_signature').setup(opts)
+    end,
+  },
+  {
+    'nvim-neotest/neotest',
+    dependencies = {
+      'nvim-neotest/nvim-nio',
+      'nvim-lua/plenary.nvim',
+      'antoinemadec/FixCursorHold.nvim',
+      'nvim-treesitter/nvim-treesitter',
+      'nvim-neotest/neotest-jest',
+    },
+    config = function()
+      require('neotest').setup {
+        adapters = {
+          require 'neotest-jest' {
+            jestCommand = 'npm test --',
+            jestConfigFile = 'custom.jest.config.ts',
+            env = { CI = true },
+            cwd = function(file)
+              if string.find(file, '/src/') then
+                return string.match(file, '(.-/[^/]+/)src')
+              end
+              return vim.fn.getcwd()
+            end,
+          },
+        },
+      }
+      vim.keymap.set('n', '<leader>tn', function()
+        require('neotest').run.run()
+      end, { desc = 'Run nearest test' })
+
+      vim.keymap.set('n', '<leader>tu', function()
+        require('neotest').run.run { jestCommand = 'npm test -- --updateSnapshot ' }
+      end, { desc = 'Update nearest test snapshot' })
+
+      vim.keymap.set('n', '<leader>tf', function()
+        require('neotest').run.run(vim.fn.expand '%')
+      end, { desc = 'Run current test file' })
+
+      vim.keymap.set('n', '<leader>ts', function()
+        require('neotest').run.run(vim.fn.getcwd())
+      end, { desc = 'Run full test suite' })
+
+      vim.keymap.set('n', '<leader>tt', function()
+        require('neotest').summary.toggle()
+      end, { desc = 'Toggle test summary' })
+
+      vim.keymap.set('n', '<leader>to', function()
+        require('neotest').output_panel.toggle()
+      end, { desc = 'Toggle output panel' })
+    end,
+  },
+  { 'architect/vim-plugin' },
   -- Flutter
   {
     'akinsho/flutter-tools.nvim',
@@ -184,6 +251,19 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>fb', '<cmd>Telescope file_browser<CR>', { desc = 'Open file browser' })
       vim.keymap.set('n', '<leader>e', ':Telescope file_browser path=%:p:h select_buffer=true<CR>', { desc = 'Open file in file browser' })
     end,
+  },
+  {
+    'imNel/monorepo.nvim',
+    config = function()
+      require('monorepo').setup {}
+      vim.keymap.set('n', '<leader>fm', function()
+        require('telescope').extensions.monorepo.monorepo()
+      end)
+      vim.keymap.set('n', '<leader>fn', function()
+        require('monorepo').toggle_project()
+      end)
+    end,
+    dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' },
   },
   -- tab out of parentheses, brackets, etc
   {
@@ -258,6 +338,9 @@ require('lazy').setup({
           open_file = {
             quit_on_open = true,
           },
+        },
+        update_focused_file = {
+          enable = true,
         },
       }
     end,
@@ -354,9 +437,18 @@ require('lazy').setup({
   },
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
   -- "gc" to comment visual regions/lines
-  { 'numtostr/comment.nvim', opts = {
-    toggler = { line = '<leader>/' },
-  } },
+  {
+    'numtostr/comment.nvim',
+    opts = {
+      toggler = {
+        line = '<leader>/',
+      },
+      opleader = {
+        line = '<leader>/',
+        block = 'gb',
+      },
+    },
+  },
   { -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     config = function()
@@ -428,31 +520,28 @@ require('lazy').setup({
   },
   { -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
-    event = 'VimEnter', -- Sets the loading event to 'VimEnter'
-    config = function() -- This is the function that runs, AFTER loading
-      require('which-key').setup()
-      -- Document existing key chains
-      require('which-key').register {
-        ['<leader>n'] = { name = 'Neovim', _ = 'which_key_ignore' },
-        ['<leader>f'] = { name = 'Telescope', _ = 'which_key_ignore' },
-        ['<leader>l'] = { name = 'LSP', _ = 'which_key_ignore' },
-        ['<leader>g'] = { name = 'Go to', _ = 'which_key_ignore' },
-        ['<leader>h'] = { name = 'Git', _ = 'which_key_ignore' },
-        ['<leader>t'] = { name = 'Toggle', _ = 'which_key_ignore' },
-        -- mappings for abolish
-        -- idk why this is ruining it
-        -- ['cr'] = {
-        --   _ = 'which_key_ignore',
-        --   name = 'Change case w/ abolish',
-        --   c = 'camelCase',
-        --   p = 'PascalCase',
-        --   s = 'snake_case',
-        --   u = 'SNAKE_UPPERCASE',
-        --   k = 'kebab-case (not usually reversible)',
-        --   ['.'] = 'dot.case (not usually reversible)',
-        -- },
-      }
-    end,
+    event = 'VeryLazy', -- Sets the loading event to 'VimEnter'
+    opts = {},
+    keys = {
+      { '<leader>f', group = 'Telescope' },
+      { '<leader>g', group = 'Go to' },
+      { '<leader>h', group = 'Git' },
+      { '<leader>l', group = 'LSP' },
+      { '<leader>n', group = 'Neovim' },
+      { '<leader>t', group = 'Toggle' },
+      -- mappings for abolish
+      -- idk why this is ruining it
+      -- ['cr'] = {
+      --   _ = 'which_key_ignore',
+      --   name = 'Change case w/ abolish',
+      --   c = 'camelCase',
+      --   p = 'PascalCase',
+      --   s = 'snake_case',
+      --   u = 'SNAKE_UPPERCASE',
+      --   k = 'kebab-case (not usually reversible)',
+      --   ['.'] = 'dot.case (not usually reversible)',
+      -- },
+    },
   },
   { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
@@ -479,6 +568,14 @@ require('lazy').setup({
       { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
     },
     config = function()
+      local function filenameFirst(_, path)
+        local tail = vim.fs.basename(path)
+        local parent = vim.fs.dirname(path)
+        if parent == '.' then
+          return tail
+        end
+        return string.format('%s - %s', tail, parent)
+      end
       -- two important keymaps to use while in telescope are:
       --  - insert mode: <c-/>
       --  - normal mode: ?
@@ -501,15 +598,14 @@ require('lazy').setup({
               ['<c-j>'] = require('telescope.actions').move_selection_next,
               ['<c-k>'] = require('telescope.actions').move_selection_previous,
               ['<c-c>'] = require('telescope.actions').close,
+              ['q'] = require('telescope.actions').close,
             },
           },
           layout_config = {
             width = { padding = 0 },
             height = { padding = 0 },
           },
-          path_display = {
-            'truncate',
-          },
+          path_display = { 'tail' },
           cache_picker = {
             num_pickers = 3,
           },
@@ -630,9 +726,7 @@ require('lazy').setup({
           --  Similar to document symbols, except searches over your whole project.
           map('<leader>fs', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'search workspace symbols')
 
-          -- Fuzzy find all the symbols in your current workspace
-          --  Similar to document symbols, except searches over your whole project.
-          map('<leader>fp', require('telescope.builtin').pickers, 'Cached telescope pickers')
+          map('<leader>fc', require('telescope.builtin').pickers, 'Cached telescope pickers')
 
           -- Rename the variable under your cursor
           --  Most Language Servers support renaming across files, etc.
@@ -687,21 +781,25 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        -- clangd = {},
-        -- gopls = {},
-        pyright = {},
-        phpactor = {},
-        groovyls = {},
-        -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
-        tsserver = {},
+        -- clangd = {},
+        gopls = {},
+        templ = {},
+        htmx = {},
+        pyright = {},
+        ruff_lsp = {},
+        phpactor = {},
+        groovyls = {},
+        html = {},
+        cssls = {},
+        rust_analyzer = {},
+        ts_ls = {},
         tailwindcss = {},
-
         lua_ls = {
           -- cmd = {...},
           -- filetypes { ...},
@@ -784,6 +882,7 @@ require('lazy').setup({
         typescript = { 'prettier' },
         typescriptreact = { 'prettier' },
         yaml = { 'prettier' },
+        python = { 'ruff_fix', 'ruff_format' },
       },
       formatters = {
         prettier = {
@@ -821,7 +920,7 @@ require('lazy').setup({
 
   { -- Autocompletion
     'hrsh7th/nvim-cmp',
-    event = 'InsertEnter',
+    event = 'VeryLazy',
     dependencies = {
       -- Snippet Engine & its associated nvim-cmp source
       {
@@ -843,6 +942,8 @@ require('lazy').setup({
       --  into multiple repos for maintenance purposes.
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-cmdline',
 
       -- If you want to add a bunch of pre-configured snippets,
       --    you can use this plugin to help you. It even has snippets
@@ -856,7 +957,41 @@ require('lazy').setup({
       local cmp = require 'cmp'
       local luasnip = require 'luasnip'
       luasnip.config.setup {}
+      local mapping = cmp.mapping.preset.insert {
+        -- Select the [n]ext item
+        ['<C-j>'] = cmp.mapping.select_next_item(),
+        -- Select the [p]revious item
+        ['<C-k>'] = cmp.mapping.select_prev_item(),
 
+        -- Accept ([y]es) the completion.
+        --  This will auto-import if your LSP supports it.
+        --  This will expand snippets if the LSP sent a snippet.
+        ['<C-l>'] = cmp.mapping.confirm { select = true },
+
+        -- Manually trigger a completion from nvim-cmp.
+        --  Generally you don't need this, because nvim-cmp will display
+        --  completions whenever it has completion options available.
+        --  C-s because C-Space is tmux prefix
+        ['<C-s>'] = cmp.mapping.complete {},
+        -- Think of <c-l> as moving to the right of your snippet expansion.
+        --  So if you have a snippet that's like:
+        --  function $name($args)
+        --    $body
+        --  end
+        --
+        -- <c-l> will move you to the right of each of the expansion locations.
+        -- <c-h> is similar, except moving you backwards.
+        ['<C-n>'] = cmp.mapping(function()
+          if luasnip.expand_or_locally_jumpable() then
+            luasnip.expand_or_jump()
+          end
+        end, { 'i', 's' }),
+        ['<C-p>'] = cmp.mapping(function()
+          if luasnip.locally_jumpable(-1) then
+            luasnip.jump(-1)
+          end
+        end, { 'i', 's' }),
+      }
       cmp.setup {
         snippet = {
           expand = function(args)
@@ -869,48 +1004,31 @@ require('lazy').setup({
         -- chosen, you will need to read `:help ins-completion`
         --
         -- No, but seriously. Please read `:help ins-completion`, it is really good!
-        mapping = cmp.mapping.preset.insert {
-          -- Select the [n]ext item
-          ['<C-j>'] = cmp.mapping.select_next_item(),
-          -- Select the [p]revious item
-          ['<C-k>'] = cmp.mapping.select_prev_item(),
-
-          -- Accept ([y]es) the completion.
-          --  This will auto-import if your LSP supports it.
-          --  This will expand snippets if the LSP sent a snippet.
-          ['<CR>'] = cmp.mapping.confirm { select = true },
-
-          -- Manually trigger a completion from nvim-cmp.
-          --  Generally you don't need this, because nvim-cmp will display
-          --  completions whenever it has completion options available.
-          --  C-s because C-Space is tmux prefix
-          ['<C-s>'] = cmp.mapping.complete {},
-          -- Think of <c-l> as moving to the right of your snippet expansion.
-          --  So if you have a snippet that's like:
-          --  function $name($args)
-          --    $body
-          --  end
-          --
-          -- <c-l> will move you to the right of each of the expansion locations.
-          -- <c-h> is similar, except moving you backwards.
-          ['<C-l>'] = cmp.mapping(function()
-            if luasnip.expand_or_locally_jumpable() then
-              luasnip.expand_or_jump()
-            end
-          end, { 'i', 's' }),
-          ['<C-h>'] = cmp.mapping(function()
-            if luasnip.locally_jumpable(-1) then
-              luasnip.jump(-1)
-            end
-          end, { 'i', 's' }),
-        },
+        mapping = mapping,
         sources = {
           { name = 'copilot' },
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
+          { name = 'buffer' },
         },
       }
+      cmp.setup.cmdline({ '/', '?' }, {
+        mapping = mapping,
+        sources = {
+          { name = 'buffer' },
+        },
+      })
+      -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+      cmp.setup.cmdline(':', {
+        mapping = mapping,
+        sources = cmp.config.sources({
+          { name = 'path' },
+        }, {
+          { name = 'cmdline' },
+        }),
+        matching = { disallow_symbol_nonprefix_matching = false },
+      })
     end,
   },
 

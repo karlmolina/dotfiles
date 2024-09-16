@@ -13,8 +13,8 @@ source "${ZINIT_HOME}/zinit.zsh"
 # Autocompletions and sources nvm
 zinit ice wait'2' lucid
 zi snippet OMZP::nvm
-zinit ice wait lucid
-zi snippet OMZP::git
+# zinit ice wait lucid
+# zi snippet OMZP::git
 # auto-completion for docker
 zinit ice wait lucid
 zi snippet OMZP::docker
@@ -63,6 +63,14 @@ zinit wait lucid for \
 timezsh() {
   shell=${1-$SHELL}
   for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
+}
+
+function awscreds() {
+    export AWS_PAGER=""
+    aws sts get-caller-identity --profile $1 || aws sso login --profile $1
+    FILE=~/.aws/cli/cache/$(ls -t ~/.aws/cli/cache | head -n 1)
+
+    export AWS_ACCESS_KEY_ID="$(jq -r '.Credentials.AccessKeyId' $FILE)" AWS_SECRET_ACCESS_KEY="$(jq -r '.Credentials.SecretAccessKey' $FILE)" AWS_SESSION_TOKEN="$(jq -r '.Credentials.SessionToken' $FILE)"
 }
 
 # Fzf options
@@ -133,12 +141,6 @@ export HISTSIZE=1000000000
 # Load history from other shells
 alias gethistory='fc -RI'
 
-
-# set golang path
-export GOPATH=$(go env GOPATH)
-# add golang bin path to PATH
-export PATH=$PATH:$(go env GOPATH)/bin
-
 zsh-defer eval "$(pyenv init -)"
 
 zsh-defer source /usr/local/opt/chruby/share/chruby/chruby.sh
@@ -146,7 +148,6 @@ zsh-defer source /usr/local/opt/chruby/share/chruby/auto.sh
 # chruby ruby-3.1.2
 zsh-defer source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-eval "$(starship init zsh)"
 
 [ -f "/Users/karl/.ghcup/env" ] && source "/Users/karl/.ghcup/env" # ghcup-env
 # pnpm
@@ -155,32 +156,8 @@ case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
-# pnpm end# Go paths
-[ -d ~/go ] && export GOPATH=$HOME/go
-[ "$GOPATH" ] && [ -d "$GOPATH/bin" ] && PATH="$PATH:$GOPATH/bin"
+# pnpm end
 
-if [ -d /usr/local/opt/go/libexec ]
-then
-  export GOROOT=/usr/local/opt/go/libexec
-else
-  if [ -d /usr/local/opt/go ]
-  then
-    export GOROOT=/usr/local/opt/go
-  else
-    [ -d /usr/local/go ] && export GOROOT=/usr/local/go
-  fi
-fi
-[ -d ${GOROOT}/bin ] && {
-  if [ $(echo $PATH | grep -c ${GOROOT}/bin) -ne "1" ]; then
-    PATH="$PATH:${GOROOT}/bin"
-  fi
-}
-[ -d $HOME/go/bin ] && {
-  if [ $(echo $PATH | grep -c $HOME/go/bin) -ne "1" ]; then
-    PATH="$PATH:$HOME/go/bin"
-  fi
-}
-export PATH
 eval "$(/usr/local/bin/brew shellenv)"
 export PATH=/opt/homebrew/bin:$PATH
 
@@ -202,7 +179,35 @@ export PATH="$PATH:$HOME/Library/Android/sdk/platform-tools"
 # Add emulator to path
 export PATH="$PATH:$HOME/Library/Android/sdk/emulator"
 
+export PATH="$PATH:/usr/local/go/bin"
+
 export XDG_CONFIG_HOME="$HOME/.config"
 
+#compdef gt
+###-begin-gt-completions-###
+#
+# yargs command completion script
+#
+# Installation: gt completion >> ~/.zshrc
+#    or gt completion >> ~/.zprofile on OSX.
+#
+_gt_yargs_completions()
+{
+  local reply
+  local si=$IFS
+  IFS=$'
+' reply=($(COMP_CWORD="$((CURRENT-1))" COMP_LINE="$BUFFER" COMP_POINT="$CURSOR" gt --get-yargs-completions "${words[@]}"))
+  IFS=$si
+  _describe 'values' reply
+}
+compdef _gt_yargs_completions gt
+###-end-gt-completions-###
 fpath=(/opt/homebrew/opt/go-task/share/zsh/site-functions $fpath)
 autoload -U compinit && compinit
+
+# sst
+export PATH=/Users/karl/.sst/bin:$PATH
+
+
+# keep this at end
+eval "$(starship init zsh)"

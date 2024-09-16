@@ -27,4 +27,5 @@
 !.config/nvim/**/*
 !.config/lazygit/
 !.config/lazygit/**/*
+!.config/starship.toml
 !.tmux.conf

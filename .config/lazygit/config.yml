@@ -48,24 +48,24 @@ gui:
     showCommandLog: true
     showBottomLine: true
     showIcons: false
-    nerdFontsVersion: "3"
+    nerdFontsVersion: '3'
     showBranchCommitHash: false
     commandLogSize: 8
     splitDiff: auto
     skipRewordInEditorWarning: false
-    windowSize: ""
+    windowSize: ''
     border: single
     animateExplosion: true
 git:
     paging:
         colorArg: always
-        pager: ""
+        pager: ''
         useConfig: false
     commit:
         signOff: false
     merging:
         manualCommit: false
-        args: ""
+        args: ''
     mainBranches:
         - master
         - main
@@ -94,6 +94,7 @@ confirmOnQuit: false
 quitOnTopLevelReturn: false
 keybinding:
     universal:
+        toggleRangeSelect: V
         quit: q
         quit-alt1: <c-c>
         return: <esc>
@@ -116,22 +117,22 @@ keybinding:
         nextBlock-alt2: <tab>
         prevBlock-alt2: <backtab>
         jumpToBlock:
-            - "1"
-            - "2"
-            - "3"
-            - "4"
-            - "5"
-        nextMatch: "n"
-        prevMatch: "N"
+            - '1'
+            - '2'
+            - '3'
+            - '4'
+            - '5'
+        nextMatch: 'n'
+        prevMatch: 'N'
         startSearch: /
-        optionMenu: ""
+        optionMenu: ''
         optionMenu-alt1: '?'
         select: <space>
         goInto: <enter>
         confirm: <enter>
         confirmInEditor: <a-enter>
         remove: d
-        new: "n"
+        new: 'n'
         edit: e
         openFile: o
         scrollUpMain: <pgup>
@@ -140,7 +141,7 @@ keybinding:
         scrollDownMain-alt1: J
         scrollUpMain-alt2: <c-u>
         scrollDownMain-alt2: <c-d>
-        executeCustomCommand: ':'
+        executeShellCommand: ':'
         createRebaseOptionsMenu: m
         pushFiles: P
         pullFiles: p
@@ -219,7 +220,7 @@ keybinding:
         tagCommit: T
         checkoutCommit: <space>
         resetCherryPick: <c-R>
-        copyCommitAttributeToClipboard: "y"
+        copyCommitAttributeToClipboard: 'y'
         openLogMenu: <c-l>
         openInBrowser: o
         viewBisectOptions: b
@@ -229,7 +230,7 @@ keybinding:
     commitFiles:
         checkoutCommitFile: c
     main:
-        toggleDragSelect: v
+        toggleDragSelect: V
         toggleDragSelect-alt: V
         toggleSelectHunk: a
         pickBothHunks: b
@@ -243,7 +244,6 @@ customCommands: []
 services: {}
 notARepository: prompt
 promptToReturnFromSubprocess: true
-
 os:
-  edit: nvim --server /tmp/nvim-server-$(tmux display-message -p '#S').pipe --remote-send "<cmd>lua require('custom.plugins.lazygit-open-file')('{{filename}}', '{{line}}')<CR>"
-  open: nvim --server /tmp/nvim-server-$(tmux display-message -p '#S').pipe --remote-send "<cmd>lua require('custom.plugins.lazygit-open-file')('{{filename}}', '{{line}}')<CR>"
+    edit: nvim --server /tmp/nvim-server-$(tmux display-message -p '#S').pipe --remote-send "<cmd>lua require('custom.plugins.lazygit-open-file')('{{filename}}', '{{line}}')<CR>"
+    open: nvim --server /tmp/nvim-server-$(tmux display-message -p '#S').pipe --remote-send "<cmd>lua require('custom.plugins.lazygit-open-file')('{{filename}}', '{{line}}')<CR>"
