@@ -100,7 +100,7 @@ vim.keymap.set('n', '<leader>ya', ':%y+<CR>', { desc = 'Copy file' })
 -- leader tab to switch to last buffer
 -- can't do <tab> because it conflicts with <c-i>
 vim.keymap.set('n', '<leader><tab>', '<C-^>', { desc = 'Switch to last buffer' })
-vim.api.nvim_create_autocmd({ 'FocusLost', 'BufLeave' }, {
+vim.api.nvim_create_autocmd({ 'FocusLost' }, {
   desc = 'Save when focus is lost',
   group = vim.api.nvim_create_augroup('kickstart-autosave', { clear = true }),
   callback = function(ev)
@@ -108,10 +108,16 @@ vim.api.nvim_create_autocmd({ 'FocusLost', 'BufLeave' }, {
     if vim.api.nvim_buf_get_name(ev.buf) == '' then
       return
     end
+    -- vim.cmd 'stopinsert'
+    -- I'm not sure why I have to do this, but conform's format_on_save doesn't
+    -- work otherwise.
+    -- Perform asynchronous formatting
+    vim.schedule(function()
+      -- Ensure formatting is done before saving
+      require('conform').format { bufnr = ev.buf }
+    end)
+    vim.cmd 'wall'
     -- save buffer
-    vim.cmd [[wall]]
-    -- write that we saved the buffers
-    -- vim.cmd [[echo "Buffers saved"]]
   end,
 })
 
@@ -135,6 +141,9 @@ require('lazy').setup({
   --   opts = {},
   -- },
   -- [[ Configure and install plugins ]]
+  {
+    'nvim-treesitter/nvim-treesitter-context',
+  },
   {
     'phpactor/phpactor',
     ft = 'php', -- Load the plugin only when editing PHP files
@@ -798,7 +807,9 @@ require('lazy').setup({
         html = {},
         cssls = {},
         rust_analyzer = {},
-        ts_ls = {},
+        ts_ls = {
+          settings = {},
+        },
         tailwindcss = {},
         lua_ls = {
           -- cmd = {...},
@@ -1013,15 +1024,18 @@ require('lazy').setup({
           { name = 'buffer' },
         },
       }
+      local cmdline_mapping = cmp.mapping.preset.cmdline {
+        ['<C-l>'] = cmp.mapping.confirm { select = false },
+      }
       cmp.setup.cmdline({ '/', '?' }, {
-        mapping = mapping,
+        mapping = cmdline_mapping,
         sources = {
           { name = 'buffer' },
         },
       })
       -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
       cmp.setup.cmdline(':', {
-        mapping = mapping,
+        mapping = cmdline_mapping,
         sources = cmp.config.sources({
           { name = 'path' },
         }, {
@@ -1088,13 +1102,19 @@ require('lazy').setup({
       --  Check out: https://github.com/echasnovski/mini.nvim
     end,
   },
-  { 'windwp/nvim-ts-autotag' },
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
+    dependencies = {
+      'windwp/nvim-ts-autotag',
+    },
     config = function()
       -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
 
+      require('nvim-ts-autotag').setup {
+        enable = true,
+        filetypes = { 'html', 'xml', 'tsx' },
+      }
       ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup {
         ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc' },
@@ -1102,7 +1122,6 @@ require('lazy').setup({
         auto_install = true,
         highlight = { enable = true },
         indent = { enable = true },
-        autotag = { enable = true },
         incremental_selection = {
           enable = true,
           keymaps = {
