@@ -241,7 +241,8 @@ keybinding:
         bulkMenu: b
 disableStartupPopups: false
 customCommands: []
-services: {}
+services: 
+    'git.dataminr.com': 'gitlab:git.dataminr.com'
 notARepository: prompt
 promptToReturnFromSubprocess: true
 os:

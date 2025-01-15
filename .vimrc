@@ -227,3 +227,5 @@ nmap <leader>o <c-6>
 " Up and down for autocomplete window
 imap <c-j> <down>
 imap <c-k> <up>
+" Lazy macro repeat
+nmap <leader>. @@

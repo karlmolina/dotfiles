@@ -218,3 +218,6 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 export PATH="$PATH:/Users/karl/.local/bin"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/karl.molina/.lmstudio/bin"

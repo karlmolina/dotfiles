@@ -16,8 +16,8 @@ zi snippet OMZP::nvm
 # zinit ice wait lucid
 # zi snippet OMZP::git
 # auto-completion for docker
-zinit ice wait lucid
-zi snippet OMZP::docker
+# zinit ice wait lucid
+# zi snippet OMZP::docker
 zinit ice wait lucid
 zi snippet OMZP::fzf
 zinit ice wait lucid
@@ -158,7 +158,7 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-eval "$(/usr/local/bin/brew shellenv)"
+# eval "$(/usr/local/bin/brew shellenv)"
 export PATH=/opt/homebrew/bin:$PATH
 
 # bun completions
@@ -170,9 +170,9 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
-export PATH="$HOME/.phpenv/bin:$PATH"
+# export PATH="$HOME/.phpenv/bin:$PATH"
 export PATH=$HOME/.local/bin:$PATH
-zsh-defer eval "$(phpenv init -)"
+# zsh-defer eval "$(phpenv init -)"
 
 # Add adb to path
 export PATH="$PATH:$HOME/Library/Android/sdk/platform-tools"
@@ -183,6 +183,7 @@ export PATH="$PATH:/usr/local/go/bin"
 
 export XDG_CONFIG_HOME="$HOME/.config"
 
+autoload -U compinit && compinit
 #compdef gt
 ###-begin-gt-completions-###
 #
@@ -203,7 +204,6 @@ _gt_yargs_completions()
 compdef _gt_yargs_completions gt
 ###-end-gt-completions-###
 fpath=(/opt/homebrew/opt/go-task/share/zsh/site-functions $fpath)
-autoload -U compinit && compinit
 
 # sst
 export PATH=/Users/karl/.sst/bin:$PATH
@@ -211,3 +211,6 @@ export PATH=/Users/karl/.sst/bin:$PATH
 
 # keep this at end
 eval "$(starship init zsh)"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/karl.molina/.lmstudio/bin"

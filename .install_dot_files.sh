@@ -23,8 +23,10 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 # brew install go
 # Node version manager
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+nvm install node # install latest version of node
 # You shouldn't ever lose your work if you're using Git 
 brew install dura
 brew install neovim
 brew install jesseduffield/lazygit/lazygit
 brew install go-task/tap/go-task
+brew install tmux
