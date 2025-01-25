@@ -417,7 +417,7 @@ require('lazy').setup({
     config = function() end,
     init = function()
       vim.g.lazygit_floating_window_scaling_factor = 1
-      vim.keymap.set('n', '<leader>hg', '<cmd>LazyGit<CR>', { desc = 'Open lazygit' })
+      vim.keymap.set('n', '<leader>hg', '<cmd>w<CR><cmd>LazyGit<CR>', { desc = 'Open lazygit' })
       vim.keymap.set('n', '<leader>hC', '<cmd>LazyGitConfig<CR>', { desc = 'Open lazygit config' })
     end,
   },
