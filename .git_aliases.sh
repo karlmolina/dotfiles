@@ -159,3 +159,29 @@ gitlab () {
     if [ -n "$1" ]; then url="${url}/blob/master/$1"; fi
     chrome $url
 }
+
+mr () {
+  # Get the latest commit message
+  commit_message=$(git log -1 --pretty=%B)
+
+  # Check if the commit message is empty
+  if [[ -z "$commit_message" ]]; then
+    echo "Error: No commit message found."
+    return 1
+  fi
+
+  # Create a branch name from the commit message (lowercase, replace spaces with hyphens, and remove special characters)
+  branch_name=$(echo "$commit_message" | tr '[:upper:]' '[:lower:]' | tr -s '[:space:]' '-' | tr -cd '[:alnum:]-')
+
+  # Create and checkout a new branch based on the latest commit
+  git checkout -b "$branch_name"
+
+  # Push the branch to the remote repository
+  git push --set-upstream origin "$branch_name"
+
+  # Create a merge request using glab
+  glab mr create --fill --yes
+  
+  # Print success message
+  echo "Branch '$branch_name' created and merge request created successfully."
+}
