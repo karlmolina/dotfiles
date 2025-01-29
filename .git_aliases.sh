@@ -169,6 +169,6 @@ mr () {
   branch_name=$(echo "$commit_message" | tr '[:upper:]' '[:lower:]' | tr -s '[:space:]' '-' | tr -cd '[:alnum:]-')
   branch_name="${branch_name%-}"
   git checkout -b "$branch_name"
-  glab mr create --fill --yes
+  glab mr create --fill --yes --squash-before-merge --remove-source-branch
   echo "Branch '$branch_name' created and merge request created successfully."
 }
