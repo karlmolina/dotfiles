@@ -143,7 +143,7 @@ alias dfpl='df pull'
 alias dfph='df push'
 alias dfsh='df show'
 alias dfgi='vi ~/.gitignore'
-alias dot='dfca -m "Update dotfiles"; df pull; szr; df push'
+alias dot='dfca -m "Update dotfiles"; df pull; source ~/.zshrc; df push'
 alias dotfiles='chrome https://github.com/karlmolina/dotfiles'
 
 # curl aliases
