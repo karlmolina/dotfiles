@@ -4,3 +4,39 @@ source ~/.vimrc
 set surround
 set visualbell
 set noerrorbells
+
+nnoremap <leader>gd :action GotoDeclaration<CR>
+nnoremap <leader>gu :action FindUsages<CR>
+
+nnoremap <leader>lr :action RenameElement<CR>
+
+nnoremap <leader>la :action ShowIntentionActions<CR>
+
+" nnoremap <leader>cc :action CommentByLineComment<CR>
+" vnoremap <leader>cc :action CommentByLineComment<CR>
+
+nnoremap <leader>o :action GotoFile<CR>
+vnoremap <leader>o :action GotoFile<CR>
+" nnoremap <leader>i :action Switcher<CR>
+" vnoremap <leader>i :action Switcher<CR>
+nnoremap <leader>fo :action RecentFiles<CR>
+vnoremap <leader>fo :action RecentFiles<CR>
+" vnoremap <leader>u :action RecentFiles<CR><CR>
+" nnoremap <leader>u :action Switcher<CR>
+" nnoremap <leader>u :action Back<CR>
+
+" Search all files in project
+nnoremap <leader>fa :action FindInPath<CR>
+vnoremap <leader>fa :action FindInPath<CR>
+
+nnoremap <leader>sv :source ~/.ideavimrc<CR>
+
+nnoremap <leader>e :action ActivateProjectToolWindow<CR>
+" nnoremap <leader>f :action SelectInProjectView<CR>
+
+nnoremap <leader>hc :action Git.ResolveConflicts<CR>
+
+nnoremap ]d :action GotoNextError<CR>
+nnoremap [d :action GotoPreviousError<CR>
+map ]c <Action>(VcsShowNextChangeMarker)
+map [c <Action>(VcsShowPrevChangeMarker)

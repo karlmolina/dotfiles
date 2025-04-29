@@ -19,8 +19,8 @@ alias gae='git add --edit'
 alias guia='git update-index --again'
 
 # git status without untracked files
-# alias gs='git status -uno'
-alias gs='git status'
+alias gs='git status -uno'
+alias gss='git status'
 alias gsh='git show'
 
 alias gc='git commit'
@@ -161,17 +161,39 @@ gitlab () {
 }
 
 mr () {
+  # Check for staged files
+  staged_files=$(git diff --cached --name-only)
+  if [ -n "$staged_files" ]; then
+      echo "Error: There are staged files."
+      echo "$staged_files"
+      exit 1
+  fi
+
+  git diff --exit-code --quiet
+  if [[ $? -ne 0 ]]; then
+    git stash
+    stash_created=true
+  fi
   commit_message=$(git log -1 --pretty=%B)
+  commit=$(git log -1 --format=%H)
   if [[ -z "$commit_message" ]]; then
     echo "Error: No commit message found."
     return 1
   fi
-  branch_name=$(echo "$commit_message" | tr '[:upper:]' '[:lower:]' | tr -s '[:space:]' '-' | tr -cd '[:alnum:]-')
+  branch_name=$(echo "$commit_message" | awk 'NR==1' | tr '[:upper:]' '[:lower:]' | tr -s '[:space:]' '-' | tr -cd '[:alnum:]-')
   branch_name="${branch_name%-}"
-  git checkout -b "$branch_name"
+
+  git checkout -b "$branch_name" origin/master
+  git cherry-pick "$commit"
   glab mr create --fill --yes --squash-before-merge --remove-source-branch
-  git checkout main
-  git checkout master
-  git reset --hard @{upstream}
-  echo "Branch '$branch_name' created and merge request created successfully."
+  git push -u origin HEAD
+  git checkout -
+  git reset --hard HEAD^
+  if [[ "$stash_created" == true ]]; then
+    git stash apply
+  else
+    echo "No changes were stashed."
+  fi
 }
+
+alias mrr='glab mr create --fill --yes --squash-before-merge --remove-source-branch'

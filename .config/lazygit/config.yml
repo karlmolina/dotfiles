@@ -80,7 +80,7 @@ git:
     commitPrefixes: {}
     parseEmoji: false
     log:
-        order: topo-order
+        order: default
         showGraph: when-maximised
         showWholeGraph: false
     diffContextSize: 3

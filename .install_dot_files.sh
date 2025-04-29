@@ -30,3 +30,4 @@ brew install neovim
 brew install jesseduffield/lazygit/lazygit
 brew install go-task/tap/go-task
 brew install tmux
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
