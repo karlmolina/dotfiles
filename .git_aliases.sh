@@ -170,6 +170,7 @@ mr () {
   fi
 
   git diff --exit-code --quiet
+  stash_created=false
   if [[ $? -ne 0 ]]; then
     git stash
     stash_created=true
