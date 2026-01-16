@@ -123,6 +123,9 @@ cop() {
     gh copilot suggest -t shell "$@"
 }
 
+alias kc='source <(kubectl completion zsh)'
+alias k='kubectl'
+
 # git aliases
 . ~/.git_aliases.sh
 

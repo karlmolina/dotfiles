@@ -118,9 +118,9 @@ alias gcpa='git cherry-pick --abort'
 
 alias gri='git rebase --interactive --autosquash'
 alias grio='gri --onto'
-alias griom='gri --onto origin/master'
-alias grim='gri origin/master'
-alias grum='gru origin/master'
+alias griom='gri --onto origin/main'
+alias grim='gri origin/main'
+alias grum='gru origin/main'
 alias grc='git rebase --continue'
 alias gra='git rebase --abort'
 
@@ -144,20 +144,20 @@ alias dfph='df push'
 alias dfsh='df show'
 alias dfgi='vi ~/.gitignore'
 alias dot='dfca -m "Update dotfiles"; df pull; source ~/.zshrc; df push'
-alias dotfiles='chrome https://github.com/karlmolina/dotfiles'
+alias dotfiles='open https://github.com/karlmolina/dotfiles'
 
 # curl aliases
 alias jetbrainsgitignore="curl 'https://raw.githubusercontent.com/github/gitignore/master/Global/JetBrains.gitignore' -o .gitignore"
 
-# open gitlab repo in chrome
+# open gitlab repo in browser
 gitlab () {
     url=$(git config --get remote.origin.url)
     url="${url/://}"
     https="https://"
     url="${url/git@/$https}"
     url="${url//.git/}"
-    if [ -n "$1" ]; then url="${url}/blob/master/$1"; fi
-    chrome $url
+    if [ -n "$1" ]; then url="${url}/blob/main/$1"; fi
+    open $url
 }
 
 mr () {
@@ -166,11 +166,11 @@ mr () {
   if [ -n "$staged_files" ]; then
       echo "Error: There are staged files."
       echo "$staged_files"
-      exit 1
+      return 1
   fi
 
-  git diff --exit-code --quiet
   stash_created=false
+  git diff --exit-code --quiet
   if [[ $? -ne 0 ]]; then
     git stash
     stash_created=true
@@ -184,7 +184,7 @@ mr () {
   branch_name=$(echo "$commit_message" | awk 'NR==1' | tr '[:upper:]' '[:lower:]' | tr -s '[:space:]' '-' | tr -cd '[:alnum:]-')
   branch_name="${branch_name%-}"
 
-  git checkout -b "$branch_name" origin/master
+  git checkout -b "$branch_name" origin/main
   git cherry-pick "$commit"
   glab mr create --fill --yes --squash-before-merge --remove-source-branch
   git push -u origin HEAD
