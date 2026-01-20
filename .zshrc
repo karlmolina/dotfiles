@@ -90,7 +90,16 @@ else
     export EDITOR="nvim"
 fi
 
-alias vi="nvim --listen /tmp/nvim-server-$(tmux display-message -p '#S').pipe"
+vi() {
+  if [ -n "$TMUX" ]; then
+    # Inside tmux: Use session name
+    local session=$(tmux display-message -p '#S')
+    nvim --listen "/tmp/nvim-server-${session}.pipe" "$@"
+  else
+    # Outside tmux: Just run nvim normally
+    nvim "$@"
+  fi
+}
 
 # Source alias files which source other alias files
 source ~/.zsh_aliases
