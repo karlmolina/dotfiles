@@ -36,7 +36,37 @@ alias gcmn='gc --amend --no-edit'
 alias gd='git diff'
 alias gds='git diff --staged'
 
-alias gu='git checkout'
+gu() {
+  # Capture the output of git checkout, redirecting stderr to stdout
+  local output
+  output=$(git checkout "$@" 2>&1)
+  local exit_status=$?
+
+  # If the command succeeded, just print the output and return
+  if [ $exit_status -eq 0 ]; then
+    printf "%s\n" "$output"
+    return 0
+  fi
+
+  # Check if the error is specifically about an existing worktree
+  if echo "$output" | grep -q "already used by worktree at"; then
+    # Extract the path (everything after 'at ')
+    local wt_path
+    wt_path=$(echo "$output" | sed -n "s/.*at '\(.*\)'.*/\1/p")
+    
+    if [ -n "$wt_path" ]; then
+      echo "Switching to worktree: $wt_path"
+      cd "$wt_path" || return 1
+    else
+      printf "%s\n" "$output"
+    fi
+  else
+    # It's a different error, just print it
+    printf "%s\n" "$output" >&2
+    return $exit_status
+  fi
+}
+
 alias gub='git checkout -b'
 
 # branch
@@ -81,7 +111,7 @@ alias grl='git reflog'
 
 alias ph='git push'
 alias phu='git push -u origin HEAD'
-alias phf='git push --force-with-lease'
+alias phf='git push --force-with-lease --set-upstream origin HEAD'
 alias phdelete='git push origin --delete HEAD'
 
 alias gr='git remote'
@@ -189,7 +219,6 @@ mr () {
   glab mr create --fill --yes --squash-before-merge --remove-source-branch
   git push -u origin HEAD
   git checkout -
-  git reset --hard HEAD^
   if [[ "$stash_created" == true ]]; then
     git stash apply
   else

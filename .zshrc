@@ -157,6 +157,34 @@ zsh-defer source /usr/local/opt/chruby/share/chruby/auto.sh
 # chruby ruby-3.1.2
 zsh-defer source "$HOME/.sdkman/bin/sdkman-init.sh"
 
+_update_tmux_session_name() {
+  # 1. Exit early if not in tmux
+  [[ -z "$TMUX" ]] && return
+
+  local session_name
+  # 2. Find the root of the git repo
+  local git_root=$(git rev-parse --show-toplevel 2>/dev/null)
+  
+  if [[ -n "$git_root" ]]; then
+    # Get the folder name where the .git folder lives
+    local repo_name="${git_root:t}"
+    local branch=$(git branch --show-current 2>/dev/null)
+    session_name="${branch} ${repo_name}"
+  else
+    # Fallback to current dir name if not in a git repo
+    session_name="${PWD:t}"
+  fi
+
+  # 3. Only rename if the name has actually changed
+  local current_session=$(tmux display-message -p '#S')
+  if [[ "$current_session" != "$session_name" ]]; then
+    tmux rename-session "$session_name"
+  fi
+}
+
+# Register the hook
+# autoload -Uz add-zsh-hook
+# add-zsh-hook precmd _update_tmux_session_name
 
 [ -f "/Users/karl/.ghcup/env" ] && source "/Users/karl/.ghcup/env" # ghcup-env
 # pnpm
@@ -239,3 +267,6 @@ export PATH="/Users/karl.molina/.rd/bin:$PATH"
 
 # opencode
 export PATH=/Users/karl.molina/.opencode/bin:$PATH
+
+# https://karanbansal.in/blog/claude-code-lsp/
+export ENABLE_LSP_TOOL=1

@@ -9,4 +9,7 @@
     defaultBranch = main
 [rebase]
     updateRefs = true
+[rerere]
+    enabled = true
+
 
