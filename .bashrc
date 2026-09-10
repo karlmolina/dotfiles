@@ -28,3 +28,6 @@ export PATH="$PATH:/Users/karl.molina/.lmstudio/bin"
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/karl.molina/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+# greplacement: put ~/.local/bin before system PATH
+export PATH="$HOME/.local/bin:$PATH"

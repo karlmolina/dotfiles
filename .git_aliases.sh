@@ -19,7 +19,7 @@ alias gae='git add --edit'
 alias guia='git update-index --again'
 
 # git status without untracked files
-alias gs='git status -uno'
+alias gs='git status -uno --ahead-behind'
 alias gss='git status'
 alias gsh='git show'
 
@@ -37,6 +37,24 @@ alias gd='git diff'
 alias gds='git diff --staged'
 
 gu() {
+  # If the only argument is "main", check if we are in a linked worktree
+  if [ "$#" -eq 1 ] && [ "$1" = "main" ]; then
+    # Ensure we are actually inside a git repository first
+    if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+      local current_top main_repo_path
+      # Get the top-level directory of our current location
+      current_top=$(git rev-parse --show-toplevel 2>/dev/null)
+      # The first line of 'git worktree list' is always the primary repository
+      main_repo_path=$(git worktree list 2>/dev/null | head -n 1 | awk '{print $1}')
+
+      # If we are in a git repo and the current root doesn't match the primary root
+      if [ -n "$current_top" ] && [ -n "$main_repo_path" ] && [ "$current_top" != "$main_repo_path" ]; then
+        echo "Currently in a worktree. Moving to primary repo: $main_repo_path"
+        cd "$main_repo_path" || return 1
+      fi
+    fi
+  fi
+
   # Capture the output of git checkout, redirecting stderr to stdout
   local output
   output=$(git checkout "$@" 2>&1)
@@ -66,7 +84,6 @@ gu() {
     return $exit_status
   fi
 }
-
 alias gub='git checkout -b'
 
 # branch

@@ -10,7 +10,8 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 source "${ZINIT_HOME}/zinit.zsh"
 
-# Autocompletions and sources nvm
+# Autocompletions and sources nvm (lazy: only loads nvm.sh on first real nvm/node/npm/npx use)
+zstyle ':omz:plugins:nvm' lazy yes
 zinit ice wait'2' lucid
 zi snippet OMZP::nvm
 # zinit ice wait lucid
@@ -220,9 +221,18 @@ export PATH="$PATH:/usr/local/go/bin"
 
 export XDG_CONFIG_HOME="$HOME/.config"
 
-autoload -U compinit && compinit
+# Only run compinit's full security audit (compaudit) once per day; on other
+# startups skip straight to the cached dump with -C, which is much faster.
+autoload -U compinit
+_zcompdump="${ZDOTDIR:-$HOME}/.zcompdump"
+if [[ -n "$_zcompdump"(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
+unset _zcompdump
 
-source <(kubectl completion zsh)
+source ~/.zsh/cache/_kubectl
 
 #compdef gt
 ###-begin-gt-completions-###
@@ -256,8 +266,17 @@ eval "$(starship init zsh)"
 export PATH="$PATH:/Users/karl.molina/.lmstudio/bin"
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Put the default node version on PATH immediately (cheap) so `node`/`npm`
+# resolve without waiting on nvm.sh. The OMZP::nvm snippet below (line ~15)
+# lazy-loads the full nvm() function on first real use of nvm/node/npm/npx.
+# Homebrew node is unlinked; this makes nvm's default the one on PATH.
+if [ -s "$NVM_DIR/alias/default" ]; then
+  _nvm_default_version="$(cat "$NVM_DIR/alias/default")"
+  _nvm_default_bin="$NVM_DIR/versions/node/v${_nvm_default_version#v}/bin"
+  [ -d "$_nvm_default_bin" ] && export PATH="$_nvm_default_bin:$PATH"
+  unset _nvm_default_version _nvm_default_bin
+fi
 
 export PATH='/Users/karl.molina/.duckdb/cli/latest':$PATH
 
@@ -269,4 +288,3 @@ export PATH="/Users/karl.molina/.rd/bin:$PATH"
 export PATH=/Users/karl.molina/.opencode/bin:$PATH
 
 # https://karanbansal.in/blog/claude-code-lsp/
-export ENABLE_LSP_TOOL=1
