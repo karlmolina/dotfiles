@@ -41,7 +41,7 @@ VI_MODE_CURSOR_INSERT=5
 
 zi load Aloxaf/fzf-tab
 zinit wait lucid for \
- atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+ atinit"zicdreplay" \
     zdharma-continuum/fast-syntax-highlighting \
  blockf \
     zsh-users/zsh-completions \
