@@ -105,7 +105,7 @@ openIde () {
 
 alias pc='openIde Pycharm'
 alias ws='openIde Webstorm'
-alias ij='openIde "IntelliJ IDEA Ultimate"'
+alias ij='idea .'
 alias code='openIde "Visual Studio Code"'
 alias android='openIde "Android Studio"'
 
