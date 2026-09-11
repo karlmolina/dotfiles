@@ -234,6 +234,25 @@ unset _zcompdump
 
 source ~/.zsh/cache/_kubectl
 
+# tsh ssh <hostname> completion, backed by `tsh ls`.
+# Results are cached for 60s so repeated tab presses don't re-hit the cluster.
+_tsh_ssh_hosts() {
+  local cache_file="${TMPDIR:-/tmp}/tsh_hosts_cache"
+  if [[ ! -s "$cache_file" ]] || [[ -n "$cache_file"(#qN.mm+1) ]]; then
+    tsh ls -f names >| "$cache_file" 2>/dev/null
+  fi
+  compadd -- "${(f)$(<"$cache_file")}"
+}
+
+_tsh() {
+  case "${words[2]}" in
+    ssh)
+      _tsh_ssh_hosts
+      ;;
+  esac
+}
+compdef _tsh tsh
+
 #compdef gt
 ###-begin-gt-completions-###
 #

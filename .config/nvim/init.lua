@@ -421,18 +421,6 @@ require('lazy').setup({
     end,
   },
   { 'akinsho/toggleterm.nvim', version = '*', config = true },
-  -- copilot, find copilot in this file to see where its configured in cmp
-  {
-    'zbirenbaum/copilot-cmp',
-    event = 'InsertEnter',
-    dependencies = { 'zbirenbaum/copilot.lua' },
-    config = function()
-      vim.defer_fn(function()
-        require('copilot').setup() -- https://github.com/zbirenbaum/copilot.lua/blob/master/README.md#setup-and-configuration
-        require('copilot_cmp').setup() -- https://github.com/zbirenbaum/copilot-cmp/blob/master/README.md#configuration
-      end, 100)
-    end,
-  },
   -- reopen files where you left off
   {
     'rmagatti/auto-session',
@@ -1015,7 +1003,6 @@ require('lazy').setup({
         -- No, but seriously. Please read `:help ins-completion`, it is really good!
         mapping = mapping,
         sources = {
-          { name = 'copilot' },
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
