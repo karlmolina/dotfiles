@@ -265,8 +265,7 @@ _gt_yargs_completions()
 {
   local reply
   local si=$IFS
-  IFS=$'
-' reply=($(COMP_CWORD="$((CURRENT-1))" COMP_LINE="$BUFFER" COMP_POINT="$CURSOR" gt --get-yargs-completions "${words[@]}"))
+  IFS=$'\n' reply=($(COMP_CWORD="$((CURRENT-1))" COMP_LINE="$BUFFER" COMP_POINT="$CURSOR" gt --get-yargs-completions "${words[@]}"))
   IFS=$si
   _describe 'values' reply
 }
@@ -276,10 +275,6 @@ fpath=(/opt/homebrew/opt/go-task/share/zsh/site-functions $fpath)
 
 # sst
 export PATH=/Users/karl/.sst/bin:$PATH
-
-
-# keep this at end
-eval "$(starship init zsh)"
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/karl.molina/.lmstudio/bin"
@@ -307,3 +302,9 @@ export PATH="/Users/karl.molina/.rd/bin:$PATH"
 export PATH=/Users/karl.molina/.opencode/bin:$PATH
 
 # https://karanbansal.in/blog/claude-code-lsp/
+
+# Added by Antigravity CLI installer
+export PATH="/Users/karl/.local/bin:$PATH"
+
+# keep this at end
+eval "$(starship init zsh)"

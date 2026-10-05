@@ -421,6 +421,21 @@ require('lazy').setup({
     end,
   },
   { 'akinsho/toggleterm.nvim', version = '*', config = true },
+<<<<<<< HEAD
+=======
+  -- copilot, find copilot in this file to see where its configured in cmp
+  -- {
+  --   'zbirenbaum/copilot-cmp',
+  --   event = 'InsertEnter',
+  --   dependencies = { 'zbirenbaum/copilot.lua' },
+  --   config = function()
+  --     vim.defer_fn(function()
+  --       require('copilot').setup() -- https://github.com/zbirenbaum/copilot.lua/blob/master/README.md#setup-and-configuration
+  --       require('copilot_cmp').setup() -- https://github.com/zbirenbaum/copilot-cmp/blob/master/README.md#configuration
+  --     end, 100)
+  --   end,
+  -- },
+>>>>>>> e3fea5e (Update dotfiles)
   -- reopen files where you left off
   {
     'rmagatti/auto-session',
@@ -456,6 +471,11 @@ require('lazy').setup({
           },
         },
         on_attach = function(bufnr)
+          -- Ignore nvim-tree buffers
+          if vim.api.nvim_buf_get_option(bufnr, 'filetype') == 'NvimTree' then
+            return false
+          end
+
           local gs = package.loaded.gitsigns
 
           local function map(mode, l, r, opts)
@@ -787,7 +807,11 @@ require('lazy').setup({
         gopls = {},
         templ = {},
         pyright = {},
+<<<<<<< HEAD
         ruff = {},
+=======
+        -- ruff_lsp = {},
+>>>>>>> e3fea5e (Update dotfiles)
         phpactor = {},
         groovyls = {},
         html = {},
@@ -796,6 +820,7 @@ require('lazy').setup({
         ts_ls = {
           settings = {},
         },
+        -- metals = {},
         tailwindcss = {},
         lua_ls = {
           -- cmd = {...},

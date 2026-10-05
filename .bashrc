@@ -22,6 +22,7 @@ export NVM_DIR="$HOME/.nvm"
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
+<<<<<<< HEAD
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/karl.molina/.lmstudio/bin"
 
@@ -31,3 +32,8 @@ export PATH="/Users/karl.molina/.rd/bin:$PATH"
 
 # greplacement: put ~/.local/bin before system PATH
 export PATH="$HOME/.local/bin:$PATH"
+=======
+
+# Added by Antigravity CLI installer
+export PATH="/Users/karl/.local/bin:$PATH"
+>>>>>>> e3fea5e (Update dotfiles)

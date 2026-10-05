@@ -219,9 +219,15 @@ export PATH="$PATH:/Users/karl/.local/bin"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
+<<<<<<< HEAD
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/karl.molina/.lmstudio/bin"
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/karl.molina/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+=======
+
+# Added by Antigravity CLI installer
+export PATH="/Users/karl/.local/bin:$PATH"
+>>>>>>> e3fea5e (Update dotfiles)
